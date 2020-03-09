@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import data.Database;
 import vo.AirplaneTicketVO;
 
-public class AirplanTicketDao {
+public class AirplaneTicketDao {
 	
 	//싱글톤패턴
 	
-	private static AirplanTicketDao instance;
+	private static AirplaneTicketDao instance;
 	
-	private AirplanTicketDao() {}
+	private AirplaneTicketDao() {}
 	
-	public static AirplanTicketDao getInstance() {
+	public static AirplaneTicketDao getInstance() {
 		if(instance == null) {
-			instance = new AirplanTicketDao();
+			instance = new AirplaneTicketDao();
 		}
 		return instance;
 	}
@@ -27,10 +27,8 @@ public class AirplanTicketDao {
 		database.tb_airplaneticket.add(airticket);
 	}
 	
-	//테이블자체를 반환해주는 메소드
-	public ArrayList<AirplaneTicketVO> ticket(){
+	public ArrayList<AirplaneTicketVO> ReservationUserList(){ // 티켓 출력을 위한 데이터베이스
 		return database.tb_airplaneticket;
-		
 	}
 	
 	

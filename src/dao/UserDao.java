@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import data.Database;
 import vo.AirplaneTicketVO;
+import vo.CountryVO;
 import vo.UserVO;
 
 public class UserDao {
@@ -47,12 +48,11 @@ public class UserDao {
 		return rtnUser;
 	}
 
-	public ArrayList<UserVO> selectUserList() {
-		
+	public ArrayList<UserVO> selectUserList() {		
 		return database.tb_user;
-	}
+	}	
 	
-	public ArrayList<AirplaneTicketVO> ReservationUserList(){ // 티켓 출력을 위한 데이터베이스
-		return database.tb_airplaneticket;
+	public ArrayList<CountryVO> showcountryList(){ // 비행기 예약하는 화면에서 나라의 정보를 보여주기 위한 데이터베이스
+		return database.tb_country;
 	}
 }

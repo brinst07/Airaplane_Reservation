@@ -3,14 +3,14 @@ package service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.logging.LogRecord;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import controller.UserController;
+import dao.AirplaneTicketDao;
 import dao.UserDao;
 import data.Session;
 import vo.AirplaneTicketVO;
+import vo.CountryVO;
 import vo.UserVO;
 
 //싱글톤 패턴
@@ -29,6 +29,7 @@ public class UserService {
 
 	// test
 	UserDao userdao = UserDao.getInstance();
+	AirplaneTicketDao airplaneticketdao = AirplaneTicketDao.getInstance();
 
 	// 회원가입
 	public void join() {
@@ -80,7 +81,7 @@ public class UserService {
 
 		while (true) {
 			if (b.matches() == false) {
-				System.out.println("계좌번호를 다시 입력해주세요");
+				System.out.print("계좌번호를 다시 입력해주세요");
 				ab = sc.nextLine();
 				a = Pattern.compile(abcheck);
 				b = a.matcher(ab);
@@ -106,9 +107,9 @@ public class UserService {
 	public void login() {
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("아이디 : ");
+		System.out.print("아이디 : ");
 		String id = sc.nextLine();
-		System.out.println("비밀번호 : ");
+		System.out.print("비밀번호 : ");
 		String pw = sc.nextLine();
 
 		HashMap<String, String> param = new HashMap<>();
@@ -120,7 +121,7 @@ public class UserService {
 		while (true) {
 			if (user == null) {
 				System.out.println("아이디 혹은 비밀번호를 잘못 입력하셨습니다.");
-				System.out.println("1.계속 도전   2.아이디 찾기   3.비밀번호 찾기");
+				System.out.print("1.계속 도전   2.아이디 찾기   3.비밀번호 찾기");
 				String idpw = sc.nextLine();
 
 				if (idpw.equals("1")) {
@@ -317,7 +318,7 @@ public class UserService {
 	}
 
 	public void airticketList() { // 비행기 티켓 정보를 조회할때 출력
-		ArrayList<AirplaneTicketVO> airList = userdao.ReservationUserList();
+		ArrayList<AirplaneTicketVO> airList = airplaneticketdao.ReservationUserList();
 		AirplaneTicketVO air = airList.get(0);
 
 		System.out.println();
@@ -334,6 +335,19 @@ public class UserService {
 		System.out.print("  \t\tFROM\t" + air.getArriveAp() + "\t\t\t\t\t│");
 		System.out.println();
 		System.out.println("└───────────────────────────────────────────────────────────────────────────────┘");
+	}
+	
+	public void showcountry() {
+		ArrayList<CountryVO> country = userdao.showcountryList();
+		
+		for(int i = 0 ; i < country.size() ; i++) {
+			CountryVO ct = country.get(i);
+			System.out.print((i+1) + " " + ct.getCoun_name() + "\t");
+			
+			if(i!=1 && i%5==1) {
+				System.out.println();
+			}
+		}
 	}
 
 }

@@ -5,6 +5,7 @@ import vo.UserVO;
 import java.util.Scanner;
 
 import data.Session;
+import service.ReservationTicket;
 
 public class NextController {
 	Scanner sc = new Scanner(System.in);
@@ -13,6 +14,8 @@ public class NextController {
    void mainmenu(){ // 로그인 후 들어오는 메인 화면
       UserVO user = Session.LoginUser;
       boolean root = false; // true일 경우 관리자로 로그인 한 것.
+      
+      ReservationTicket rst = new ReservationTicket();
 
       a: while (true) {
          System.out.println(user.getName() + "님 환영합니다.");
@@ -51,8 +54,7 @@ public class NextController {
             break a;
          case 1 :
             if(!root){
-               System.out.println("비행기 예약 화면입니다.");
-             
+               rst.start(); // 비행기 예약화면 이동           
                
             }else{
                System.out.println("비행기 관리자 관리");
