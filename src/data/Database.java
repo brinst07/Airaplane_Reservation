@@ -13,6 +13,7 @@ import vo.DateVO;
 import vo.PaymentVO;
 import vo.QboardVO;
 import vo.SitVO;
+import vo.AirplaneTicketVO;
 import vo.UserVO;
 
 public class Database {
@@ -69,7 +70,7 @@ public class Database {
 	public ArrayList<DateVO> tb_date = new ArrayList<>();
 	
 	//비행기 테이블
-	public ArrayList<AirplaneVO> tb_airplane = new ArrayList<>();
+	public ArrayList<AirplaneTicketVO> tb_airplane = new ArrayList<>();
 	
 	//공항 테이블
 	public ArrayList<AirportVO> tb_airport = new ArrayList<>();
@@ -138,6 +139,10 @@ public class Database {
 		country.setCoun_name("제주도");
 		country.setCount_time("0");
 		tb_country.add(country);
+	}
+	
+	public ArrayList<AirplaneTicketVO>tb_airplaneticket = new ArrayList<>();{ // 티켓 정보 저장
+		
 	}
 	
 	

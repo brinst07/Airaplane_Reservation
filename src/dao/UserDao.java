@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import data.Database;
-import service.UserService;
+import vo.AirplaneTicketVO;
 import vo.UserVO;
 
 public class UserDao {
@@ -50,5 +50,9 @@ public class UserDao {
 	public ArrayList<UserVO> selectUserList() {
 		
 		return database.tb_user;
+	}
+	
+	public ArrayList<AirplaneTicketVO> ReservationUserList(){ // 티켓 출력을 위한 데이터베이스
+		return database.tb_airplaneticket;
 	}
 }
