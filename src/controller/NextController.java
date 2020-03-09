@@ -6,10 +6,12 @@ import java.util.Scanner;
 
 import data.Session;
 import service.ReservationTicket;
+import service.UserService;
 
 public class NextController {
 	Scanner sc = new Scanner(System.in);
 	BoardController bc = new BoardController();
+	UserService userservice = UserService.getInstance();
 	QboardController qbc = new QboardController();
    void mainmenu(){ // 로그인 후 들어오는 메인 화면
       UserVO user = Session.LoginUser;
@@ -72,7 +74,7 @@ public class NextController {
             
          case 3:
             if(!root){
-               System.out.println("회원정보 변경 화면입니다.");
+            	userservice.userpwInfo(); // 회원정보수정
             }else{
                System.out.println("회원정보 관리자 관리");
             }
