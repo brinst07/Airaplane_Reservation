@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 import controller.UserController;
 import dao.UserDao;
+import data.Database;
 import data.Session;
 import vo.UserVO;
 
@@ -117,12 +118,11 @@ public class UserService {
       param.put("PASSWORD",pw);
       UserVO user = userdao.selectUser(param);
       //해쉬맵에 담아서 범용성 있게 만든다.
-     
-      
+            
       while(true) {
       if(user == null) {
          System.out.println("아이디 혹은 비밀번호를 잘못 입력하셨습니다.");
-         System.out.println("1.계속 도전   2.아이디 찾기   3.비밀번호 찾기");
+         System.out.println("1.다시 시도   2.아이디 찾기  3. 비밀번호 찾기");
          String idpw = sc.nextLine();
          
          if(idpw.equals("1")) {
@@ -155,31 +155,106 @@ public class UserService {
    
    
 
-public void findid() {
-	// TODO Auto-generated method stub
+public void findid() { //아이디 찾기
 	
+	Scanner sc = new Scanner(System.in);
+	System.out.println("이름을 입력해주세요.");
+	String name = sc.nextLine();
+	System.out.println("연락처를 입력해주새요.");
+	String hp = sc.nextLine();
+	
+    Database database = Database.getInstance();
+	
+    String result_id = null;
+    
+    while(true) {
+    	
+			for(int i=0; i< database.tb_user.size(); i++) {
+				UserVO tb_user = database.tb_user.get(i);
+				String tb_name = tb_user.getName();
+				String tb_hp = tb_user.getHp();
+				if(tb_name.equals(name) && tb_hp.equals(hp)) {
+				 result_id = tb_user.getId();
+				 	break;
+					}
+				  }
+			if(result_id == null) {
+				System.out.println("---------------------------");
+				System.out.println("이름 또는 휴대폰번호가 틀리셨습니다.");
+				System.out.println("[1]재시도 [2] 로그인화면가기");
+				System.out.println("---------------------------");
+				String answer = sc.nextLine();
+				if(answer.equals("1")) {
+					findid();
+					break;
+				}else {
+					login();
+					break;
+				}
+				
+				}else {
+					System.out.println("---------------------------");
+					System.out.println(name +"님의 아이디 : "+result_id);
+					System.out.println("---------------------------");
+					break;
+				}
+			
+	}
+		
 }
 
+
 public void findpw() { // 로그인 실패시 비밀번호 질문 답하기
-	UserVO user = Session.LoginUser;
-	Scanner sc = new Scanner(System.in);
-	System.out.println("비밀번호 질문 : "+ user.getPwq());
-	String answer = sc.nextLine();
-	if(answer.equals(user.getPwa())) {
-		
-	}
+	Database database = Database.getInstance();
 	
+	Scanner sc = new Scanner(System.in);
+	System.out.println("아이디를 입력해주세요.");
+	String id = sc.nextLine();
+	
+	UserVO tb_user= new UserVO();
+	String pw_result = null;
+	while(true) {
+		for(int i=0; i<database.tb_user.size(); i++) {
+			tb_user= database.tb_user.get(i);
+			String id_result = tb_user.getId();
+			
+			if(id_result.equals(id)) {
+				System.out.println(tb_user.getPwq());
+				break;
+			}
+		}
+		System.out.println("비밀번호 답을 입력해주새요.");
+		String pwanswer= sc.nextLine();
+		if(pwanswer.equals(tb_user.getPwa())) {
+			System.out.println("비밀번호 는 : "+tb_user.getPw());
+			break;
+		}
+		else{
+			System.out.println("---------------------------");
+			System.out.println("아이디 또는 비밀번호가 틀리셨습니다.");
+			System.out.println("[1] 재시도  [2] 로그인화면가기 ");
+			System.out.println("---------------------------");
+			String answer = sc.nextLine();
+			if(answer.equals("1")) {
+				findpw();
+				break;
+			}else {
+				login();
+				break;
+			}
+		}	}
 }
 //회원목록
    public void userList() {
       ArrayList<UserVO> userList = userdao.selectUserList();
       
-      System.out.println("---------------------------------------");
-      System.out.println("번호\t아이디\t이름");
-      System.out.println("---------------------------------------");
+      System.out.println("---------------------------------------------------");
+      System.out.println("번호\t아이디\t이름\t비밀번호 질문\t비밀번호 답\t계좌번호\t연락처");
+      System.out.println("---------------------------------------------------");
       for(int i = userList.size() -1; 0 <= i; i--) {
          UserVO user  = userList.get(i);
-         System.out.println(i + 1 + "\t" + user.getId() + "\t" + user.getName()+ "\t" + user.getPwq()+ "\t" + user.getPwa());
+         System.out.println(i + 1 + "\t" + user.getId() + "\t" + user.getName()+ "\t" + user.getPwq()+ "\t" + user.getPwa()
+        +"\t"+user.getAb()+"\t"+user.getHp());
       }
       System.out.println("---------------------------------------");
    }
@@ -196,6 +271,7 @@ public void findpw() { // 로그인 실패시 비밀번호 질문 답하기
          System.out.println("2. 비밀번호 찾기 질문 수정");
          System.out.println("3. 연락처 수정");
          System.out.println("4. 계좌번호 수정");
+         System.out.println("5. 현재 회원 목록");
          String voice = s.nextLine();
          
          if(voice.equals("1")){
@@ -212,6 +288,9 @@ public void findpw() { // 로그인 실패시 비밀번호 질문 답하기
          }
          if(voice.equals("4")){
         	abChange(); 
+         }
+         if(voice.equals("5")) {
+        	 userList();
          }
       }
    }
@@ -241,7 +320,7 @@ public void findpw() { // 로그인 실패시 비밀번호 질문 답하기
 	 
 }
 
-public void userpwChange(){ //회원 정보 수정
+public void userpwChange(){ //회원 정보 비밀번호 수정
       Scanner s = new Scanner(System.in);
       
       System.out.println("-------비밀번호 수정---------");
@@ -298,7 +377,8 @@ public void userpwChange(){ //회원 정보 수정
    
    
    public void phonChange(){
-      Scanner sc = new Scanner(System.in);
+	   UserVO user = Session.LoginUser;
+	   Scanner sc = new Scanner(System.in);
 	   System.out.println("-------연락처 수정---------");
       System.out.println("바꾸실 연락처를 입력해주세요. ");
       String newhp = sc.nextLine();
@@ -310,7 +390,6 @@ public void userpwChange(){ //회원 정보 수정
       while(true){
       if(m.matches()==true){
          System.out.println("----입력 완료 -----"); //핸드폰 번호 입력
-         
          break;
       }else if(m.matches()==false){
          System.out.println("잘못 입력하셨습니다");
@@ -320,9 +399,9 @@ public void userpwChange(){ //회원 정보 수정
          m = p.matcher(newhp);   
       }
       }
-      UserVO user = Session.LoginUser;
+      
       user.setHp(newhp);
-     
+      userpwInfo();
    }
    
    

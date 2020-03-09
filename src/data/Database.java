@@ -13,6 +13,7 @@ import vo.DateVO;
 import vo.PaymentVO;
 import vo.QboardVO;
 import vo.SitVO;
+import vo.TimeVO;
 import vo.UserVO;
 
 public class Database {
@@ -80,5 +81,6 @@ public class Database {
 	//나라 테이블
 	public ArrayList<CountryVO> tb_country = new ArrayList<>();
 	
+	public ArrayList<TimeVO> tb_time = new ArrayList<>();
 	
 }
