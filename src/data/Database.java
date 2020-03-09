@@ -80,7 +80,7 @@ public class Database {
 		CityVO city = new CityVO();
 		city.setCoun_num(1);
 		city.setCity_num(1);
-		city.setCity_name("로스앤젤레스");		
+		city.setCity_name("로스앤젤레스");	
 	}
 	
 	//나라 테이블
