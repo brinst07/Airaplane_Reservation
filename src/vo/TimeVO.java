@@ -31,5 +31,5 @@ public class TimeVO {
 	public void setArrivetime(String arrivetime) {
 		this.arrivetime = arrivetime;
 	}
-	
+	//
 }
