@@ -75,10 +75,70 @@ public class Database {
 	public ArrayList<AirportVO> tb_airport = new ArrayList<>();
 	
 	//도시 테이블
-	public ArrayList<CityVO> tb_city = new ArrayList<>();
+	public ArrayList<CityVO> tb_city = new ArrayList<>();{
+		CityVO city = new CityVO();
+		city.setCoun_num(1);
+		city.setCity_num(1);
+		city.setCity_name("로스앤젤레스");
+		
+		
+		
+		
+	}
 	
 	//나라 테이블
-	public ArrayList<CountryVO> tb_country = new ArrayList<>();
+	public ArrayList<CountryVO> tb_country = new ArrayList<>();{
+		CountryVO country = new CountryVO();
+		country.setCoun_num(1);
+		country.setCoun_name("미국");
+		country.setCount_time("19");
+		tb_country.add(country);
+		
+		country.setCoun_num(2);
+		country.setCoun_name("중국");
+		country.setCount_time("8");
+		tb_country.add(country);
+		
+		country.setCoun_num(3);
+		country.setCoun_name("일본");
+		country.setCount_time("0");
+		tb_country.add(country);
+		
+		country.setCoun_num(4);
+		country.setCoun_name("베트남");
+		country.setCount_time("3");
+		tb_country.add(country);
+		
+		country.setCoun_num(5);
+		country.setCoun_name("필리핀");
+		country.setCount_time("4");
+		tb_country.add(country);
+		
+		country.setCoun_num(6);
+		country.setCoun_name("태국");
+		country.setCount_time("3");
+		tb_country.add(country);
+		
+		country.setCoun_num(7);
+		country.setCoun_name("싱가포르");
+		country.setCount_time("3");
+		tb_country.add(country);
+		
+		country.setCoun_num(8);
+		country.setCoun_name("프랑스");
+		country.setCount_time("8");
+		tb_country.add(country);
+		
+		country.setCoun_num(9);
+		country.setCoun_name("영국");
+		country.setCount_time("9");
+		tb_country.add(country);
+		
+		country.setCoun_num(10);
+		country.setCoun_name("제주도");
+		country.setCount_time("0");
+		tb_country.add(country);
+	}
 	
 	
 }
