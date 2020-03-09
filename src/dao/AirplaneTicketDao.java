@@ -32,8 +32,6 @@ public class AirplaneTicketDao {
 		return database.tb_airplaneticket;
 	}
 	
-	public ArrayList<CountryVO> showcountryList(){ // 비행기 예약하는 화면에서 나라의 정보를 보여주기 위한 데이터베이스
-		return database.tb_country;
-	}
+	
 	
 }

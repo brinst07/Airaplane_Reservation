@@ -1,12 +1,10 @@
 package controller;
 
-import vo.UserVO;
-
 import java.util.Scanner;
 
 import data.Session;
-import service.ReservationTicket;
 import service.UserService;
+import vo.UserVO;
 
 public class NextController {
 	Scanner sc = new Scanner(System.in);
@@ -17,7 +15,7 @@ public class NextController {
       UserVO user = Session.LoginUser;
       boolean root = false; // true일 경우 관리자로 로그인 한 것.
       
-      ReservationTicket rst = new ReservationTicket();
+      ReservationTicketController rst = new ReservationTicketController();
 
       a: while (true) {
          System.out.println(user.getName() + "님 환영합니다.");

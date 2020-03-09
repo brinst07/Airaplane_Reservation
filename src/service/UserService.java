@@ -29,8 +29,7 @@ public class UserService {
    }
 
    // test
-   UserDao userdao = UserDao.getInstance();
-   AirplaneTicketDao airplaneticketdao = AirplaneTicketDao.getInstance();
+   UserDao userdao = UserDao.getInstance();   
 
    // 회원가입
    public void join() {
@@ -391,38 +390,5 @@ public class UserService {
 
       user.setHp(newhp);
       userpwInfo();
-   }
-
-   public void airticketList() { // 비행기 티켓 정보를 조회할때 출력
-      ArrayList<AirplaneTicketVO> airList = airplaneticketdao.ReservationUserList();
-      AirplaneTicketVO air = airList.get(0);
-
-      System.out.println();
-      System.out.println("┌───────────────────────────────────────────────────────────────────────────────┐");
-      System.out.println("│   " + air.getAirCompany() + "\t▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶ \t\t\t\t\t\t│");
-      System.out.println("├─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┤");
-      System.out.print("│ NAME\t" + air.getUsername());
-      System.out.print("  \t\tDATE\t" + air.getStartdate());
-      System.out.println("  \tCLASS\t" + air.getSitclass() + "\t│");
-      System.out.print("│ GATE\t" + air.getGate());
-      System.out.print("  \t\t\tSIT\t" + air.getSitNum());
-      System.out.println("  \t\tTIME\t" + air.getStarttime() + "\t\t│");
-      System.out.print("│ TO\t" + air.getStartAp());
-      System.out.print("  \t\tFROM\t" + air.getArriveAp() + "\t\t\t\t\t│");
-      System.out.println();
-      System.out.println("└───────────────────────────────────────────────────────────────────────────────┘");
-   }
-
-   public void showcountry() {
-      ArrayList<CountryVO> country = airplaneticketdao.showcountryList();
-
-      for (int i = 0; i < country.size(); i++) {
-         CountryVO ct = country.get(i);
-         System.out.print((i + 1) + ". " + ct.getCoun_name() + "\t");
-
-         if (i % 5 == 4) {
-            System.out.println();
-         }
-      }
-   }
+   }   
 }
