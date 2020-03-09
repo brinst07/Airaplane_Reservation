@@ -30,3 +30,4 @@ public class CityDao {
 		database.tb_city.add(cityvo);
 	}
 }
+ 
