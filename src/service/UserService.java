@@ -36,21 +36,21 @@ public class UserService {
 		Scanner sc = new Scanner(System.in);
 		UserVO user = new UserVO();
 
-		System.out.println("아이디 : ");
+		System.out.print("아이디 >> ");
 		String id = sc.nextLine();
-		System.out.println("비밀번호 : ");
+		System.out.print("비밀번호 >> ");
 		String pw = sc.nextLine();
-		System.out.println("이름 : ");
+		System.out.print("이름 >> ");
 		String name = sc.nextLine();
 
-		System.out.println("비밀번호 질문 : ");
+		System.out.print("비밀번호 질문 >> ");
 		String pwQ = sc.nextLine();
 		System.out.println("----입력 완료 -----");
-		System.out.println("질문에 대한 답 입력");
+		System.out.print("질문에 대한 답 입력 >> ");
 		String pwA = sc.nextLine();
 		System.out.println("----입력 완료 -----");
 
-		System.out.println("핸드폰 번호 입력해주세요 ");
+		System.out.print("핸드폰 번호 입력해주세요 >> ");
 		String hp = sc.nextLine();
 
 		String hpcheck = "(?i)[0-9]{3}[-]{0,1}[0-9]{3,4}[-]{0,1}[0-9]{4}";
@@ -63,7 +63,7 @@ public class UserService {
 				break;
 			} else if (m.matches() == false) {
 				System.out.println("잘못 입력하셨습니다");
-				System.out.println("다시 입력해주세요.");
+				System.out.print("다시 입력해주세요. \n>>");
 				hp = sc.nextLine();
 				p = Pattern.compile(hpcheck);
 				m = p.matcher(hp);
@@ -72,7 +72,7 @@ public class UserService {
 
 		System.out.println("결제 할 계좌번호를 입력 해주세요");
 		System.out.println("-는 없이 입력해 주세요");
-		System.out.println("EX) 국민53820204170480");
+		System.out.print("EX) 국민53820204170480\n>> ");
 		String ab = sc.nextLine();
 
 		String abcheck = "[0-9]{1,10}[0-9]{4}";
@@ -81,7 +81,7 @@ public class UserService {
 
 		while (true) {
 			if (b.matches() == false) {
-				System.out.print("계좌번호를 다시 입력해주세요");
+				System.out.print("계좌번호를 다시 입력해주세요 >> ");
 				ab = sc.nextLine();
 				a = Pattern.compile(abcheck);
 				b = a.matcher(ab);
@@ -121,7 +121,7 @@ public class UserService {
 		while (true) {
 			if (user == null) {
 				System.out.println("아이디 혹은 비밀번호를 잘못 입력하셨습니다.");
-				System.out.print("1.계속 도전   2.아이디 찾기   3.비밀번호 찾기");
+				System.out.print("1.계속 도전   2.아이디 찾기   3.비밀번호 찾기\n>> ");
 				String idpw = sc.nextLine();
 
 				if (idpw.equals("1")) {
@@ -159,7 +159,7 @@ public class UserService {
 	public void findpw() { // 로그인 실패시 비밀번호 질문 답하기
 		UserVO user = Session.LoginUser;
 		Scanner sc = new Scanner(System.in);
-		System.out.println("비밀번호 질문 : " + user.getPwq());
+		System.out.print("비밀번호 질문 : " + user.getPwq());
 		String answer = sc.nextLine();
 		if (answer.equals(user.getPwa())) {
 
@@ -193,7 +193,7 @@ public class UserService {
 			System.out.println("1. 비밀번호 수정");
 			System.out.println("2. 비밀번호 찾기 질문 수정");
 			System.out.println("3. 연락처 수정");
-			System.out.println("4. 계좌번호 수정");
+			System.out.print("4. 계좌번호 수정\n>> ");
 			String voice = s.nextLine();
 
 			if (voice.equals("1")) {
@@ -218,18 +218,18 @@ public class UserService {
 		UserVO user = Session.LoginUser;
 
 		Scanner s = new Scanner(System.in);
-		System.out.println("현재 계좌번호를 입력해주세요.");
+		System.out.print("현재 계좌번호를 입력해주세요 >> ");
 		String newab = s.nextLine();
 
 		while (true) {
 			if (newab.equals(user.getAb())) {
-				System.out.println("바꾸실 계좌번호를 입력해주세요.");
+				System.out.print("바꾸실 계좌번호를 입력해주세요 >> ");
 				newab = s.nextLine();
 				System.out.println("입력 완료!");
 				break;
 			} else {
 				System.out.println("계좌번호가 일치하지 않습니다.");
-				System.out.println("다시 입력해주세요.");
+				System.out.print("다시 입력해주세요 >> ");
 				newab = s.nextLine();
 			}
 		}
@@ -249,7 +249,7 @@ public class UserService {
 		String pw = "";
 		do {
 
-			System.out.println("현재 비밀번호를 입력해주세요");
+			System.out.print("현재 비밀번호를 입력해주세요 >> ");
 			pw = s.nextLine();
 
 			if (!(pw.equals(user.getPw()))) { // 현재비밀번호가 맞는지
@@ -262,7 +262,7 @@ public class UserService {
 			}
 		} while (!pw.equals(user.getPw()));
 
-		System.out.println("새로운 비밀번호를 입력해주세요.");
+		System.out.print("새로운 비밀번호를 입력해주세요 >> ");
 		String newpw = s.nextLine();
 
 		user.setPw(newpw);
@@ -276,11 +276,11 @@ public class UserService {
 		Scanner s = new Scanner(System.in);
 
 		System.out.println(user.getPwq());
-		System.out.println("바꾸실 비밀번호 질문을 입력해주세요.");
+		System.out.print("바꾸실 비밀번호 질문을 입력해주세요 >> ");
 		String newqwQ = s.nextLine();
 		user.setPwq(newqwQ);
 
-		System.out.println("바꾸신 질문 답을 입력해주세요");
+		System.out.print("바꾸신 질문 답을 입력해주세요 >> ");
 		String newqwA = s.nextLine();
 		user.setPwa(newqwA);
 
@@ -293,7 +293,7 @@ public class UserService {
 	public void phonChange() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("-------연락처 수정---------");
-		System.out.println("바꾸실 연락처를 입력해주세요. ");
+		System.out.print("바꾸실 연락처를 입력해주세요 >> ");
 		String newhp = sc.nextLine();
 
 		String hpcheck = "(?i)[0-9]{3}[-]{0,1}[0-9]{3,4}[-]{0,1}[0-9]{4}";
@@ -306,7 +306,7 @@ public class UserService {
 				break;
 			} else if (m.matches() == false) {
 				System.out.println("잘못 입력하셨습니다");
-				System.out.println("다시 입력해주세요.");
+				System.out.print("다시 입력해주세요.\n>> ");
 				newhp = sc.nextLine();
 				p = Pattern.compile(hpcheck);
 				m = p.matcher(newhp);
@@ -338,13 +338,13 @@ public class UserService {
 	}
 	
 	public void showcountry() {
-		ArrayList<CountryVO> country = userdao.showcountryList();
+		ArrayList<CountryVO> country = airplaneticketdao.showcountryList();
 		
 		for(int i = 0 ; i < country.size() ; i++) {
 			CountryVO ct = country.get(i);
-			System.out.print((i+1) + " " + ct.getCoun_name() + "\t");
+			System.out.print((i+1) + ". " + ct.getCoun_name() + "\t");
 			
-			if(i!=1 && i%5==1) {
+			if(i%5==4) {
 				System.out.println();
 			}
 		}
