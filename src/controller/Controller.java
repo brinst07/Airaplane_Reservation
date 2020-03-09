@@ -36,8 +36,7 @@ public class Controller {
 	QboardController qboard = new QboardController();
 	NextController nc = new NextController();
 	
-	public void start() {
-		// TODO Auto-generated method stub
+	public void start() {		
 		Scanner sc = new Scanner(System.in);
 		int menu;
 		
