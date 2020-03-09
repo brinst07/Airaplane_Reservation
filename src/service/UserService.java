@@ -140,9 +140,7 @@ public class UserService {
 				}
 
 			} else {
-				System.out.println("로그인 성공!");
-				System.out.println(user.getName() + "님 환영합니다.");
-				Session.LoginUser = user;
+								Session.LoginUser = user;
 				break;
 
 			}

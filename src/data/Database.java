@@ -38,6 +38,12 @@ public class Database {
 		user.setPw("admin");
 		user.setName("관리자");
 		tb_user.add(user);
+		
+		user = new UserVO();
+		user.setId("a");
+		user.setPw("a");
+		user.setName("KimTaeJin");
+		tb_user.add(user);
 	}
 	
 	//게시판 생성
@@ -80,7 +86,93 @@ public class Database {
 		CityVO city = new CityVO();
 		city.setCoun_num(1);
 		city.setCity_num(1);
-		city.setCity_name("로스앤젤레스");		
+		city.setCity_name("LA");
+		tb_city.add(city);
+		
+		city = new CityVO();
+		city.setCoun_num(1);
+		city.setCity_num(2);
+		city.setCity_name("뉴욕");
+		tb_city.add(city);
+		
+		city = new CityVO();
+		city.setCoun_num(2);
+		city.setCity_num(1);
+		city.setCity_name("홍콩");
+		tb_city.add(city);
+		
+		city = new CityVO();
+		city.setCoun_num(3);
+		city.setCity_num(1);
+		city.setCity_name("도쿄");
+		tb_city.add(city);
+		
+		city = new CityVO();
+		city.setCoun_num(3);
+		city.setCity_num(2);
+		city.setCity_name("오사카");
+		tb_city.add(city);
+		
+		city = new CityVO();
+		city.setCoun_num(4);
+		city.setCity_num(1);
+		city.setCity_name("하노이");
+		tb_city.add(city);
+		
+		city = new CityVO();
+		city.setCoun_num(4);
+		city.setCity_num(2);
+		city.setCity_name("다낭");
+		tb_city.add(city);
+		
+		city = new CityVO();
+		city.setCoun_num(5);
+		city.setCity_num(1);
+		city.setCity_name("마닐라");
+		tb_city.add(city);
+		
+		city = new CityVO();
+		city.setCoun_num(6);
+		city.setCity_num(1);
+		city.setCity_name("방콕");
+		tb_city.add(city);
+		
+		city = new CityVO();
+		city.setCoun_num(6);
+		city.setCity_num(2);
+		city.setCity_name("파타야");
+		tb_city.add(city);
+		
+		city = new CityVO();
+		city.setCoun_num(7);
+		city.setCity_num(1);
+		city.setCity_name("뮌헨");
+		tb_city.add(city);
+		
+		city = new CityVO();
+		city.setCoun_num(7);
+		city.setCity_num(2);
+		city.setCity_name("베를린");
+		tb_city.add(city);
+		
+		city = new CityVO();
+		city.setCoun_num(8);
+		city.setCity_num(1);
+		city.setCity_name("파리");
+		tb_city.add(city);
+		
+		city = new CityVO();
+		city.setCoun_num(9);
+		city.setCity_num(1);
+		city.setCity_name("런던");
+		tb_city.add(city);
+		
+		city = new CityVO();
+		city.setCoun_num(10);
+		city.setCity_num(1);
+		city.setCity_name("제주도");
+		tb_city.add(city);
+		
 	}
 	
 	//나라 테이블
@@ -93,7 +185,7 @@ public class Database {
 		
 		country = new CountryVO();
 		country.setCoun_num(2);
-		country.setCoun_name("중국");
+		country.setCoun_name("홍콩");
 		country.setCount_time("8");
 		tb_country.add(country);
 		
@@ -123,7 +215,7 @@ public class Database {
 		
 		country = new CountryVO();
 		country.setCoun_num(7);
-		country.setCoun_name("싱가포르");
+		country.setCoun_name("독일");
 		country.setCount_time("3");
 		tb_country.add(country);
 		
