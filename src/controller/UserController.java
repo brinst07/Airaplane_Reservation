@@ -31,7 +31,7 @@ public class UserController {
    
    UserService userservice = UserService.getInstance();
    
-   private void start() {
+   public void start() {
       // TODO Auto-generated method stub
       Scanner sc = new Scanner(System.in);
       int menu;
