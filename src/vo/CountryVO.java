@@ -4,6 +4,7 @@ public class CountryVO {
 	private int coun_num;
 	private String coun_name;
 	private String count_time;
+	
 	public int getCoun_num() {
 		return coun_num;
 	}

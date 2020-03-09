@@ -7,6 +7,7 @@ public class DateVO {
 	private String start_date;
 	private String arrive_date;
 	private int airplane_num;
+	
 	public int getDate_num() {
 		return date_num;
 	}

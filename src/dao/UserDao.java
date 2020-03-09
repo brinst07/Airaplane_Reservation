@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import data.Database;
-import service.UserService;
+import vo.AirplaneTicketVO;
+import vo.CountryVO;
 import vo.UserVO;
 
 public class UserDao {
@@ -47,8 +48,8 @@ public class UserDao {
 		return rtnUser;
 	}
 
-	public ArrayList<UserVO> selectUserList() {
-		
+	public ArrayList<UserVO> selectUserList() {		
 		return database.tb_user;
-	}
+	}	
+	
 }

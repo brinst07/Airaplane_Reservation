@@ -4,6 +4,7 @@ public class CityVO {
 	private int city_num;
 	private String city_name;
 	private int coun_num;
+	
 	public int getCity_num() {
 		return city_num;
 	}
