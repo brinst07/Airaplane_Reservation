@@ -19,9 +19,12 @@ public class CityService {
 	CityDao city = CityDao.getInstance();
 	CityVO cityvo = new CityVO();
 	//city를 출력해주는 메소드
-	/*public void showCity(int cho) {
-		for(int i = 0; i<; i++) {
-			
-		}*/
-	
+	public void showCity(int cho) {
+		for(int i=0; i<city.citylist().size(); i++) {
+			CityVO excity = city.citylist().get(i);
+			if(excity.getCoun_num()==cho) {
+				System.out.println(excity.getCity_name());
+			}
+		}
+	}
 }
