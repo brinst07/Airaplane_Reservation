@@ -23,11 +23,11 @@ public class CityService {
 	
 	//city를 출력해주는 메소드
 	public void showCity(int cho) {
-//		//ArrayList<CityVO> city = citylist.
-//		
-//		for(int i = 0 ; i < city.size();i++) {
-//			
-//		}
+		for(int i=0; i<city.citylist().size(); i++) {
+			CityVO excity = city.citylist().get(i);
+			if(excity.getCoun_num()==cho) {
+				System.out.println(excity.getCity_name());
+			}
+		}
 	}
-	
 }

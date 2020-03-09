@@ -48,7 +48,7 @@ public class Controller {
 			System.out.println("3. 회원목록");
 			System.out.println("0. 프로그램 종료");
 			System.out.println("--------------------------------");
-			System.out.println("메뉴에 해당하는 번호 입력>");
+			System.out.print("메뉴에 해당하는 번호 입력 >> ");
 			
 			menu = Integer.parseInt(sc.nextLine());
 			
