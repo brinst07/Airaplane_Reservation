@@ -70,13 +70,25 @@ public class UserService {
         } 
       
       System.out.println("결제 할 계좌번호를 입력 해주세요");
+      System.out.println("-는 없이 입력해 주세요");
       System.out.println("EX) 국민53820204170480");
       String ab = sc.nextLine();
-      user.setAb(ab);
-      if(user.getAb() == null){
-         System.out.println("계좌번호를 달못 입력했습니다.");
+      
+      String abcheck = "[0-9]{1,10}[0-9]{4}"; 
+      Pattern a = Pattern.compile(abcheck);
+      Matcher b = a.matcher(ab);
+      
+      
+      while(true) {
+      if(b.matches()==false) {
+    	  System.out.println("계좌번호를 다시 입력해주세요");
+          ab = sc.nextLine();
+          a = Pattern.compile(abcheck);
+          b = a.matcher(ab);
       }else{
       System.out.println("----입력 완료 -----");
+      break;
+      	}
       }
       
       user.setId(id);
