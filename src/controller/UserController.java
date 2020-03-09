@@ -10,7 +10,7 @@ public class UserController {
       /*
        * 조 소개 > 주제 소개 > 주제 선정 배경 > 프로그램 구조 > 시연
        * 발표자 1명, ppt 및 시연 1명
-       * 
+       * kk
        * Controller : 메뉴 선택
        * Service : 메뉴 기능 수행
        * Dao : 데이터베이스 접속
