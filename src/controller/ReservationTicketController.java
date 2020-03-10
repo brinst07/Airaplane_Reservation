@@ -18,10 +18,10 @@ public class ReservationTicketController {
 		
 		country.showcountry();
 				
-		Scanner sc = new Scanner(System.in); System.out.print("\n나라를 선택해주세요 >> ");
+		Scanner sc = new Scanner(System.in); System.out.print("\n나라를 선택해주세요 >> ");		
 		int cho = Integer.parseInt(sc.nextLine());
-
-		city.showCity(cho);	
+		
+		city.showCity(cho);		
 	}
 
 }
