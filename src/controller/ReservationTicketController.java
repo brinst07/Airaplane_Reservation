@@ -48,12 +48,14 @@ public class ReservationTicketController {
 				num = 14;	break;
 		}
 		
-		int count = city.showCity(cho)-1;
+		int count = city.countCity(cho);
+		
 		if(count==1) {
 			cho=1;
 			System.out.println();
 		}
 		else {
+			city.showCity(cho);
 			System.out.print("\n도시를 선택해주세요 >> ");
 			cho = Integer.parseInt(sc.nextLine());
 		}		
