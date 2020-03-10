@@ -53,7 +53,11 @@ public class Controller {
 			System.out.println("--------------------------------");
 			System.out.print("메뉴에 해당하는 번호 입력 >> ");
 			
-			menu = Integer.parseInt(sc.nextLine());
+			try {
+				menu = Integer.parseInt(sc.nextLine());
+			}catch (Exception e) {
+				continue;
+			}
 			
 			switch(menu) {
 			case 1://회원가입

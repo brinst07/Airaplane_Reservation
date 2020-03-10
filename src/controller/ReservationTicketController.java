@@ -33,8 +33,7 @@ public class ReservationTicketController {
 		ap.setAirCompany("KOREA AIR"); // 코리아 항공 고정
 		
 		//----------------------------------------
-		ap.setSitNum("15C");
-		ap.setSitclass("Economy");			
+		ap.setSitNum("15C");				
 		//----------------------------------------
 		
 		Scanner sc = new Scanner(System.in);
