@@ -25,6 +25,8 @@ public class Controller {
 		 * 
 		 * 데이터베이스~
 		 * 
+		 * 
+		 * sem이 수정했음
 		 */
 		
 		new Controller().start();
