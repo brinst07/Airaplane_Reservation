@@ -36,7 +36,8 @@ public class ReservationTicketController {
 				num = 5;	break;
 			case 5:
 				num = 7;	break;
-			case 6:		num = 8;	break;
+			case 6:
+				num = 8;	break;
 			case 7:
 				num = 10;	break;
 			case 8:
@@ -46,18 +47,22 @@ public class ReservationTicketController {
 			case 10:
 				num = 14;	break;
 		}
+		//
+		int count = city.countCity(cho);
 		
-		city.showCity(cho);
-		System.out.print("\n도시를 선택해주세요 >> ");
-
-		cho = Integer.parseInt(sc.nextLine());
-
-		time.showTimeTable(cho+num);
+		if(count==1) {
+			cho=1;
+			System.out.println();
+		}
+		else {
+			city.showCity(cho);
+			System.out.print("\n도시를 선택해주세요 >> ");
+			cho = Integer.parseInt(sc.nextLine());
+		}		
+		
 		System.out.print("인천 국제 공항 ---> ");
 		airport.showAirport(cho+num);
-		time.showTimeTable(cho+num); 
-		// 시간표 출력
-
+		time.showTimeTable(cho+num); // 시간표 출력
 	}
 
 }

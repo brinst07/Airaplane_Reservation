@@ -22,6 +22,18 @@ public class CityService {
 	CityVO cityvo = new CityVO();
 	Scanner sc = new Scanner(System.in);
 	
+	//city갯수를 세어주는 메소드
+		public int countCity(int cho) {
+			int count = 0;
+			for(int i=0; i<city.citylist().size(); i++) {
+				CityVO excity = city.citylist().get(i);
+				if(excity.getCoun_num()==cho) {						
+					count++;
+				}
+			}
+			return count;
+		}
+	
 	//city를 출력해주는 메소드
 	public void showCity(int cho) {
 		int count = 1;
