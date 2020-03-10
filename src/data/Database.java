@@ -84,77 +84,77 @@ public class Database {
 	{
 		AirportVO airport = new AirportVO();
 		airport.setAirpot_num(1);
-		airport.setCit_num(1);
+		airport.setCity_num(1);
 		airport.setAirport_name(" 로스 엔젤로레스 ");
 		tb_airport.add(airport);
 
 		airport.setAirpot_num(2);
-		airport.setCit_num(2);
+		airport.setCity_num(2);
 		airport.setAirport_name(" 욘 F 케네디 ");
 		tb_airport.add(airport);
 
 		airport.setAirpot_num(3);
-		airport.setCit_num(3);
+		airport.setCity_num(3);
 		airport.setAirport_name("홍 콩 국제공항");
 		tb_airport.add(airport);
 
 		airport.setAirpot_num(4);
-		airport.setCit_num(4);
+		airport.setCity_num(4);
 		airport.setAirport_name("도 쿄 국제공항");
 		tb_airport.add(airport);
 
 		airport.setAirpot_num(5);
-		airport.setCit_num(5);
+		airport.setCity_num(5);
 		airport.setAirport_name(" 간 사 이 ");
 		tb_airport.add(airport);
 
 		airport.setAirpot_num(6);
-		airport.setCit_num(6);
+		airport.setCity_num(6);
 		airport.setAirport_name(" 노이바이 ");
 		tb_airport.add(airport);
 
 		airport.setAirpot_num(7);
-		airport.setCit_num(7);
+		airport.setCity_num(7);
 		airport.setAirport_name(" 다낭 공항");
 		tb_airport.add(airport);
 
 		airport.setAirpot_num(8);
-		airport.setCit_num(8);
+		airport.setCity_num(8);
 		airport.setAirport_name(" 니노이 아키노 ");
 		tb_airport.add(airport);
 
 		airport.setAirpot_num(9);
-		airport.setCit_num(9);
+		airport.setCity_num(9);
 		airport.setAirport_name(" 수완나품 ");
 		tb_airport.add(airport);
 
 		airport.setAirpot_num(10);
-		airport.setCit_num(10);
+		airport.setCity_num(10);
 		airport.setAirport_name(" 파타야 공항");
 		tb_airport.add(airport);
 
 		airport.setAirpot_num(11);
-		airport.setCit_num(11);
+		airport.setCity_num(11);
 		airport.setAirport_name(" 베를린 테겔");
 		tb_airport.add(airport);
 
 		airport.setAirpot_num(12);
-		airport.setCit_num(12);
+		airport.setCity_num(12);
 		airport.setAirport_name(" 민휀 공항");
 		tb_airport.add(airport);
 
 		airport.setAirpot_num(13);
-		airport.setCit_num(13);
+		airport.setCity_num(13);
 		airport.setAirport_name(" 파리 샤를 드 골");
 		tb_airport.add(airport);
 
 		airport.setAirpot_num(14);
-		airport.setCit_num(14);
+		airport.setCity_num(14);
 		airport.setAirport_name(" 런던 스탠스테드");
 		tb_airport.add(airport);
 
 		airport.setAirpot_num(15);
-		airport.setCit_num(15);
+		airport.setCity_num(15);
 		airport.setAirport_name(" 제주 공항");
 		tb_airport.add(airport);
 	}

@@ -1,12 +1,15 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import dao.AirportDao;
 import data.Session;
 import service.CityService;
 import service.CountryService;
 import service.TimeTableService;
 import service.UserService;
+import vo.AirportVO;
 import vo.UserVO;
 
 public class ReservationTicketController {
@@ -49,6 +52,17 @@ public class ReservationTicketController {
 		city.showCity(cho);
 		System.out.print("\n도시를 선택해주세요 >> ");
 		cho = Integer.parseInt(sc.nextLine());
+		AirportDao airportdao = AirportDao.getInstance();
+		AirportVO airportlist = new AirportVO();
+		
+		for(int i = 0; i<airportdao.airport().size(); i++) {
+			AirportVO airport = airportdao.airport().get(i);
+			if(airport.getCity_num()==1){
+				System.out.println(airport.getAirport_name());
+				System.out.println("r");
+				}
+			}
+		
 		time.showTimeTable(cho+num);
 	}
 
