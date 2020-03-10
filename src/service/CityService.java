@@ -41,6 +41,7 @@ public class CityService {
 		cityvo.setCity_name(cityname);
 		cityvo.setCoun_num(cho);
 		city.insertcity(cityvo);
+		System.out.println("성공적으로 추가되었습니다");
 	}
 	
 	//city를 삭제해주는 메소드

@@ -55,14 +55,25 @@ public class NextController {
             case 2:
             	country.showcountry();
             	System.out.print("\n나라를 선택해주세요 >> ");		
-        		int cho = Integer.parseInt(sc.nextLine());
-            	city.insertCity(cho);
+        		try {
+        			int cho = Integer.parseInt(sc.nextLine());
+        			city.insertCity(cho);
+				} catch (Exception e) {
+					
+				}
+            	
+            	
             	break;
             case 3:
             	country.showcountry();
             	System.out.print("\n나라를 선택해주세요 >> ");		
-        		int cho1 = Integer.parseInt(sc.nextLine());
-            	city.deleteCity(cho1);
+        		try {
+        			int cho1 = Integer.parseInt(sc.nextLine());
+                	city.deleteCity(cho1);
+				} catch (Exception e) {
+					System.out.println("잘못입력하셨습니다.");
+				}
+            	
             	break;
             case 4:
             	qbc.admin_start();
