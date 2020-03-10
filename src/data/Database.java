@@ -66,12 +66,14 @@ public class Database {
 		qboard.setDate(date);
 		tb_Qboard.add(qboard);
 	}
-
+	
+	
 	// payment 테이블
 	public ArrayList<PaymentVO> tb_payment = new ArrayList<>();
 
 	// 좌석 테이블
 	public ArrayList<SitVO> tb_sit = new ArrayList<>();
+	
 
 	// date 테이블
 	public ArrayList<DateVO> tb_date = new ArrayList<>();
@@ -915,4 +917,8 @@ public class Database {
 		tb_timetable.add(time);
 		
 	}
-}
+	}
+	
+	
+	
+	

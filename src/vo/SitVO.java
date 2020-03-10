@@ -6,6 +6,7 @@ public class SitVO {
 	private int sit_number;
 	private String sit_class;
 	private int tick_num;
+	
 	public int getSit_num() {
 		return sit_num;
 	}
