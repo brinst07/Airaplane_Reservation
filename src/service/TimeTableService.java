@@ -32,5 +32,17 @@ private static TimeTableService instance;
 			}
 		}
 	}
+	
+	public String returnstartTime(int num, int cho) {	
+		for(int i=0; i<time.TimeTableList().size(); i++) {
+			TimeTableVO extime = time.TimeTableList().get(i);
+			if(extime.getCity_num()==num) {
+				if(extime.getTime_num()==cho) {
+					return extime.getStarttime();
+				}
+			}
+		}
+		return "fail";
+	}
 
 }

@@ -5,6 +5,7 @@ import java.util.Scanner;
 import data.Session;
 import service.CityService;
 import service.CountryService;
+import service.TicketService;
 import service.UserService;
 import vo.UserVO;
 
@@ -20,6 +21,7 @@ public class NextController {
       boolean root = false; // true일 경우 관리자로 로그인 한 것.
       
       ReservationTicketController rst = new ReservationTicketController();
+      TicketService ts = new TicketService();
 
       a: while (true) {
          System.out.println(user.getName() + "님 환영합니다.");
@@ -110,7 +112,7 @@ public class NextController {
             
          case 2 :
             if(!root){
-               System.out.println("예약티켓 확인 화면입니다.");
+               ts.airticketList();
               
             }else{
                System.out.println("티켓 관리자 관리");

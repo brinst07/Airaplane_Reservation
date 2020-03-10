@@ -6,7 +6,7 @@ public class AirplaneTicketVO {
    private String StartAp;
    private String ArriveAp;
    private String SitNum;
-   private String gate;
+   private int gate;
    private String Startdate;   
    private String Starttime;   
    private String Sitclass;
@@ -66,10 +66,10 @@ public class AirplaneTicketVO {
    public void setSitNum(String sitNum) {
       SitNum = sitNum;
    }
-   public String getGate() {
+   public int getGate() {
       return gate;
    }
-   public void setGate(String gate) {
+   public void setGate(int gate) {
       this.gate = gate;
    }
 }

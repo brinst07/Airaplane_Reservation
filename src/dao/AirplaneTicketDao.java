@@ -12,7 +12,7 @@ public class AirplaneTicketDao {
 	
 	private static AirplaneTicketDao instance;
 	
-	private AirplaneTicketDao() {}
+	public AirplaneTicketDao() {}
 	
 	public static AirplaneTicketDao getInstance() {
 		if(instance == null) {
