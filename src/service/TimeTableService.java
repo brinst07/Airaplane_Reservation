@@ -19,11 +19,13 @@ private static TimeTableService instance;
 	TimeTableDao time = TimeTableDao.getInstance();
 	TimeTableVO timevo = new TimeTableVO();
 	
-	public void showTimeTable(int cho) {
-		for(int i=0; i<5; i++) {
+	public void showTimeTable(int cho) {	
+		int count = 1;
+		for(int i=0; i<time.TimeTableList().size(); i++) {
 			TimeTableVO extime = time.TimeTableList().get(i);
 			if(extime.getCity_num()==cho) {
-				System.out.println("[" + (i+1) + "] " + extime.getStarttime() + " ~ " + extime.getArrivetime());				
+				System.out.println("[" + count + "] " + extime.getStarttime() + " ~ " + extime.getArrivetime());	
+				count++;
 			}
 		}
 	}

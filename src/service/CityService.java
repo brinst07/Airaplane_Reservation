@@ -24,11 +24,12 @@ public class CityService {
 	
 	//city를 출력해주는 메소드
 	public void showCity(int cho) {
+		int count = 1;
 		for(int i=0; i<city.citylist().size(); i++) {
 			CityVO excity = city.citylist().get(i);
 			if(excity.getCoun_num()==cho) {
-				System.out.println(excity.getCity_name());
-				
+				System.out.print(count + " : " + excity.getCity_name()+"\t\t");		
+				count++;
 			}
 		}
 	}
