@@ -3,7 +3,7 @@ package vo;
 public class SitVO {
 	
 	private int sit_num;
-	private int sit_number;
+	private String sit_number;
 	private String sit_class;
 	private int tick_num;
 	
@@ -13,10 +13,10 @@ public class SitVO {
 	public void setSit_num(int sit_num) {
 		this.sit_num = sit_num;
 	}
-	public int getSit_number() {
+	public String getSit_number() {
 		return sit_number;
 	}
-	public void setSit_number(int sit_number) {
+	public void setSit_number(String sit_number) {
 		this.sit_number = sit_number;
 	}
 	public String getSit_class() {

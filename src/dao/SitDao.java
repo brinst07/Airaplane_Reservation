@@ -29,6 +29,23 @@ public class SitDao {
 	public void insertsit(SitVO sitvo) {
 		databse.tb_sit.add(sitvo);
 	}
+	
+	//퍼스트 클래스를 반환해준다.
+	public String[][] first(){
+		return Database.Firstclass;
+	}
+	
+	//비지니스 클래스를 반환해준다.
+	public String[][] business(){
+		return Database.Businessclass;
+	}
+	
+	//이코노미 클래스를 반환해준다.
+	public String[][] eco(){
+		return Database.Economyclass;
+	}
+	
+	
 
 	
 	

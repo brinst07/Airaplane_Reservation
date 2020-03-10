@@ -44,6 +44,7 @@ public class Controller {
 		Scanner sc = new Scanner(System.in);
 		int menu = 0;
 		
+		
 		do {
 			System.out.println("-------------메 뉴-------------");
 			System.out.println("1. 회원가입");

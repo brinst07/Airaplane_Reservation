@@ -74,6 +74,51 @@ public class Database {
 	// 좌석 테이블
 	public ArrayList<SitVO> tb_sit = new ArrayList<>();
 	
+	
+	//first Class
+	public static String[][] Firstclass = new String[4][3];
+	{
+	char alpha;
+
+		for (int i = 0; i < Firstclass.length; i++) {
+			alpha = 'A';
+			for (int j = 0; j < Firstclass[i].length; j++) {
+				Firstclass[i][j] = Integer.toString(i+1)+alpha;
+				alpha = (char) (alpha + 1);
+			}
+			
+		}
+	}
+	// Business Class
+	public static String[][] Businessclass = new String[15][3];
+	{
+		
+		char alpha;
+		
+		for(int i=0; i< Businessclass.length; i++) {
+			alpha = 'A';
+			for(int j= 0; j< Businessclass[i].length; j++) {
+				Businessclass[i][j] = Integer.toString(i+1)+alpha;
+				alpha = (char)(alpha +1);
+			}
+			
+		}
+	}
+	
+	// Economy Class
+	public static String[][] Economyclass = new String[25][9];
+	{
+		char alpha;
+		for(int i=0; i< Economyclass.length; i++) {
+			alpha = 'A';
+			for(int j=0; j<Economyclass[i].length; j++) {
+				Economyclass[i][j] = Integer.toString(i+1)+alpha;
+				alpha = (char)(alpha+1);
+			}
+		}
+	}
+	
+	
 
 	// date 테이블
 	public ArrayList<DateVO> tb_date = new ArrayList<>();
