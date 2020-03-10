@@ -29,8 +29,7 @@ public class ReservationTicketController {
 		
 		ap.setUserid(user.getId()); // 유저 아이디 저장
 		ap.setUsername(user.getName()); // 유저 이름 저장
-		ap.setStartAp("SEOUL/INCHEON"); // 서울 인천 고정
-		ap.setAirCompany("KOREA AIR"); // 코리아 항공 고정
+		ap.setStartAp("SEOUL/INCHEON");		
 		
 		//----------------------------------------
 		ap.setSitNum("15C");
@@ -40,14 +39,14 @@ public class ReservationTicketController {
 		Scanner sc = new Scanner(System.in);
 		
 		int gate = (int)(Math.random()*20)+1; // 랜덤으로 게이트 번호 지정		
-		ap.setGate(gate); // 티켓에 게이트 번호 저장
+		ap.setGate(gate);
 		
 		System.out.print("출발 날짜를 입력해주세요 : ");
 		String date = sc.nextLine();
 		
 		country.showcountry(); // 나라 출력
 		
-		ap.setStartdate(date); // 티켓에 출발날짜 저장
+		ap.setStartdate(date);
 		
 		System.out.print("\n나라를 선택해주세요 >> ");
 		int countrychoice = Integer.parseInt(sc.nextLine());
@@ -83,11 +82,11 @@ public class ReservationTicketController {
 			break;
 		}
 
-		int count = city.countCity(countrychoice); // 나라에 속한 도시의 갯수 세기. 1개일 경우 도시 선택 화면을 건너뜀
+		int count = city.countCity(countrychoice);
 		
 		int citychoice = 0;
 
-		if (count == 1) { // 나라에 속한 도시의 갯수가 1개일 경우 실행
+		if (count == 1) {
 			citychoice = 1;
 			System.out.println();
 		} else {
@@ -103,7 +102,7 @@ public class ReservationTicketController {
 			}
 		}		
 		
-		String arriveCt = ""; // 도착할 도시 저장할 String
+		String arriveCt = "";
 		
 		if(citychoice+num == 1) {
 			arriveCt = "L.A.";
@@ -150,20 +149,21 @@ public class ReservationTicketController {
 		else if(citychoice+num == 15) {
 			arriveCt = "JEJU";
 		}
-		ap.setArriveAp(arriveCt); // 도착할 도시 이름 티켓에 저장
-				
+		ap.setArriveAp(arriveCt); 
+		ap.setAirCompany("KOREA AIR");
+		
 		System.out.print("인천 국제 공항 ---> ");
 		airport.showAirport(citychoice + num);
 		time.showTimeTable(citychoice + num); // 시간표 출력
 		
-		System.out.print("원하는 시간의 번호를 선택해주세요 >> ");
+		System.out.print("번호를 선택해주세요 >> ");
 		int cho = Integer.parseInt(sc.nextLine());
 		
-		String startdate = time.returnstartTime(citychoice+num, cho); // 사용자가 선택한 출발 시간을 저장
-		ap.setStarttime(startdate);	// 받아온 시간을 티켓에 저장
+		String startdate = time.returnstartTime(citychoice+num, cho);
+		ap.setStarttime(startdate);	
 		
 		airplaneticketdao.insertReservation(ap);
-		database.tb_airplane.add(ap); // 티켓에 add
+		database.tb_airplane.add(ap);
 	}
 
 }
