@@ -1,6 +1,8 @@
 package service;
 
+import dao.AirportDao;
 import dao.TimeTableDao;
+import vo.AirportVO;
 import vo.TimeTableVO;
 
 public class TimeTableService {
@@ -18,6 +20,7 @@ private static TimeTableService instance;
 	
 	TimeTableDao time = TimeTableDao.getInstance();
 	TimeTableVO timevo = new TimeTableVO();
+	AirportDao airportdao = AirportDao.getInstance();
 	
 	public void showTimeTable(int cho) {	
 		int count = 1;
