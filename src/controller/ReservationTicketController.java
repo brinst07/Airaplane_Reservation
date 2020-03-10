@@ -49,7 +49,6 @@ public class ReservationTicketController {
 		city.showCity(cho);
 		System.out.print("\n도시를 선택해주세요 >> ");
 		cho = Integer.parseInt(sc.nextLine());
-
 		time.showTimeTable(cho+num);
 	}
 
