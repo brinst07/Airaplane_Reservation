@@ -1,4 +1,4 @@
-package service;//
+package service;
 
 import java.util.ArrayList;
 
@@ -21,6 +21,7 @@ public class CountryService {
 
 	CountryDao countrydao = CountryDao.getInstance();
 
+	//나라를 출력해주는 메소드
 	public void showcountry() {
 		ArrayList<CountryVO> country = countrydao.showcountryList();
 

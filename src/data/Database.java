@@ -1,10 +1,10 @@
-package data;//
+package data;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import vo.AirplaneVO;
+import vo.AirplaneTicketVO;
 import vo.AirportVO;
 import vo.BoardVO;
 import vo.CityVO;
@@ -13,7 +13,7 @@ import vo.DateVO;
 import vo.PaymentVO;
 import vo.QboardVO;
 import vo.SitVO;
-import vo.AirplaneTicketVO;
+import vo.TimeVO;
 import vo.UserVO;
 
 public class Database {
@@ -97,79 +97,79 @@ public class Database {
       
       city = new CityVO();
       city.setCoun_num(2);
-      city.setCity_num(1);
+      city.setCity_num(3);
       city.setCity_name("홍콩");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(3);
-      city.setCity_num(1);
+      city.setCity_num(4);
       city.setCity_name("도쿄");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(3);
-      city.setCity_num(2);
+      city.setCity_num(5);
       city.setCity_name("오사카");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(4);
-      city.setCity_num(1);
+      city.setCity_num(6);
       city.setCity_name("하노이");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(4);
-      city.setCity_num(2);
+      city.setCity_num(7);
       city.setCity_name("다낭");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(5);
-      city.setCity_num(1);
+      city.setCity_num(8);
       city.setCity_name("마닐라");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(6);
-      city.setCity_num(1);
+      city.setCity_num(9);
       city.setCity_name("방콕");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(6);
-      city.setCity_num(2);
+      city.setCity_num(10);
       city.setCity_name("파타야");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(7);
-      city.setCity_num(1);
-      city.setCity_name("뮌헨");
-      tb_city.add(city);
-      
-      city = new CityVO();
-      city.setCoun_num(7);
-      city.setCity_num(2);
+      city.setCity_num(11);
       city.setCity_name("베를린");
       tb_city.add(city);
       
       city = new CityVO();
+      city.setCoun_num(7);
+      city.setCity_num(12);
+      city.setCity_name("뮌헨");
+      tb_city.add(city);
+      
+      city = new CityVO();
       city.setCoun_num(8);
-      city.setCity_num(1);
+      city.setCity_num(13);
       city.setCity_name("파리");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(9);
-      city.setCity_num(1);
+      city.setCity_num(14);
       city.setCity_name("런던");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(10);
-      city.setCity_num(1);
+      city.setCity_num(15);
       city.setCity_name("제주도");
       tb_city.add(city);
       
@@ -240,6 +240,13 @@ public class Database {
    
    public ArrayList<AirplaneTicketVO>tb_airplaneticket = new ArrayList<>();{ // 티켓 정보 저장
       
-   }   
+   }
+   
+   public ArrayList<TimeVO>tb_timetable = new ArrayList<>();{ // 시간표 정보 저장	   
+	   TimeVO time = new TimeVO();
+	   
+	   
+	   
+   }
    
 }

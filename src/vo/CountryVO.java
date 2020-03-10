@@ -22,6 +22,5 @@ public class CountryVO {
 	}
 	public void setCount_time(String count_time) {
 		this.count_time = count_time;
-	}
-	
+	}	
 }
