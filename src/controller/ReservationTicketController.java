@@ -24,45 +24,61 @@ public class ReservationTicketController {
 
 		Scanner sc = new Scanner(System.in);
 		System.out.print("\n나라를 선택해주세요 >> ");
-		int cho = Integer.parseInt(sc.nextLine());
+		int countrychoice = Integer.parseInt(sc.nextLine());
 
 		int num = 0;
-		switch (cho) {
-			case 2:
-				num = 2;	break;	
-			case 3:
-				num = 3;	break;
-			case 4:
-				num = 5;	break;
-			case 5:
-				num = 7;	break;
-			case 6:
-				num = 8;	break;
-			case 7:
-				num = 10;	break;
-			case 8:
-				num = 12;	break;
-			case 9:
-				num = 13;	break;
-			case 10:
-				num = 14;	break;
+		switch (countrychoice) {
+		case 2:
+			num = 2;
+			break;
+		case 3:
+			num = 3;
+			break;
+		case 4:
+			num = 5;
+			break;
+		case 5:
+			num = 7;
+			break;
+		case 6:
+			num = 8;
+			break;
+		case 7:
+			num = 10;
+			break;
+		case 8:
+			num = 12;
+			break;
+		case 9:
+			num = 13;
+			break;
+		case 10:
+			num = 14;
+			break;
 		}
-		//
-		int count = city.countCity(cho);
+
+		int count = city.countCity(countrychoice);
 		
-		if(count==1) {
-			cho=1;
+		int citychoice = 0;
+
+		if (count == 1) {
+			citychoice = 1;
 			System.out.println();
+		} else {
+			while (true) {
+				city.showCity(countrychoice);
+				System.out.print("\n도시를 선택해주세요 >> ");
+				citychoice = Integer.parseInt(sc.nextLine());
+				if (citychoice > count) {
+					continue;
+				} else {
+					break;
+				}
+			}
 		}
-		else {
-			city.showCity(cho);
-			System.out.print("\n도시를 선택해주세요 >> ");
-			cho = Integer.parseInt(sc.nextLine());
-		}		
-		
 		System.out.print("인천 국제 공항 ---> ");
-		airport.showAirport(cho+num);
-		time.showTimeTable(cho+num); // 시간표 출력
+		airport.showAirport(citychoice + num);
+		time.showTimeTable(citychoice + num); // 시간표 출력
 	}
 
 }
