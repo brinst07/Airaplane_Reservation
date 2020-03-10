@@ -789,6 +789,13 @@ public class Database {
 	       tb_timetable.add(time);
 	       
 	       time = new TimeTableVO();
+	       time.setCity_num(13);
+	       time.setTime_num(5);
+	       time.setStarttime("23:30");
+	       time.setArrivetime("09:55");
+	       tb_timetable.add(time);
+	       
+	       time = new TimeTableVO();
 	       time.setCity_num(14);
 	       time.setTime_num(1);
 	       time.setStarttime("10:00");
