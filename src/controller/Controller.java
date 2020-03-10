@@ -25,6 +25,11 @@ public class Controller {
 		 * 
 		 * 데이터베이스~
 		 * 
+		 * test가 먼저고
+		 * sem이 수정했음
+		 * 또수정~
+		 * sem도 다시 수정함
+		 * 
 		 */
 		
 		new Controller().start();
