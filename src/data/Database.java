@@ -14,6 +14,7 @@ import vo.PaymentVO;
 import vo.QboardVO;
 import vo.SitVO;
 import vo.TimeTableVO;
+import vo.TimeVO;
 import vo.UserVO;
 
 public class Database {
@@ -79,8 +80,59 @@ public class Database {
    public ArrayList<AirplaneTicketVO> tb_airplane = new ArrayList<>();
    
    //공항 테이블
-   public ArrayList<AirportVO> tb_airport = new ArrayList<>();
-   
+   public ArrayList<AirportVO> tb_airport = new ArrayList<>();{
+	   AirportVO airport = new AirportVO();
+	   airport.setAirpot_num(1);
+	   airport.setCit_num(1);
+	   airport.setAirport_name(" 로스 엔젤로레스 ");
+	   tb_airport.add(airport);
+	   
+	   airport.setAirpot_num(2);
+	   airport.setCit_num(2);
+	   airport.setAirport_name(" 욘 F 케네디 ");
+	   tb_airport.add(airport);
+	   
+	   airport.setAirpot_num(3);
+	   airport.setCit_num(3);
+	   airport.setAirport_name("홍 콩 국제공항");
+	   tb_airport.add(airport);
+	   
+	   airport.setAirpot_num(4);
+	   airport.setCit_num(4);
+	   airport.setAirport_name("도 쿄 국제공항");
+	   tb_airport.add(airport);
+	   
+	   airport.setAirpot_num(5);
+	   airport.setCit_num(5);
+	   airport.setAirport_name(" 간 사 이 ");
+	   tb_airport.add(airport);
+	   
+	   airport.setAirpot_num(6);
+	   airport.setCit_num(6);
+	   airport.setAirport_name(" 노이바이 ");
+	   tb_airport.add(airport);
+	   
+	   airport.setAirpot_num(7);
+	   airport.setCit_num(7);
+	   airport.setAirport_name(" 다낭 공항");
+	   tb_airport.add(airport);
+	   
+	   airport.setAirpot_num(8);
+	   airport.setCit_num(8);
+	   airport.setAirport_name(" 니노이 아키노 ");
+	   tb_airport.add(airport);
+	   
+	   airport.setAirpot_num(9);
+	   airport.setCit_num(9);
+	   airport.setAirport_name(" 수완나품 ");
+	   tb_airport.add(airport);
+	   
+	   
+	   
+   }
+   			
+   			
+   		
    //도시 테이블
    public ArrayList<CityVO> tb_city = new ArrayList<>();{
       CityVO city = new CityVO();
@@ -97,79 +149,79 @@ public class Database {
       
       city = new CityVO();
       city.setCoun_num(2);
-      city.setCity_num(1);
+      city.setCity_num(3);
       city.setCity_name("홍콩");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(3);
-      city.setCity_num(1);
+      city.setCity_num(4);
       city.setCity_name("도쿄");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(3);
-      city.setCity_num(2);
+      city.setCity_num(5);
       city.setCity_name("오사카");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(4);
-      city.setCity_num(1);
+      city.setCity_num(6);
       city.setCity_name("하노이");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(4);
-      city.setCity_num(2);
+      city.setCity_num(7);
       city.setCity_name("다낭");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(5);
-      city.setCity_num(1);
+      city.setCity_num(8);
       city.setCity_name("마닐라");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(6);
-      city.setCity_num(1);
+      city.setCity_num(9);
       city.setCity_name("방콕");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(6);
-      city.setCity_num(2);
+      city.setCity_num(10);
       city.setCity_name("파타야");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(7);
-      city.setCity_num(1);
+      city.setCity_num(11);
       city.setCity_name("베를린");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(7);
-      city.setCity_num(2);
+      city.setCity_num(12);
       city.setCity_name("뮌헨");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(8);
-      city.setCity_num(1);
+      city.setCity_num(13);
       city.setCity_name("파리");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(9);
-      city.setCity_num(1);
+      city.setCity_num(14);
       city.setCity_name("런던");
       tb_city.add(city);
       
       city = new CityVO();
       city.setCoun_num(10);
-      city.setCity_num(1);
+      city.setCity_num(15);
       city.setCity_name("제주도");
       tb_city.add(city);
       
@@ -245,214 +297,8 @@ public class Database {
    public ArrayList<TimeTableVO>tb_timetable = new ArrayList<>();{ // 시간표 정보 저장	   
 	   TimeTableVO time = new TimeTableVO();
 	   
-	   time.setCity_num(1);
-	   time.setTime_num(1);
-	   time.setStarttime("07:00");
-	   time.setArrivetime("20:10");
-	   tb_timetable.add(time);
 	   
-	   time = new TimeTableVO();
-	   time.setCity_num(1);
-	   time.setTime_num(2);
-	   time.setStarttime("11:00");
-	   time.setArrivetime("22:30");
-	   tb_timetable.add(time);
 	   
-	   time = new TimeTableVO();
-	   time.setCity_num(1);
-	   time.setTime_num(3);
-	   time.setStarttime("15:20");
-	   time.setArrivetime("02:30");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(1);
-	   time.setTime_num(4);
-	   time.setStarttime("17:30");
-	   time.setArrivetime("04:20");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(1);
-	   time.setTime_num(5);
-	   time.setStarttime("19:00");
-	   time.setArrivetime("06:50");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(2);
-	   time.setTime_num(1);
-	   time.setStarttime("07:20");
-	   time.setArrivetime("21:30");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(2);
-	   time.setTime_num(2);
-	   time.setStarttime("09:50");
-	   time.setArrivetime("00:10");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(2);
-	   time.setTime_num(3);
-	   time.setStarttime("13:30");
-	   time.setArrivetime("04:20");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(2);
-	   time.setTime_num(4);
-	   time.setStarttime("15:00");
-	   time.setArrivetime("05:50");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(2);
-	   time.setTime_num(5);
-	   time.setStarttime("19:20");
-	   time.setArrivetime("09:50");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(2);
-	   time.setTime_num(6);
-	   time.setStarttime("21:50");
-	   time.setArrivetime("12:40");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(3);
-	   time.setTime_num(1);
-	   time.setStarttime("06:30");
-	   time.setArrivetime("10:05");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(3);
-	   time.setTime_num(2);
-	   time.setStarttime("13:20");
-	   time.setArrivetime("16:50");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(3);
-	   time.setTime_num(3);
-	   time.setStarttime("19:40");
-	   time.setArrivetime("23:15");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(4);
-	   time.setTime_num(1);
-	   time.setStarttime("06:30");
-	   time.setArrivetime("08:15");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(4);
-	   time.setTime_num(2);
-	   time.setStarttime("08:50");
-	   time.setArrivetime("10:40");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(4);
-	   time.setTime_num(3);
-	   time.setStarttime("12:00");
-	   time.setArrivetime("13:50");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(4);
-	   time.setTime_num(4);
-	   time.setStarttime("15:40");
-	   time.setArrivetime("17:25");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(4);
-	   time.setTime_num(5);
-	   time.setStarttime("18:30");
-	   time.setArrivetime("20:20");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(4);
-	   time.setTime_num(6);
-	   time.setStarttime("21:50");
-	   time.setArrivetime("23:35");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(4);
-	   time.setTime_num(7);
-	   time.setStarttime("23:50");
-	   time.setArrivetime("02:45");
-	   tb_timetable.add(time);	   
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(5);
-	   time.setTime_num(1);
-	   time.setStarttime("09:30");
-	   time.setArrivetime("11:05");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(5);
-	   time.setTime_num(2);
-	   time.setStarttime("14:20");
-	   time.setArrivetime("16:55");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(5);
-	   time.setTime_num(3);
-	   time.setStarttime("19:10");
-	   time.setArrivetime("20:50");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(5);
-	   time.setTime_num(4);
-	   time.setStarttime("22:20");
-	   time.setArrivetime("23:55");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(6);
-	   time.setTime_num(1);
-	   time.setStarttime("09:30");
-	   time.setArrivetime("14:10");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(6);
-	   time.setTime_num(2);
-	   time.setStarttime("11:40");
-	   time.setArrivetime("16:25");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(6);
-	   time.setTime_num(3);
-	   time.setStarttime("13:20");
-	   time.setArrivetime("18:30");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(6);
-	   time.setTime_num(4);
-	   time.setStarttime("17:30");
-	   time.setArrivetime("23:05");
-	   tb_timetable.add(time);
-	   
-	   time = new TimeTableVO();
-	   time.setCity_num(6);
-	   time.setTime_num(5);
-	   time.setStarttime("20:10");
-	   time.setArrivetime("01:45");
-	   tb_timetable.add(time);	   
    }
    
 }
