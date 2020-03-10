@@ -47,7 +47,7 @@ public class ReservationTicketController {
 			case 10:
 				num = 14;	break;
 		}
-		
+		//
 		int count = city.countCity(cho);
 		
 		if(count==1) {
