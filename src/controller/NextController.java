@@ -3,6 +3,8 @@ package controller;
 import java.util.Scanner;
 
 import data.Session;
+import service.CityService;
+import service.CountryService;
 import service.UserService;
 import vo.UserVO;
 
@@ -11,6 +13,8 @@ public class NextController {
 	BoardController bc = new BoardController();
 	UserService userservice = UserService.getInstance();
 	QboardController qbc = new QboardController();
+	CityService city = CityService.getInstance();
+	CountryService country = CountryService.getInstance();
    void mainmenu(){ // 로그인 후 들어오는 메인 화면
       UserVO user = Session.LoginUser;
       boolean root = false; // true일 경우 관리자로 로그인 한 것.
@@ -34,9 +38,42 @@ public class NextController {
          }
          //
          if (root) {
-            System.out.println("2. 회원목록");
-            qbc.admin_start();
-            break;
+            b : while(true) {
+        	System.out.println("---------------메뉴---------------");
+            System.out.println("[1] 회원목록");
+            System.out.println("[2] 도시추가");
+            System.out.println("[3] 도시삭제");
+            System.out.println("[4] 관리자게시판");
+            System.out.println("[0] 로그아웃");
+            System.out.println("---------------------------------");
+            System.out.print(">> ");
+            int a= Integer.parseInt(sc.nextLine());
+            switch(a) {
+            case 1:
+            	userservice.userList();
+				break;
+            case 2:
+            	country.showcountry();
+            	System.out.print("\n나라를 선택해주세요 >> ");		
+        		int cho = Integer.parseInt(sc.nextLine());
+            	city.insertCity(cho);
+            	break;
+            case 3:
+            	country.showcountry();
+            	System.out.print("\n나라를 선택해주세요 >> ");		
+        		int cho1 = Integer.parseInt(sc.nextLine());
+            	city.deleteCity(cho1);
+            	break;
+            case 4:
+            	qbc.admin_start();
+                break;
+            case 0:
+            	break a;
+            	
+            	
+            }
+            }
+            
          }
          System.out.println("---------------------------------");
          System.out.print(">> ");         
@@ -49,8 +86,7 @@ public class NextController {
          
          switch(cho){
          case 0 : 
-            System.out.println("로그아웃 하였습니다.");            
-        
+            System.out.println("로그아웃 하였습니다.");
             break a;
          case 1 :
             if(!root){

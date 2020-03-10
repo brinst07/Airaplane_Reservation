@@ -46,11 +46,16 @@ public class CityService {
 	public void deleteCity(int cho) {
 		System.out.println("도시이름을 입력해주세요");
 		String cityname = sc.nextLine();
-		for(int i=0; i<city.citylist().size(); i++) {
+		a : for(int i=0; i<city.citylist().size(); i++) {
 			CityVO dcity = city.citylist().get(i);
 			if(dcity.getCity_name().equals(cityname)) {
 				city.citylist().remove(i);
 				System.out.println("성공적으로 삭제되었습니다.!");
+				break a;
+			}else {
+				if(i == city.citylist().size()-1) {
+				System.out.println("삭제에 실패하였습니다.");
+				}
 			}
 		}
 	}

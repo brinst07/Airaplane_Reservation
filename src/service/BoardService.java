@@ -55,40 +55,9 @@ public class BoardService {
 		BoardVO board = boarddao.board().get(temp);
 		System.out.println(board.getText());
 		System.out.println("---------------------------------------------");
-		if(qboarddao.qboard().get(temp).getUseridQ()!=null) {
-			System.out.println("문의하시겠습니까?");
-			System.out.println("[1] YES");
-			System.out.println("[2] NO");
-			int temp1 = Integer.parseInt(sc.nextLine());
-			switch(temp1) {
-			case 1:
-				System.out.println("질문 내용을 입력해주세요");
-				String q = sc.nextLine();
-				qboarddao.qboard().get(temp).setUseridQ(q);
-				System.out.println("입력되었습니다.");
-				break;
-			case 2:
-				System.out.println("빠져나갑니다.");
-				break;
+	
 		}
-		}else {
-			System.out.println("기존 질문을 삭제하고 새로 질문 하시겠습니까?");
-			System.out.println("[1] YES");
-			System.out.println("[2] NO");
-			int temp1 = Integer.parseInt(sc.nextLine());
-			switch(temp1) {
-			case 1: 
-				System.out.println("질문 내용을 입력해주세요");
-				String q = sc.nextLine();
-				qboarddao.qboard().get(temp).setUseridQ(q);
-				System.out.println("입력되었습니다.");
-			
-			case 2:
-				System.out.println("빠져나갑니다.");
-				break;
-			}
-		}
-	}
+	
 	
 	//게시판 수정 메소드
 	public void modify() {
@@ -112,6 +81,7 @@ public class BoardService {
 		}
 	
 	}
+	
 	//게시판 삭제 메소드
 	public void drop() {
 		show();
