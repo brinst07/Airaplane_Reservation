@@ -24,7 +24,7 @@ public class CountryService {
 	//나라를 출력해주는 메소드
 	public void showcountry() {
 		ArrayList<CountryVO> country = countrydao.showcountryList();
-
+		
 		for (int i = 0; i < country.size(); i++) {
 			CountryVO ct = country.get(i);
 			System.out.print((i + 1) + ". " + ct.getCoun_name() + "\t\t");

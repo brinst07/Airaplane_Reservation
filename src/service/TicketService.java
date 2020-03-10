@@ -19,12 +19,18 @@ public class TicketService {
 		System.out.println("├─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┤");
 		System.out.print("│ NAME\t" + air.getUsername());
 		System.out.print("  \t\tDATE\t" + air.getStartdate());
-		System.out.println("  \tCLASS\t" + air.getSitclass() + "\t│");
+		System.out.println("  \tCLASS\t" + air.getSitclass() + "\t\t│");
 		System.out.print("│ GATE\t" + air.getGate());
 		System.out.print("  \t\t\tSIT\t" + air.getSitNum());
 		System.out.println("  \t\tTIME\t" + air.getStarttime() + "\t\t│");
 		System.out.print("│ TO\t" + air.getStartAp());
-		System.out.print("  \t\tFROM\t" + air.getArriveAp() + "\t\t\t\t\t│");
+		System.out.print("  \t\tFROM\t" + air.getArriveAp());
+		if(air.getArriveAp().length() >= 8) {
+			System.out.print("\t\t\t\t│");
+		}
+		else {
+			System.out.print("\t\t\t\t\t│");
+		}
 		System.out.println();
 		System.out.println("└───────────────────────────────────────────────────────────────────────────────┘");
 	}

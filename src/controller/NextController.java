@@ -112,7 +112,11 @@ public class NextController {
             
          case 2 :
             if(!root){
-               ts.airticketList();
+            	try {
+            		ts.airticketList();
+            	}catch(Exception e) {
+            		System.out.println("예약된 티켓이 없습니다.");
+            	}
               
             }else{
                System.out.println("티켓 관리자 관리");
