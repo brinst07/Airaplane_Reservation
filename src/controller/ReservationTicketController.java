@@ -1,15 +1,13 @@
 package controller;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-import dao.AirportDao;
 import data.Session;
+import service.AirportService;
 import service.CityService;
 import service.CountryService;
 import service.TimeTableService;
 import service.UserService;
-import vo.AirportVO;
 import vo.UserVO;
 
 public class ReservationTicketController {
@@ -17,6 +15,7 @@ public class ReservationTicketController {
 	CityService city = CityService.getInstance();
 	CountryService country = CountryService.getInstance();
 	TimeTableService time = TimeTableService.getInstance();
+	AirportService airport = AirportService.getInstance();
 
 	public void start() {
 		UserVO user = Session.LoginUser; // 로그인 된 유저정보 확인
@@ -30,7 +29,7 @@ public class ReservationTicketController {
 		int num = 0;
 		switch (cho) {
 			case 2:
-				num = 1;	break;	
+				num = 2;	break;	
 			case 3:
 				num = 3;	break;
 			case 4:
@@ -52,18 +51,10 @@ public class ReservationTicketController {
 		city.showCity(cho);
 		System.out.print("\n도시를 선택해주세요 >> ");
 		cho = Integer.parseInt(sc.nextLine());
-		AirportDao airportdao = AirportDao.getInstance();
-		AirportVO airportlist = new AirportVO();
 		
-		for(int i = 0; i<airportdao.airport().size(); i++) {
-			AirportVO airport = airportdao.airport().get(i);
-			if(airport.getCity_num()==1){
-				System.out.println(airport.getAirport_name());
-				System.out.println("r");
-				}
-			}
-		
-		time.showTimeTable(cho+num);
+		System.out.print("인천 국제 공항 ---> ");
+		airport.showAirport(cho+num);
+		time.showTimeTable(cho+num); // 시간표 출력
 	}
 
 }
