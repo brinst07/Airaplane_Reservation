@@ -51,18 +51,8 @@ public class ReservationTicketController {
 		
 		city.showCity(cho);
 		System.out.print("\n도시를 선택해주세요 >> ");
-		cho = Integer.parseInt(sc.nextLine());
-		AirportDao airportdao = AirportDao.getInstance();
-		AirportVO airportlist = new AirportVO();
 		
-		for(int i = 0; i<airportdao.airport().size(); i++) {
-			AirportVO airport = airportdao.airport().get(i);
-			if(airport.getCity_num()==1){
-				System.out.println(airport.getAirport_name());
-				System.out.println("r");
-				}
-			}
-		
+	
 		time.showTimeTable(cho+num);
 	}
 
