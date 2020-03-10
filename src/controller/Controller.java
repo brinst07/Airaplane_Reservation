@@ -32,8 +32,7 @@ public class Controller {
 		 * 
 		 */
 		
-		new Controller().start();
-		
+		new Controller().start();		
 	}
 	
 	UserService userservice = UserService.getInstance();
@@ -43,7 +42,7 @@ public class Controller {
 	
 	public void start() {		
 		Scanner sc = new Scanner(System.in);
-		int menu;
+		int menu = 0;
 		
 		do {
 			System.out.println("-------------메 뉴-------------");
