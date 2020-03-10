@@ -23,7 +23,7 @@ public class CityService {
 	Scanner sc = new Scanner(System.in);
 	
 	//city를 출력해주는 메소드
-	public void showCity(int cho) {
+	public int showCity(int cho) {
 		int count = 1;
 		for(int i=0; i<city.citylist().size(); i++) {
 			CityVO excity = city.citylist().get(i);
@@ -32,6 +32,7 @@ public class CityService {
 				count++;
 			}
 		}
+		return count;
 	}
 	
 	//city를 추가해주는 메소드

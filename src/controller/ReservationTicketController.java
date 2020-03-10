@@ -48,9 +48,15 @@ public class ReservationTicketController {
 				num = 14;	break;
 		}
 		
-		city.showCity(cho);
-		System.out.print("\n도시를 선택해주세요 >> ");
-		cho = Integer.parseInt(sc.nextLine());
+		int count = city.showCity(cho)-1;
+		if(count==1) {
+			cho=1;
+			System.out.println();
+		}
+		else {
+			System.out.print("\n도시를 선택해주세요 >> ");
+			cho = Integer.parseInt(sc.nextLine());
+		}		
 		
 		System.out.print("인천 국제 공항 ---> ");
 		airport.showAirport(cho+num);
