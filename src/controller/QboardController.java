@@ -3,7 +3,7 @@ package controller;
 import java.util.Scanner;
 
 import service.QboardService;
-
+//
 public class QboardController {
 	QboardService qboard = new QboardService();
 	Scanner sc = new Scanner(System.in);

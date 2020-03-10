@@ -592,5 +592,4 @@ public class Database {
 		time.setArrivetime("02:55");
 		tb_timetable.add(time);
 	}
-
 }
