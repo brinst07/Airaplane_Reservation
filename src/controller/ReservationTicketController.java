@@ -1,5 +1,8 @@
 package controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 import dao.AirplaneTicketDao;
@@ -22,9 +25,9 @@ public class ReservationTicketController {
 	AirplaneTicketVO ap = new AirplaneTicketVO();
 	AirplaneTicketDao airplaneticketdao = new AirplaneTicketDao();
 	
-	Database database = Database.getInstance();
-
-	public void start() {
+	Database database = Database.getInstance();	
+	
+	public void start() {		
 		UserVO user = Session.LoginUser; // 로그인 된 유저정보 확인
 		
 		ap.setUserid(user.getId()); // 유저 아이디 저장
@@ -41,9 +44,25 @@ public class ReservationTicketController {
 		int gate = (int)(Math.random()*20)+1; // 랜덤으로 게이트 번호 지정		
 		ap.setGate(gate); // 티켓에 게이트 번호 저장
 		
-		System.out.print("출발 날짜를 입력해주세요 : ");
-		String date = sc.nextLine();
+		String date = " ";
 		
+		while(true) {
+			System.out.print("출발 날짜를 입력해주세요(yyyymmdd) : ");
+			date = sc.nextLine();
+			
+			if(date.length() != 8) {
+				System.out.println("날짜 형식에 맞게 입력해주세요.\n");
+				continue;
+			}
+			else {
+				String a = date.substring(0,4);
+				String b = date.substring(4,6);
+				String c = date.substring(6,8);
+				date = a + "-" + b + "-" + c;
+				break;
+			}
+		}
+
 		country.showcountry(); // 나라 출력
 		
 		ap.setStartdate(date); // 티켓에 출발날짜 저장
@@ -153,8 +172,9 @@ public class ReservationTicketController {
 				
 		System.out.print("인천 국제 공항 ---> ");
 		airport.showAirport(citychoice + num);
-		time.showTimeTable(citychoice + num); // 시간표 출력
 		
+		time.showTimeTable(citychoice + num); // 시간표 출력
+		System.out.println("----------------------------");
 		System.out.print("원하는 시간의 번호를 선택해주세요 >> ");
 		int cho = Integer.parseInt(sc.nextLine());
 		
