@@ -27,7 +27,7 @@ public class Controller {
 		 * 
 		 * test가 먼저고
 		 * sem이 수정했음
-		 * 
+		 * sem도 다시 수정함
 		 */
 		
 		new Controller().start();
