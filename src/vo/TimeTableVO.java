@@ -1,6 +1,6 @@
 package vo;
 
-public class TimeVO {
+public class TimeTableVO {
 
 	int time_num;
 	int city_num;

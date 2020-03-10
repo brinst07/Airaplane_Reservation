@@ -5,6 +5,7 @@ import java.util.Scanner;
 import data.Session;
 import service.CityService;
 import service.CountryService;
+import service.TimeTableService;
 import service.UserService;
 import vo.UserVO;
 
@@ -12,6 +13,7 @@ public class ReservationTicketController {
 	UserService userService = UserService.getInstance();
 	CityService city = CityService.getInstance();
 	CountryService country = CountryService.getInstance();
+	TimeTableService time = TimeTableService.getInstance();
 	
 	public void start() {
 		UserVO user = Session.LoginUser; // 로그인 된 유저정보 확인
@@ -22,6 +24,9 @@ public class ReservationTicketController {
 		int cho = Integer.parseInt(sc.nextLine());
 		
 		city.showCity(cho);
+		cho = Integer.parseInt(sc.nextLine());
+		
+		time.showTimeTable(cho);
 	}
 
 }
