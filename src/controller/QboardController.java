@@ -2,10 +2,12 @@ package controller;
 
 import java.util.Scanner;
 
+import service.CleardelayService;
 import service.QboardService;
 //
 public class QboardController {
 	QboardService qboard = new QboardService();
+	CleardelayService cds = new CleardelayService();
 	Scanner sc = new Scanner(System.in);
 	public void admin_start() {
 		a: while(true) {
@@ -36,6 +38,9 @@ public class QboardController {
 				break;
 			case 5:
 				break a;
+			default :
+				System.out.println("잘못입력하셨습니다.");
+				cds.pause();
 				
 			}
 		}
