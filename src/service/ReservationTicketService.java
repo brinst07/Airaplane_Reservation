@@ -22,6 +22,7 @@ public class ReservationTicketService {
 	AirplaneTicketDao airplaneticketdao = new AirplaneTicketDao();
 	Sitservice sitservice = new Sitservice();
 	CleardelayService cds = new CleardelayService();
+	CalendarService calendarservice = new CalendarService();
 
 	Database database = Database.getInstance();
 
@@ -41,10 +42,24 @@ public class ReservationTicketService {
 		int year = Integer.parseInt(styear); // 올해
 		int mon = Integer.parseInt(stmon); // 현재 월
 		int day = Integer.parseInt(stday); // 현재 일
+		
+		int m;
+		while(true) {
+			cds.Clear();
+			System.out.println("===========[날짜선택]===========\n");
+			System.out.print("조회하실 月을 입력해주세요 >> ");
+			try {
+				m = Integer.parseInt(sc.nextLine());
+			}catch(Exception e) {
+				continue;
+			}
+			break;
+		}
 
 		while (true) {
 			cds.Clear();
-			System.out.println("==================================[날짜선택]==================================");
+			System.out.println("===========[날짜선택]===========\n");
+			calendarservice.start(m);
 			System.out.print("출발 날짜를 입력해주세요(yyyymmdd) : ");
 			date = sc.nextLine();
 
