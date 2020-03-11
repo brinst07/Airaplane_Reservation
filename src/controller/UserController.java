@@ -45,7 +45,6 @@ public class UserController {
 		            break;
 		         }
 		         if( voice.equals("0")) {
-		        	 nextcon.mainmenu();
 		        	 break;
 		         }
 		        

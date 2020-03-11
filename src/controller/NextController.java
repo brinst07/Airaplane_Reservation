@@ -92,6 +92,7 @@ public class NextController {
 			case 3:
 				if (!root) {
 					Usercon.userpwInfo(); // 회원정보수정
+					
 				} else {
 					country.showcountry();
 					System.out.print("\n나라를 선택해주세요 >> ");
