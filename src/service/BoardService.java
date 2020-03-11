@@ -20,9 +20,7 @@ public class BoardService {
 
 	// 게시판 삽입메소드
 	public void insert() {
-		if(boarddao.board().size()==0) {
-			System.out.println("조회할 게시물이 존재하지 않습니다.");
-		}else {
+		
 		System.out.print("제목을 입력해주세요\n>> ");
 		String title = sc.nextLine();
 		System.out.print("본문을 입력해주세요\n>> ");
@@ -40,7 +38,7 @@ public class BoardService {
 		board.setIndex(Database.index++);
 		boarddao.insertboard(board);
 		}
-	}
+	
 	// 게시판 조회반복메소드
 	public void show() {
 		cds.Clear();
@@ -58,7 +56,12 @@ public class BoardService {
 
 	// 게시판 본문 조회메소드
 	public void selectshow() {
-		show();
+		
+		if(boarddao.board().size()==0) {
+			System.out.println("조회할 게시물이 존재하지 않습니다.");
+			cds.pause();
+		}else {
+			show();	
 		System.out.print("조회하고 싶은 게시물의 번호를 입력해주세요\n>> ");
 		int temp = Integer.parseInt(sc.nextLine());
 		BoardVO board = boarddao.board().get(temp);
@@ -69,34 +72,49 @@ public class BoardService {
 		System.out.println(board.getText());
 		System.out.println("----------------------------------------------\n");
 		cds.pause();
-	}
-
+		}
+	}	
 	// 게시판 수정 메소드
 	public void modify() {
+		if(boarddao.board().size()==0) {
+			System.out.println("조회할 게시물이 존재하지 않습니다.");
+			cds.pause();
+		}else {
 		show();
 		System.out.println("수정하고 싶은 게시물의 번호를 입력해주세요");
 		BoardVO board = boarddao.board().get(Integer.parseInt(sc.nextLine()));
 		System.out.print("수정하고 싶은 부분의 번호를 입력해주세요");
 		System.out.print("[1] 제목\t");
 		System.out.print("[2] 본문ln>> ");
+		
 		int temp = Integer.parseInt(sc.nextLine());
+				
 		switch (temp) {
 		case 1:
 			System.out.print("제목을 입력해주세요 >> ");
-			String title = sc.nextLine();
-			board.setTitle(title);
+			try {
+				String title = sc.nextLine();
+				board.setTitle(title);
+			} catch (Exception e) {
+				System.out.println("※[SYSTEM] : 제목은 글자만 가능합니다.");
+			}
+			
+			
 
 		case 2:
 			System.out.print("본문을 입력해주세요 >> ");
-			String text = sc.nextLine();
-			board.setText(text);
+			
 		}
 		System.out.println("수정이 완료되었습니다\n");
 		cds.pause();
 	}
-
+	}
 	// 게시판 삭제 메소드
 	public void drop() {
+		if(boarddao.board().size()==0) {
+			System.out.println("조회할 게시물이 존재하지 않습니다.");
+			cds.pause();
+		}else {
 		show();
 		System.out.print("삭제하고 싶은 게시물의 번호를 입력해주세요\n>> ");
 		boarddao.board().remove(Integer.parseInt(sc.nextLine()));
@@ -104,4 +122,5 @@ public class BoardService {
 		cds.pause();
 	}
 
+	}
 }
