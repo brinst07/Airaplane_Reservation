@@ -29,28 +29,28 @@ public class NextController {
 
 		a: while (true) {	
 			cds.Clear();
-			System.out.println("\t\t\t\t\t\t\t" + user.getName() + "님 환영합니다.");
+			System.out.println("\t\t\t\t\t\t\t\t" + user.getName() + "님 환영합니다.");
 			if (user.getName().equals("관리자") && user.getId().equals("admin")) {
 				root = true;
 			}			
-			System.out.println("┌─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ [메뉴] ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┐");
+			System.out.println("┌─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─[메뉴]─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┐");
 			if (!root) {
 				System.out.print("│ [1] 비행기 예약  | ");
 				System.out.print("[2] 예약티켓확인  | ");
 				System.out.print("[3] 회원정보수정  | ");
 				System.out.print("[4] 게시판  | ");
-				System.out.println("[5] 문의게시판            │");
-				System.out.println("│ [0] 로그아웃\t\t\t\t\t\t\t\t      │");
+				System.out.println("[5] 문의게시판\t│");
+				System.out.println("│ [0] 로그아웃\t\t\t\t\t\t\t\t\t│");
 
 			} else {				
 				System.out.print("│ [1] 회원목록   │  ");
 				System.out.print("[2] 티켓관리   │  ");
 				System.out.print("[3] 도시추가   │  ");
 				System.out.print("[4] 도시삭제   │  ");
-				System.out.println("[5] 관리자게시판          │");
-				System.out.println("│ [0] 로그아웃\t\t\t\t\t\t\t\t      │");								
+				System.out.println("[5] 관리자게시판\t│");
+				System.out.println("│ [0] 로그아웃\t\t\t\t\t\t\t\t\t│");								
 			}
-			System.out.println("└─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┘");			
+			System.out.println("└─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┘");			
 			System.out.print(">> ");
 			int cho = 0;
 			try {
