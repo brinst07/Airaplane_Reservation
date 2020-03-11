@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import controller.Controller;
+import controller.UserController;
 import dao.AirplaneTicketDao;
 import dao.UserDao;
 import data.Database;
@@ -120,7 +121,8 @@ public class UserService {
 
    // 로그인
    public void login() {
-      Scanner sc = new Scanner(System.in);
+	   Controller con = new Controller();
+	   Scanner sc = new Scanner(System.in);
 
       System.out.print("아이디 : ");
       String id = sc.nextLine();
@@ -136,7 +138,7 @@ public class UserService {
       while (true) {
          if (user == null) {
             System.out.println("아이디 혹은 비밀번호를 잘못 입력하셨습니다.");
-            System.out.print("1.다시 시도   2.아이디 찾기  3. 비밀번호 찾기\n>> ");
+            System.out.print("1.다시 시도   2.아이디 찾기  3. 비밀번호 찾기 4.나가기\n>> ");
             String idpw = sc.nextLine();
 
             if (idpw.equals("1")) {
@@ -153,8 +155,12 @@ public class UserService {
                login();
                break;
             }
-
-         } else {
+            if(idpw.equals("4")) {
+            	con.start();
+            }
+            
+         } 
+         else {
             Session.LoginUser = user;
             break;
 
@@ -268,44 +274,7 @@ public class UserService {
       System.out.println("------------------------------------------------------------------------------------");
    }
 
-   public void userpwInfo() { // 회원정보 수정 창
-      // 비밀번호 수정
-      // [2]비밀번호 찾기 질문 수정
-      // [3] 연락처
 
-      while (true) {
-         Scanner s = new Scanner(System.in);
-
-         System.out.println("1. 비밀번호 수정");
-         System.out.println("2. 비밀번호 찾기 질문 수정");
-         System.out.println("3. 연락처 수정");
-         System.out.println("4. 계좌번호 수정");
-         System.out.print("5. 현재 회원 목록\n>> ");
-         String voice = s.nextLine();
-
-         if (voice.equals("1")) {
-            userpwChange();
-            break;
-         }
-         if (voice.equals("2")) {
-            pwChange();
-           break;
-         }
-         if (voice.equals("3")) {
-            phonChange();
-            break;
-         }
-         if (voice.equals("4")) {
-            abChange();
-           break;
-         }
-         if (voice.equals("5")) {
-            userList();
-            break;
-         }
-        
-      }
-   }
 
    public void abChange() { // 계좌번호 수정
       UserVO user = Session.LoginUser;
@@ -384,7 +353,8 @@ public class UserService {
    }
 
    public void phonChange() {
-      UserVO user = Session.LoginUser;
+     UserController con = new UserController();
+	   UserVO user = Session.LoginUser;
       Scanner sc = new Scanner(System.in);
       System.out.println("-------연락처 수정---------");
       System.out.print("바꾸실 연락처를 입력해주세요 : ");
@@ -407,6 +377,6 @@ public class UserService {
       }
 
       user.setHp(newhp);
-      userpwInfo();
+      con.userpwInfo();
    }   
 }
