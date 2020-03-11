@@ -35,6 +35,7 @@ public class Controller {
 		new Controller().start();		
 	}
 	
+	
 	UserService userservice = UserService.getInstance();
 	BoardController board = new BoardController();
 	QboardController qboard = new QboardController();
@@ -43,7 +44,6 @@ public class Controller {
 	public void start() {		
 		Scanner sc = new Scanner(System.in);
 		int menu = 0;
-		
 		//
 		do {
 			System.out.println("┌─────MENU──────┐");

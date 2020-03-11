@@ -20,6 +20,9 @@ public class BoardService {
 
 	// 게시판 삽입메소드
 	public void insert() {
+		if(boarddao.board().size()==0) {
+			System.out.println("조회할 게시물이 존재하지 않습니다.");
+		}else {
 		System.out.print("제목을 입력해주세요\n>> ");
 		String title = sc.nextLine();
 		System.out.print("본문을 입력해주세요\n>> ");
@@ -36,8 +39,8 @@ public class BoardService {
 		board.setUserid(userid);
 		board.setIndex(Database.index++);
 		boarddao.insertboard(board);
+		}
 	}
-
 	// 게시판 조회반복메소드
 	public void show() {
 		cds.Clear();

@@ -22,6 +22,8 @@ public class ReservationTicketService {
 
 	Scanner sc = new Scanner(System.in);
 
+	
+	
 	public int gate() { // 게이트 저장
 		int gatenum = (int) (Math.random() * 20) + 1; // 랜덤으로 게이트 번호 지정
 		return gatenum;
