@@ -10,11 +10,13 @@ public class BoardController {
 	public void start() {
 		a: while(true) {
 			board.show();
-			System.out.println("[1] 삽입");
-			System.out.println("[2] 조회");
-			System.out.println("[3] 수정");
-			System.out.println("[4] 삭제");
-			System.out.println("[0] 나가기");
+			System.out.println("┌───────┐");
+			System.out.println("│① 삽입\t│");
+			System.out.println("│② 조회\t│");
+			System.out.println("│③ 수정\t│");
+			System.out.println("│④ 삭제\t│");
+			System.out.println("│⑤ 나가기\t│");
+			System.out.println("└───────┘");
 			
 			int temp = Integer.parseInt(sc.nextLine());
 			
@@ -31,7 +33,7 @@ public class BoardController {
 			case 4:
 				board.drop();
 				break;
-			case 0:
+			case 5:
 				break a;
 				
 			}

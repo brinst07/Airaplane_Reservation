@@ -46,10 +46,10 @@ public class Controller {
 		
 		//
 		do {
-			System.out.println("┌───────MENU──────┐");
-			System.out.println("│① 회원가입\t\t\t│");
-			System.out.println("│② 로그인\t\t\t│");
-			System.out.println("│③ 프로그램 종료\t\t│");
+			System.out.println("┌─────MENU──────┐");
+			System.out.println("│① 회원가입\t│");
+			System.out.println("│② 로그인\t\t│");
+			System.out.println("│③ 프로그램 종료\t│");
 			System.out.println("└───────────────┘");
 			System.out.print("메뉴에 해당하는 번호 입력 ☞ ");
 			
@@ -67,12 +67,12 @@ public class Controller {
 				userservice.login();
 				nc.mainmenu();
 				break;
-			case 0://프로그램 종료
+			case 3://프로그램 종료
 				System.out.println("프로그램 종료");
 				break;
 			
 			}
-		}while(menu != 0);
+		}while(menu != 3);
 	}
 
 }
