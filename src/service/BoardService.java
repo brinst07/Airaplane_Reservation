@@ -76,16 +76,23 @@ public class BoardService {
 	}	
 	// 게시판 수정 메소드
 	public void modify() {
+		BoardVO board = new BoardVO();
 		if(boarddao.board().size()==0) {
 			System.out.println("수정할 게시물이 존재하지 않습니다.");
 			cds.pause();
 		}else {
 		show();
-		System.out.println("수정하고 싶은 게시물의 번호를 입력해주세요");
-		BoardVO board = boarddao.board().get(Integer.parseInt(sc.nextLine()));
+		System.out.print("수정하고 싶은 게시물의 번호를 입력해주세요\n>> ");
+		try {
+			board = boarddao.board().get(Integer.parseInt(sc.nextLine()));
+		}catch(Exception e) {
+			System.out.println("※[SYSTEM] : 잘못 입력하셨습니다.");
+			cds.pause();
+			return;
+		}
 		System.out.print("수정하고 싶은 부분의 번호를 입력해주세요");
-		System.out.print("[1] 제목\t");
-		System.out.print("[2] 본문ln>> ");
+		System.out.print("\n[1] 제목\t");
+		System.out.print("[2] 본문\n>> ");
 
 		int temp = Integer.parseInt(sc.nextLine());
 				
@@ -96,14 +103,22 @@ public class BoardService {
 				String title = sc.nextLine();
 				board.setTitle(title);
 			} catch (Exception e) {
-				System.out.println("※[SYSTEM] : 제목은 글자만 가능합니다.");
+				System.out.println("※[SYSTEM] : 잘못 입력하셨습니다.");
+				cds.pause();
+				return;
 			}
-			
-			
-
+			break;
 		case 2:
 			System.out.print("본문을 입력해주세요 >> ");
-			
+			try {
+				String text = sc.nextLine();
+				board.setText(text);
+			}catch(Exception e) {
+				System.out.println("※[SYSTEM] : 잘못 입력하셨습니다.");
+				cds.pause();
+				return;
+			}
+			break;
 		}
 		System.out.println("수정이 완료되었습니다\n");
 		cds.pause();
@@ -117,7 +132,13 @@ public class BoardService {
 		}else {
 		show();
 		System.out.print("삭제하고 싶은 게시물의 번호를 입력해주세요\n>> ");
-		boarddao.board().remove(Integer.parseInt(sc.nextLine()));
+		try {
+			boarddao.board().remove(Integer.parseInt(sc.nextLine()));
+		}catch(Exception e) {
+			System.out.println("※[SYSTEM] : 잘못 입력하셨습니다.");
+			cds.pause();
+			return;
+		}
 		System.out.println("삭제되었습니다.\n");
 		cds.pause();
 	}

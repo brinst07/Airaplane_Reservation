@@ -3,6 +3,7 @@ package controller;
 import java.util.Scanner;
 
 import data.Session;
+import service.CleardelayService;
 import service.UserService;
 
 public class Controller {
@@ -21,15 +22,7 @@ public class Controller {
 		 * 
 		 * 정보입력  정보입력  정보출력 ->서비스
 		 * 
-		 * DB저장    DB조회  ->다오
-		 * 
-		 * 데이터베이스~
-		 * 
-		 * test가 먼저고
-		 * sem이 수정했음
-		 * 또수정~
-		 * sem도 다시 수정함
-		 * 
+		 * DB저장    DB조회  ->다오		
 		 */
 		
 		new Controller().start();		
@@ -40,12 +33,14 @@ public class Controller {
 	BoardController board = new BoardController();
 	QboardController qboard = new QboardController();
 	NextController nc = new NextController();
+	CleardelayService cds = new CleardelayService();
 	
 	public void start() {		
 		Scanner sc = new Scanner(System.in);
-		int menu = 0;
-		//
+		int menu = 0;	
+		
 		do {
+			cds.Clear();
 			System.out.println("┌─────MENU──────┐");
 			System.out.println("│① 회원가입\t│");
 			System.out.println("│② 로그인\t\t│");
