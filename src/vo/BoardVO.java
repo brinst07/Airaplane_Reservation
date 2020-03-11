@@ -1,15 +1,11 @@
 package vo;
 
 public class BoardVO {
-	
+
 	private int index;
-	
 	private String title;
-	
 	private String text;
-	
 	private String date;
-	
 	private String userid;
 
 	public int getIndex() {
@@ -51,6 +47,5 @@ public class BoardVO {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	
-	
+
 }

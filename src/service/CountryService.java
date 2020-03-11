@@ -38,7 +38,7 @@ public class CountryService {
 	public String getcountry(int i) { // 나라 이름 출력
 		ArrayList<CountryVO> country = countrydao.showcountryList();
 
-		CountryVO ct = country.get(i-1);
+		CountryVO ct = country.get(i - 1);
 		return ct.getCoun_name();
 	}
 }

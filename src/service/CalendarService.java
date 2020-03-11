@@ -11,16 +11,16 @@ public class CalendarService {
 		Scanner sc = new Scanner(System.in);
 
 		// 월별 날짜수를 배열에 저장
-		
+
 		Date today = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // (2020-03-10) 형식으로 저장
 		String styear = sdf.format(today).substring(0, 4); // 연도만 빼오기
-		String stmon = sdf.format(today).substring(5, 7); // 달만 빼오기		
+		String stmon = sdf.format(today).substring(5, 7); // 달만 빼오기
 
-		int y = Integer.parseInt(styear); // 올해				
+		int y = Integer.parseInt(styear); // 올해
 
 		int month[] = { 31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-		int nalsu, i, week;		
+		int nalsu, i, week;
 
 		// 윤년확인
 		if (y % 4 == 0 && y % 100 != 0 || y % 400 == 0)

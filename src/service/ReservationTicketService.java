@@ -12,7 +12,6 @@ import vo.AirplaneTicketVO;
 import vo.UserVO;
 
 public class ReservationTicketService {
-
 	UserService userService = UserService.getInstance();
 	CityService city = CityService.getInstance();
 	CountryService country = CountryService.getInstance();
@@ -42,15 +41,15 @@ public class ReservationTicketService {
 		int year = Integer.parseInt(styear); // 올해
 		int mon = Integer.parseInt(stmon); // 현재 월
 		int day = Integer.parseInt(stday); // 현재 일
-		
+
 		int m;
-		while(true) {
+		while (true) {
 			cds.Clear();
 			System.out.println("===========[날짜선택]===========\n");
 			System.out.print("조회하실 月을 입력해주세요 >> ");
 			try {
 				m = Integer.parseInt(sc.nextLine());
-			}catch(Exception e) {
+			} catch (Exception e) {
 				continue;
 			}
 			break;
@@ -177,7 +176,7 @@ public class ReservationTicketService {
 		int count = city.countCity(countrychoice); // 나라에 속한 도시의 갯수 세기. 1개일 경우 도시 선택 화면을 건너뜀
 
 		int citychoice = 0;// 카운트가 1일 경우 실행
-		
+
 		String countr = country.getcountry(countrychoice);
 
 		if (count == 1) { // 나라에 속한 도시의 갯수가 1개일 경우 실행
@@ -257,7 +256,13 @@ public class ReservationTicketService {
 				System.out.println("[System] 존재하지 않는 시간표 입니다.");
 			check = false;
 			System.out.print("원하는 시간의 번호를 선택해주세요 >> ");
-			cho = Integer.parseInt(sc.nextLine());
+			try {
+				cho = Integer.parseInt(sc.nextLine());
+			} catch (Exception e) {
+				System.out.println("[System] 잘못 입력하셨습니다.");
+				cds.pause();
+				continue;
+			}
 
 			if (timesum <= cho || cho < 1) {
 				cds.Clear();
@@ -274,7 +279,7 @@ public class ReservationTicketService {
 		System.out.println("선택 날짜 : " + date);
 		System.out.println("나라 및 도시 : " + countr + " / " + arriveCt);
 		System.out.println("선택 시간 : " + startdate);
-		System.out.println("==================================[인원선택]==================================");		
+		System.out.println("==================================[인원선택]==================================");
 
 		String[] sit = new String[10];
 		String classsit = null;

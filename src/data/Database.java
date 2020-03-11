@@ -66,59 +66,55 @@ public class Database {
 		qboard.setDate(date);
 		tb_Qboard.add(qboard);
 	}
-	
-	
+
 	// payment 테이블
 	public ArrayList<PaymentVO> tb_payment = new ArrayList<>();
 
 	// 좌석 테이블
 	public ArrayList<SitVO> tb_sit = new ArrayList<>();
-	
-	
-	//first Class
+
+	// first Class
 	public static String[][] Firstclass = new String[4][3];
 	{
-	char alpha;
+		char alpha;
 
 		for (int i = 0; i < Firstclass.length; i++) {
 			alpha = 'A';
 			for (int j = 0; j < Firstclass[i].length; j++) {
-				Firstclass[i][j] = Integer.toString(i+1)+alpha;
+				Firstclass[i][j] = Integer.toString(i + 1) + alpha;
 				alpha = (char) (alpha + 1);
 			}
-			
+
 		}
 	}
 	// Business Class
 	public static String[][] Businessclass = new String[15][3];
 	{
-		
+
 		char alpha;
-		
-		for(int i=0; i< Businessclass.length; i++) {
+
+		for (int i = 0; i < Businessclass.length; i++) {
 			alpha = 'A';
-			for(int j= 0; j< Businessclass[i].length; j++) {
-				Businessclass[i][j] = Integer.toString(i+1)+alpha;
-				alpha = (char)(alpha +1);
+			for (int j = 0; j < Businessclass[i].length; j++) {
+				Businessclass[i][j] = Integer.toString(i + 1) + alpha;
+				alpha = (char) (alpha + 1);
 			}
-			
+
 		}
 	}
-	
+
 	// Economy Class
 	public static String[][] Economyclass = new String[25][9];
 	{
 		char alpha;
-		for(int i=0; i< Economyclass.length; i++) {
+		for (int i = 0; i < Economyclass.length; i++) {
 			alpha = 'A';
-			for(int j=0; j<Economyclass[i].length; j++) {
-				Economyclass[i][j] = Integer.toString(i+1)+alpha;
-				alpha = (char)(alpha+1);
+			for (int j = 0; j < Economyclass[i].length; j++) {
+				Economyclass[i][j] = Integer.toString(i + 1) + alpha;
+				alpha = (char) (alpha + 1);
 			}
 		}
 	}
-	
-	
 
 	// date 테이블
 	public ArrayList<DateVO> tb_date = new ArrayList<>();
@@ -140,7 +136,7 @@ public class Database {
 		airport.setCity_num(2);
 		airport.setAirport_name("욘 F 케네디 공항");
 		tb_airport.add(airport);
-		
+
 		airport = new AirportVO();
 		airport.setAirpot_num(3);
 		airport.setCity_num(3);
@@ -182,7 +178,7 @@ public class Database {
 		airport.setCity_num(9);
 		airport.setAirport_name("수완나품 공항");
 		tb_airport.add(airport);
-		
+
 		airport = new AirportVO();
 		airport.setAirpot_num(10);
 		airport.setCity_num(10);
@@ -652,318 +648,314 @@ public class Database {
 		time.setStarttime("22:30");
 		time.setArrivetime("02:55");
 		tb_timetable.add(time);
-		
+
 		time = new TimeTableVO();
-	       time.setCity_num(8);
-	       time.setTime_num(1);
-	       time.setStarttime("08:00");
-	       time.setArrivetime("12:05");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(8);
-	       time.setTime_num(2);
-	       time.setStarttime("11:00");
-	       time.setArrivetime("15:10");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(8);
-	       time.setTime_num(3);
-	       time.setStarttime("15:25");
-	       time.setArrivetime("20:30");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(8);
-	       time.setTime_num(4);
-	       time.setStarttime("18:00");
-	       time.setArrivetime("22:05");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(9);
-	       time.setTime_num(1);
-	       time.setStarttime("06:15");
-	       time.setArrivetime("11:55");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(9);
-	       time.setTime_num(2);
-	       time.setStarttime("09:50");
-	       time.setArrivetime("15:30");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(9);
-	       time.setTime_num(3);
-	       time.setStarttime("13:10");
-	       time.setArrivetime("18:55");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(9);
-	       time.setTime_num(4);
-	       time.setStarttime("16:00");
-	       time.setArrivetime("21:45");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(9);
-	       time.setTime_num(5);
-	       time.setStarttime("20:05");
-	       time.setArrivetime("01:50");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(10);
-	       time.setTime_num(1);
-	       time.setStarttime("07:05");
-	       time.setArrivetime("12:50");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(10);
-	       time.setTime_num(2);
-	       time.setStarttime("10:00");
-	       time.setArrivetime("15:40");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(10);
-	       time.setTime_num(3);
-	       time.setStarttime("13:15");
-	       time.setArrivetime("19:00");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(10);
-	       time.setTime_num(4);
-	       time.setStarttime("18:10");
-	       time.setArrivetime("23:50");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(11);
-	       time.setTime_num(1);
-	       time.setStarttime("05:10");
-	       time.setArrivetime("18:00");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(11);
-	       time.setTime_num(2);
-	       time.setStarttime("09:40");
-	       time.setArrivetime("22:30");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(11);
-	       time.setTime_num(3);
-	       time.setStarttime("14:10");
-	       time.setArrivetime("03:00");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(11);
-	       time.setTime_num(4);
-	       time.setStarttime("18:00");
-	       time.setArrivetime("06:50");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(11);
-	       time.setTime_num(5);
-	       time.setStarttime("21:00");
-	       time.setArrivetime("09:50");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(12);
-	       time.setTime_num(1);
-	       time.setStarttime("07:15");
-	       time.setArrivetime("18:20");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(12);
-	       time.setTime_num(2);
-	       time.setStarttime("11:35");
-	       time.setArrivetime("22:40");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(12);
-	       time.setTime_num(3);
-	       time.setStarttime("15:20");
-	       time.setArrivetime("02:25");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(12);
-	       time.setTime_num(4);
-	       time.setStarttime("19:00");
-	       time.setArrivetime("06:05");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(12);
-	       time.setTime_num(1);
-	       time.setStarttime("23:00");
-	       time.setArrivetime("10:05");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(13);
-	       time.setTime_num(1);
-	       time.setStarttime("05:50");
-	       time.setArrivetime("17:50");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(13);
-	       time.setTime_num(2);
-	       time.setStarttime("10:00");
-	       time.setArrivetime("22:10");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(13);
-	       time.setTime_num(3);
-	       time.setStarttime("12:55");
-	       time.setArrivetime("00:50");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(13);
-	       time.setTime_num(4);
-	       time.setStarttime("16:25");
-	       time.setArrivetime("04:30");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(13);
-	       time.setTime_num(5);
-	       time.setStarttime("20:00");
-	       time.setArrivetime("08:05");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(13);
-	       time.setTime_num(5);
-	       time.setStarttime("23:30");
-	       time.setArrivetime("09:55");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(14);
-	       time.setTime_num(1);
-	       time.setStarttime("10:00");
-	       time.setArrivetime("21:05");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(14);
-	       time.setTime_num(2);
-	       time.setStarttime("12:00");
-	       time.setArrivetime("23:00");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(14);
-	       time.setTime_num(3);
-	       time.setStarttime("16:45");
-	       time.setArrivetime("03:45");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(14);
-	       time.setTime_num(4);
-	       time.setStarttime("18:15");
-	       time.setArrivetime("05:15");
-	       tb_timetable.add(time);
-	       
-	       time = new TimeTableVO();
-	       time.setCity_num(14);
-	       time.setTime_num(5);
-	       time.setStarttime("22:40");
-	       time.setArrivetime("09:40");
-	       tb_timetable.add(time);
-		
+		time.setCity_num(8);
+		time.setTime_num(1);
+		time.setStarttime("08:00");
+		time.setArrivetime("12:05");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(8);
+		time.setTime_num(2);
+		time.setStarttime("11:00");
+		time.setArrivetime("15:10");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(8);
+		time.setTime_num(3);
+		time.setStarttime("15:25");
+		time.setArrivetime("20:30");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(8);
+		time.setTime_num(4);
+		time.setStarttime("18:00");
+		time.setArrivetime("22:05");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(9);
+		time.setTime_num(1);
+		time.setStarttime("06:15");
+		time.setArrivetime("11:55");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(9);
+		time.setTime_num(2);
+		time.setStarttime("09:50");
+		time.setArrivetime("15:30");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(9);
+		time.setTime_num(3);
+		time.setStarttime("13:10");
+		time.setArrivetime("18:55");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(9);
+		time.setTime_num(4);
+		time.setStarttime("16:00");
+		time.setArrivetime("21:45");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(9);
+		time.setTime_num(5);
+		time.setStarttime("20:05");
+		time.setArrivetime("01:50");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(10);
+		time.setTime_num(1);
+		time.setStarttime("07:05");
+		time.setArrivetime("12:50");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(10);
+		time.setTime_num(2);
+		time.setStarttime("10:00");
+		time.setArrivetime("15:40");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(10);
+		time.setTime_num(3);
+		time.setStarttime("13:15");
+		time.setArrivetime("19:00");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(10);
+		time.setTime_num(4);
+		time.setStarttime("18:10");
+		time.setArrivetime("23:50");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(11);
+		time.setTime_num(1);
+		time.setStarttime("05:10");
+		time.setArrivetime("18:00");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(11);
+		time.setTime_num(2);
+		time.setStarttime("09:40");
+		time.setArrivetime("22:30");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(11);
+		time.setTime_num(3);
+		time.setStarttime("14:10");
+		time.setArrivetime("03:00");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(11);
+		time.setTime_num(4);
+		time.setStarttime("18:00");
+		time.setArrivetime("06:50");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(11);
+		time.setTime_num(5);
+		time.setStarttime("21:00");
+		time.setArrivetime("09:50");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(12);
+		time.setTime_num(1);
+		time.setStarttime("07:15");
+		time.setArrivetime("18:20");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(12);
+		time.setTime_num(2);
+		time.setStarttime("11:35");
+		time.setArrivetime("22:40");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(12);
+		time.setTime_num(3);
+		time.setStarttime("15:20");
+		time.setArrivetime("02:25");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(12);
+		time.setTime_num(4);
+		time.setStarttime("19:00");
+		time.setArrivetime("06:05");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(12);
+		time.setTime_num(5);
+		time.setStarttime("23:00");
+		time.setArrivetime("10:05");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(13);
+		time.setTime_num(1);
+		time.setStarttime("05:50");
+		time.setArrivetime("17:50");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(13);
+		time.setTime_num(2);
+		time.setStarttime("10:00");
+		time.setArrivetime("22:10");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(13);
+		time.setTime_num(3);
+		time.setStarttime("12:55");
+		time.setArrivetime("00:50");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(13);
+		time.setTime_num(4);
+		time.setStarttime("16:25");
+		time.setArrivetime("04:30");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(13);
+		time.setTime_num(5);
+		time.setStarttime("20:00");
+		time.setArrivetime("08:05");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(13);
+		time.setTime_num(6);
+		time.setStarttime("23:30");
+		time.setArrivetime("09:55");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(14);
+		time.setTime_num(1);
+		time.setStarttime("10:00");
+		time.setArrivetime("21:05");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(14);
+		time.setTime_num(2);
+		time.setStarttime("12:00");
+		time.setArrivetime("23:00");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(14);
+		time.setTime_num(3);
+		time.setStarttime("16:45");
+		time.setArrivetime("03:45");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(14);
+		time.setTime_num(4);
+		time.setStarttime("18:15");
+		time.setArrivetime("05:15");
+		tb_timetable.add(time);
+
+		time = new TimeTableVO();
+		time.setCity_num(14);
+		time.setTime_num(5);
+		time.setStarttime("22:40");
+		time.setArrivetime("09:40");
+		tb_timetable.add(time);
+
 		time = new TimeTableVO();
 		time.setCity_num(15);
 		time.setTime_num(1);
 		time.setStarttime("07:35");
 		time.setArrivetime("08:30");
 		tb_timetable.add(time);
-		
+
 		time = new TimeTableVO();
 		time.setCity_num(15);
 		time.setTime_num(2);
 		time.setStarttime("08:50");
 		time.setArrivetime("09:55");
 		tb_timetable.add(time);
-		
+
 		time = new TimeTableVO();
 		time.setCity_num(15);
 		time.setTime_num(3);
 		time.setStarttime("10:30");
 		time.setArrivetime("11:25");
 		tb_timetable.add(time);
-		
+
 		time = new TimeTableVO();
 		time.setCity_num(15);
 		time.setTime_num(4);
 		time.setStarttime("12:15");
 		time.setArrivetime("13:15");
 		tb_timetable.add(time);
-		
+
 		time = new TimeTableVO();
 		time.setCity_num(15);
 		time.setTime_num(5);
 		time.setStarttime("14:30");
 		time.setArrivetime("15:25");
 		tb_timetable.add(time);
-		
+
 		time = new TimeTableVO();
 		time.setCity_num(15);
 		time.setTime_num(6);
 		time.setStarttime("16:00");
 		time.setArrivetime("17:05");
 		tb_timetable.add(time);
-		
+
 		time = new TimeTableVO();
 		time.setCity_num(15);
 		time.setTime_num(7);
 		time.setStarttime("18:50");
 		time.setArrivetime("19:55");
 		tb_timetable.add(time);
-		
+
 		time = new TimeTableVO();
 		time.setCity_num(15);
 		time.setTime_num(8);
 		time.setStarttime("20:25");
 		time.setArrivetime("21:30");
 		tb_timetable.add(time);
-		
+
 		time = new TimeTableVO();
 		time.setCity_num(15);
 		time.setTime_num(9);
 		time.setStarttime("21:55");
 		time.setArrivetime("22:50");
 		tb_timetable.add(time);
-		
+
 		time = new TimeTableVO();
 		time.setCity_num(15);
 		time.setTime_num(10);
 		time.setStarttime("22:45");
 		time.setArrivetime("23:45");
 		tb_timetable.add(time);
-		
+
 	}
-	}
-	
-	
-	
-	
+}

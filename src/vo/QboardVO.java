@@ -1,19 +1,13 @@
 package vo;
 
 public class QboardVO {
-	
+
 	private int index;
-	
 	private String title;
-	
 	private String text;
-	
 	private String date;
-	
 	private String userid;
-	
 	private String useridQ;
-	
 	private String useridA;
 
 	public int getIndex() {

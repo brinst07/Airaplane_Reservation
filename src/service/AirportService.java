@@ -17,15 +17,15 @@ public class AirportService {
 		}
 		return instance;
 	}
-	
+
 	AirportDao airport = AirportDao.getInstance();
 	AirportVO airportvo = new AirportVO();
-	
-	public void showAirport(int cho) { // 공항 이름 출력		
-		for(int i=0; i<airport.airport().size(); i++) {
+
+	public void showAirport(int cho) { // 공항 이름 출력
+		for (int i = 0; i < airport.airport().size(); i++) {
 			AirportVO exairport = airport.airport().get(i);
-			if(exairport.getCity_num()==cho) {
-				System.out.println(exairport.getAirport_name());				
+			if (exairport.getCity_num() == cho) {
+				System.out.println(exairport.getAirport_name());
 			}
 		}
 	}
