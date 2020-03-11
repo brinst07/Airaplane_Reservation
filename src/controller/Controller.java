@@ -44,7 +44,7 @@ public class Controller {
 		Scanner sc = new Scanner(System.in);
 		int menu = 0;
 		
-		
+		//
 		do {
 			System.out.println("┌───────MENU──────┐");
 			System.out.println("│① 회원가입\t\t\t│");
