@@ -77,7 +77,7 @@ public class BoardService {
 	// 게시판 수정 메소드
 	public void modify() {
 		if(boarddao.board().size()==0) {
-			System.out.println("조회할 게시물이 존재하지 않습니다.");
+			System.out.println("수정할 게시물이 존재하지 않습니다.");
 			cds.pause();
 		}else {
 		show();
@@ -86,7 +86,7 @@ public class BoardService {
 		System.out.print("수정하고 싶은 부분의 번호를 입력해주세요");
 		System.out.print("[1] 제목\t");
 		System.out.print("[2] 본문ln>> ");
-		
+
 		int temp = Integer.parseInt(sc.nextLine());
 				
 		switch (temp) {
@@ -112,7 +112,7 @@ public class BoardService {
 	// 게시판 삭제 메소드
 	public void drop() {
 		if(boarddao.board().size()==0) {
-			System.out.println("조회할 게시물이 존재하지 않습니다.");
+			System.out.println("삭제할 게시물이 존재하지 않습니다.");
 			cds.pause();
 		}else {
 		show();

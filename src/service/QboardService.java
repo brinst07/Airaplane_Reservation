@@ -14,6 +14,7 @@ import vo.QboardVO;
 public class QboardService {
 	Scanner sc = new Scanner(System.in);
 	QboardDao qboarddao = QboardDao.getInstance();
+	CleardelayService cds = new CleardelayService();
 	
 	//게시판 삽입메소드
 	public void insert() {
@@ -58,6 +59,10 @@ public class QboardService {
 		show();
 		System.out.println("조회하고 싶은 게시물의 번호를 입력해주세요");
 		int temp = Integer.parseInt(sc.nextLine());
+		if(temp>qboarddao.qboard().size()-1) {
+			System.out.println("※[SYSTEM] : 선택하신 게시물이 존재하지 않습니다.");
+			cds.pause();
+		}else {
 		QboardVO board = qboarddao.qboard().get(temp);
 		System.out.println(board.getText());
 		System.out.println("---------------------------------------------");
@@ -76,6 +81,8 @@ public class QboardService {
 			case 2:
 				System.out.println("빠져나갑니다.");
 				break;
+			default :
+				System.out.println("잘못입력하셨습니다!");
 		}
 		}else {
 			System.out.println("기존 질문을 삭제하고 새로 질문 하시겠습니까?");
@@ -95,7 +102,7 @@ public class QboardService {
 			}
 		}
 	}
-		
+	}		
 	//게시판 조회, 답글 메소드
 	public void admin_selectshow() {
 		show();
