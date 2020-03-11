@@ -11,8 +11,8 @@ public class TicketService {
 
 	public void airticketList() { // 비행기 티켓 정보를 조회할때 출력
 		ArrayList<AirplaneTicketVO> airList = airplaneticketdao.ReservationUserList();
-		AirplaneTicketVO air = airList.get(0);
-
+		for(int i = 0 ; i < 2 ; i++) {
+		AirplaneTicketVO air = airList.get(i);		
 		System.out.println();
 		System.out.println("┌───────────────────────────────────────────────────────────────────────────────┐");
 		System.out.println("│   " + air.getAirCompany() + "\t▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶ \t\t\t\t\t\t│");
@@ -37,5 +37,6 @@ public class TicketService {
 		}
 		System.out.println();
 		System.out.println("└───────────────────────────────────────────────────────────────────────────────┘");
+		}
 	}
 }

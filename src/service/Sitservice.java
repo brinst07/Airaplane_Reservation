@@ -31,6 +31,13 @@ public class Sitservice {
 
 		return sit;
 	}
+	
+	public int Human() {
+		System.out.print("인원수를 입력해주세요\n>> ");
+		int people = Integer.parseInt(sc.nextLine());
+		
+		return people;
+	}
 
 	public String start(int sitnum) {
 		Database database = Database.getInstance();
@@ -44,9 +51,7 @@ public class Sitservice {
 
 		// 좌석을 입력받는 메소드이다.
 
-		SitVO sitvo = new SitVO();
-		// System.out.print("인원수를 입력해주세요\n>> ");
-		// int people = Integer.parseInt(sc.nextLine());
+		SitVO sitvo = new SitVO();		
 
 		int people = 1;
 
@@ -77,7 +82,7 @@ public class Sitservice {
 						if (answer.equals(first[i][j])) {
 							temp += (first[i][j] + "  ");
 							sitvo.setSit_number(temp);
-							first[i][j] = "X";
+							first[i][j] = " X ";
 
 							break a;
 						}
@@ -110,7 +115,7 @@ public class Sitservice {
 
 							temp += (business[i][j] + "  ");
 							sitvo.setSit_number(temp);
-							business[i][j] = "X";
+							business[i][j] = " X ";
 
 							break a;
 						}
@@ -152,7 +157,7 @@ public class Sitservice {
 						if (answer.equals(eco[i][j])) {
 							temp += (eco[i][j] + "  ");
 							sitvo.setSit_number(temp);
-							eco[i][j] = "X";
+							eco[i][j] = " X ";
 
 							break a;
 						}
