@@ -11,6 +11,7 @@ import data.Session;
 import service.AirportService;
 import service.CityService;
 import service.CountryService;
+import service.Sitservice;
 import service.TimeTableService;
 import service.UserService;
 import vo.AirplaneTicketVO;
@@ -24,6 +25,7 @@ public class ReservationTicketController {
    AirportService airport = AirportService.getInstance();   
    AirplaneTicketVO ap = new AirplaneTicketVO();
    AirplaneTicketDao airplaneticketdao = new AirplaneTicketDao();
+   Sitservice sitservice = new Sitservice();
    
    Database database = Database.getInstance();   
    
@@ -36,7 +38,7 @@ public class ReservationTicketController {
       ap.setAirCompany("KOREA AIR"); // 코리아 항공 고정
       
       //----------------------------------------
-      ap.setSitNum("15C");            
+      ap.setSitNum("15C");
       //----------------------------------------
       
       Scanner sc = new Scanner(System.in);
@@ -225,6 +227,7 @@ public class ReservationTicketController {
       }
       ap.setArriveAp(arriveCt); // 도착할 도시 이름 티켓에 저장
             
+      System.out.println("[" + date + "]");
       System.out.print("인천 국제 공항 ---> ");
       airport.showAirport(citychoice + num);
       
@@ -235,6 +238,19 @@ public class ReservationTicketController {
       
       String startdate = time.returnstartTime(citychoice+num, cho); // 사용자가 선택한 출발 시간을 저장
       ap.setStarttime(startdate);   // 받아온 시간을 티켓에 저장
+      
+      int sitclass = sitservice.classcho();
+      String sit = sitservice.start(sitclass);
+      
+      if(sitclass==1) {
+    	  ap.setSitclass("First");
+      }else if(sitclass==2) {
+    	  ap.setSitclass("Business");
+      }else {
+    	  ap.setSitclass("Economy");
+      }
+      
+      ap.setSitNum(sit);
       
       airplaneticketdao.insertReservation(ap);
       database.tb_airplane.add(ap); // 티켓에 add

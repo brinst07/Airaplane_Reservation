@@ -19,7 +19,11 @@ public class TicketService {
 		System.out.println("├─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┤");
 		System.out.print("│ NAME\t" + air.getUsername());
 		System.out.print("  \t\tDATE\t" + air.getStartdate());
-		System.out.println("  \tCLASS\t" + air.getSitclass() + "\t\t│");
+		if(air.getSitclass().equals("Business")) {
+			System.out.println("  \tCLASS\t" + air.getSitclass() + "\t│");
+		}else {
+			System.out.println("  \tCLASS\t" + air.getSitclass() + "\t\t│");
+		}
 		System.out.print("│ GATE\t" + air.getGate());
 		System.out.print("  \t\t\tSIT\t" + air.getSitNum());
 		System.out.println("  \t\tTIME\t" + air.getStarttime() + "\t\t│");
