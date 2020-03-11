@@ -257,15 +257,15 @@ public class UserService {
    public void userList() {
       ArrayList<UserVO> userList = userdao.selectUserList();
 
-      System.out.println("---------------------------------------------------------------");
+      System.out.println("-----------------------------------------------------------------------------------");
       System.out.println("번호\t아이디\t이름\t비밀번호 질문\t비밀번호 답\t\t계좌번호\t\t연락처");
-      System.out.println("----------------------------------------------------------------");
+      System.out.println("------------------------------------------------------------------------------------");
       for (int i = userList.size() - 1; 0 <= i; i--) {
          UserVO user = userList.get(i);
          System.out.println(i + 1 + "\t" + user.getId() + "\t" + user.getName() + "\t" + user.getPwq() + "\t"
                + user.getPwa() + "\t" + user.getAb() + "\t" + user.getHp());
       }
-      System.out.println("----------------------------------------------------------------");
+      System.out.println("------------------------------------------------------------------------------------");
    }
 
    public void userpwInfo() { // 회원정보 수정 창
@@ -280,7 +280,6 @@ public class UserService {
          System.out.println("2. 비밀번호 찾기 질문 수정");
          System.out.println("3. 연락처 수정");
          System.out.println("4. 계좌번호 수정");
-         System.out.println("0. 이전 화면 가기");
          System.out.print("5. 현재 회원 목록\n>> ");
          String voice = s.nextLine();
 
