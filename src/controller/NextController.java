@@ -5,6 +5,7 @@ import java.util.Scanner;
 import data.Session;
 import service.BoardService;
 import service.CityService;
+import service.CleardelayService;
 import service.CountryService;
 import service.TicketService;
 import service.UserService;
@@ -17,6 +18,7 @@ public class NextController {
 	QboardController qbc = new QboardController();
 	CityService city = CityService.getInstance();
 	CountryService country = CountryService.getInstance();
+	CleardelayService cds = new CleardelayService();
 
 	void mainmenu() { // 로그인 후 들어오는 메인 화면
 		UserVO user = Session.LoginUser;
@@ -25,29 +27,30 @@ public class NextController {
 		ReservationTicketController rst = new ReservationTicketController();
 		TicketService ts = new TicketService();
 
-		a: while (true) {
-			System.out.println(user.getName() + "님 환영합니다.");
+		a: while (true) {	
+			cds.Clear();
+			System.out.println("\t\t\t\t\t\t\t" + user.getName() + "님 환영합니다.");
 			if (user.getName().equals("관리자") && user.getId().equals("admin")) {
 				root = true;
-			}
-			System.out.println("---------------메뉴---------------");
+			}			
+			System.out.println("┌─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ [메뉴] ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┐");
 			if (!root) {
-				System.out.println("[1] 비행기 예약");
-				System.out.println("[2] 예약티켓확인");
-				System.out.println("[3] 회원정보수정");
-				System.out.println("[4] 게시판");
-				System.out.println("[5] 문의게시판 ");
-				System.out.println("[0] 로그아웃");
+				System.out.print("│ [1] 비행기 예약  | ");
+				System.out.print("[2] 예약티켓확인  | ");
+				System.out.print("[3] 회원정보수정  | ");
+				System.out.print("[4] 게시판  | ");
+				System.out.println("[5] 문의게시판            │");
+				System.out.println("│ [0] 로그아웃\t\t\t\t\t\t\t\t      │");
 
 			} else {				
-				System.out.println("[1] 회원목록");
-				System.out.println("[2] 티켓관리");
-				System.out.println("[3] 도시추가");
-				System.out.println("[4] 도시삭제");
-				System.out.println("[5] 관리자게시판");
-				System.out.println("[0] 로그아웃");								
+				System.out.print("│ [1] 회원목록   │  ");
+				System.out.print("[2] 티켓관리   │  ");
+				System.out.print("[3] 도시추가   │  ");
+				System.out.print("[4] 도시삭제   │  ");
+				System.out.println("[5] 관리자게시판          │");
+				System.out.println("│ [0] 로그아웃\t\t\t\t\t\t\t\t      │");								
 			}
-			System.out.println("---------------------------------");
+			System.out.println("└─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┘");			
 			System.out.print(">> ");
 			int cho = 0;
 			try {
