@@ -6,7 +6,10 @@ import java.util.Date;
 import java.util.Scanner;
 
 import dao.AirplaneTicketDao;
+import data.Database;
+import data.Session;
 import vo.AirplaneTicketVO;
+import vo.UserVO;
 
 public class ReservationTicketService {
 
@@ -20,16 +23,15 @@ public class ReservationTicketService {
 	Sitservice sitservice = new Sitservice();
 	CleardelayService cds = new CleardelayService();
 
-	Scanner sc = new Scanner(System.in);
+	Database database = Database.getInstance();
 
-	
-	
-	public int gate() { // 게이트 저장
-		int gatenum = (int) (Math.random() * 20) + 1; // 랜덤으로 게이트 번호 지정
-		return gatenum;
-	}
+	public void start() {
+		UserVO user = Session.LoginUser; // 로그인 된 유저정보 확인
+		Scanner sc = new Scanner(System.in);
 
-	public String startday() {
+		int gate = (int) (Math.random() * 20) + 1; // 게이트 저장
+		String date = ""; // 출발날짜 지정
+		
 		Date today = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // (2020-03-10) 형식으로 저장
 		String styear = sdf.format(today).substring(0, 4); // 연도만 빼오기
@@ -42,7 +44,7 @@ public class ReservationTicketService {
 
 		while (true) {
 			System.out.print("출발 날짜를 입력해주세요(yyyymmdd) : ");
-			String date = sc.nextLine();
+			date = sc.nextLine();
 
 			Calendar cal = Calendar.getInstance();
 
@@ -93,16 +95,19 @@ public class ReservationTicketService {
 
 				if (b1 == b2) { // 날짜가 제대로 입력 된 경우
 					date = sdf.format(cal.getTime());
-					return date;
+					break;
 				} else {
 					System.out.println("잘못된 날짜 형식입니다.");
 					continue;
 				}
 			}
 		}
-	}
 
-	public int Setnum(int countrychoice) {
+		country.showcountry(); // 나라 출력
+
+		System.out.print("\n나라를 선택해주세요 >> ");
+		int countrychoice = Integer.parseInt(sc.nextLine());	
+		
 		int num = 0;
 		switch (countrychoice) {
 		case 2:
@@ -133,13 +138,10 @@ public class ReservationTicketService {
 			num = 14;
 			break;
 		}
-
-		return num;
-
-	}
-
-	public int citycho(int count, int countrychoice) {
-		int citychoice = 0;
+		
+		int count = city.countCity(countrychoice); // 나라에 속한 도시의 갯수 세기. 1개일 경우 도시 선택 화면을 건너뜀		
+		
+		int citychoice = 0;// 카운트가 1일 경우 실행
 
 		if (count == 1) { // 나라에 속한 도시의 갯수가 1개일 경우 실행
 			citychoice = 1;
@@ -156,11 +158,8 @@ public class ReservationTicketService {
 				}
 			}
 		}
-		return citychoice;
-	}
-
-	public String Arrivecity(int citychoice, int num) {
-		String arriveCt = "";
+			
+		String arriveCt = "";//도착할 도시 저장할 String
 		if (citychoice + num == 1) {
 			arriveCt = "L.A.";
 		} else if (citychoice + num == 2) {
@@ -192,10 +191,7 @@ public class ReservationTicketService {
 		} else if (citychoice + num == 15) {
 			arriveCt = "JEJU";
 		}
-		return arriveCt;
-	}
-
-	public int Showtime(String date, int citychoice, int num) {
+				
 		int cho = 0;
 		boolean check = false;
 
@@ -216,8 +212,85 @@ public class ReservationTicketService {
 				check = true;
 				continue;
 			} else {
-				return cho;
+				break;
 			}
 		}
-	}
+		
+		String startdate = time.returnstartTime(citychoice + num, cho); // 사용자가 선택한 출발 시간을 저장
+
+		cds.Clear();
+		System.out.println("[좌석 및 인원 선택]");
+		System.out.println("-------------------------------");
+
+		String[] sit = new String[10];
+		String classsit = null;
+
+		int people = sitservice.Human(); // 인원수 입력
+		cds.Clear();
+		int sitclass = sitservice.classcho(); // 클래스 저장
+		cds.Clear();
+
+		for (int i = 0; i < people; i++) { // 인원수 입력만큼 반복
+			cds.Clear();
+			sit[i] = sitservice.start(sitclass);
+
+			if (sitclass == 1) {
+				classsit = "First";
+			} else if (sitclass == 2) {
+				classsit = "Business";
+			} else {
+				classsit = "Economy";
+			}
+		}
+
+		boolean check2 = false;
+		while (true) {
+			cds.Clear();
+			System.out.println("[선택 내역]");
+			System.out.println("날짜 및 시간 : [" + date + " " + startdate + "]");
+			System.out.print("행선지 : 인천 국제 공항 ---> ");
+			airportservice.showAirport(citychoice + num);
+			System.out.println("선택 인원 : " + people + "명");
+			System.out.print("예약 좌석 : " + "[" + classsit + "] ");
+			for (int i = 0; i < people; i++) {
+				System.out.print(sit[i]);
+			}
+			System.out.println("\n-------------------------------");
+			if (check2) {
+				System.out.println("[System]잘못 입력하셨습니다.");
+			}
+			System.out.print("이대로 예약 하시겠습니까? (y/n)\n>> ");
+			String reser = sc.nextLine();
+
+			if (reser.equals("y")) {
+				System.out.println("예약이 완료되었습니다.\n이용해주셔서 감사합니다.\n");
+				break;
+			} else if (reser.equals("n")) {
+				System.out.println("예약이 취소되었습니다.");
+				cds.pause();
+				return;
+			} else {
+				check2 = true;
+				continue;
+			}
+		}
+
+		for (int i = 0; i < people; i++) {
+			airplaneticketvo = new AirplaneTicketVO();
+			airplaneticketvo.setUserid(user.getId()); // 유저 아이디 저장
+			airplaneticketvo.setUsername(user.getName()); // 유저 이름 저장
+			airplaneticketvo.setStartAp("SEOUL/INCHEON"); // 서울 인천 고정
+			airplaneticketvo.setAirCompany("KOREA AIR"); // 코리아 항공 고정
+			airplaneticketvo.setGate(gate); // 티켓에 게이트 번호 저장
+			airplaneticketvo.setStartdate(date); // 티켓에 출발날짜 저장
+			airplaneticketvo.setArriveAp(arriveCt); // 도착할 도시 이름 티켓에 저장
+			airplaneticketvo.setStarttime(startdate); // 받아온 시간을 티켓에 저장
+			airplaneticketvo.setSitNum(sit[i]); // 시트번호 저장
+			airplaneticketvo.setSitclass(classsit); // 클래스 저장
+
+			airplaneticketdao.insertReservation(airplaneticketvo);
+			database.tb_airplane.add(airplaneticketvo); // 티켓에 add
+		}
+		cds.pause();
+	}	
 }
