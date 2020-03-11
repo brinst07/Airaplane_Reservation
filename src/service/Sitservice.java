@@ -54,7 +54,7 @@ public class Sitservice {
 	public String start(int sitnum) {
 		Database database = Database.getInstance();
 
-		SitDao sitdao = SitDao.getInstance();
+		SitDao sitdao = SitDao.getInstance();		
 
 		// 좌석표를 담았다
 		String[][] first = sitdao.first();
@@ -83,7 +83,7 @@ public class Sitservice {
 					for (int j = 0; j < first[i].length; j++) {
 						System.out.printf("%s\t", first[i][j]);
 					}
-					System.out.println();
+					System.out.println("\n\n\n");
 				}
 
 				System.out.print("원하시는 좌석을 입력해주세요\n>> ");
@@ -115,7 +115,7 @@ public class Sitservice {
 							System.out.printf("%s\t", business[i][j]);
 						}
 					}
-					System.out.println();
+					System.out.println("\n\n");
 				}
 
 				System.out.print("원하시는 좌석을 입력해주세요\n>> ");

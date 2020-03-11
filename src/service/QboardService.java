@@ -39,9 +39,9 @@ public class QboardService {
 	// 게시판 조회반복메소드
 	public void show() {
 		cds.Clear();
-		System.out.println("---------------------게시판--------------------");
+		System.out.println("-----------------------게시판---------------------");
 		System.out.println("  번호\t     제목          \t작성자\t     작성일");
-		System.out.println("----------------------------------------------");
+		System.out.println("-------------------------------------------------");
 		for (int i = qboarddao.qboard().size() - 1; i >= 0; i--) {
 			QboardVO qboard = qboarddao.qboard().get(i);
 			System.out.printf("[%d]   \t%s\t\t%s\t%s\n", i, qboard.getTitle(), qboard.getUserid(), qboard.getDate());
@@ -69,11 +69,13 @@ public class QboardService {
 			QboardVO board = qboarddao.qboard().get(temp);
 			cds.Clear();
 			System.out.println("---------------------본문---------------------");
+			System.out.println("제목 : " + board.getTitle() + "\t\t\t작성자 : admin");
+			System.out.println("---------------------------------------------");
 			System.out.println(board.getText());
 			System.out.println("---------------------------------------------");
 			if (qboarddao.qboard().get(temp).getUseridQ() == null) {
 				System.out.println("문의하시겠습니까?");
-				System.out.print("[1] YES\t[2] NO\n>>");
+				System.out.print("[1] YES\t[2] NO\n>> ");
 				int temp1 = 0;
 				try {
 					temp1 = Integer.parseInt(sc.nextLine());
