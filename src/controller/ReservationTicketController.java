@@ -226,7 +226,9 @@ public class ReservationTicketController {
 			} else {
 				classsit = "Economy";
 			}
-		}	
+		}
+		
+		System.out.println("예약이 완료되었습니다.\n이용해주셔서 감사합니다.\n");
 
 		for (int i = 0; i < people; i++) {
 			airplaneticketvo = new AirplaneTicketVO();			

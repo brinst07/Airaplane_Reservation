@@ -119,7 +119,11 @@ public class NextController {
             	}
               
             }else{
-               System.out.println("티켓 관리자 관리");
+            	try {
+            		ts.rootticket();
+            	}catch(Exception e) {
+            		System.out.println("저장된 티켓이 없습니다.");
+            	}
             }
             break;
             
@@ -131,13 +135,11 @@ public class NextController {
             }
             break;
             
-         case 4:
-            System.out.println("게시판으로 이동하는 화면입니다.");
+         case 4:            
             bc.start();
             break;
             
-         case 5:
-        	 System.out.println("문의게시판으로 이동하는 화면입니다.");
+         case 5:        	 
         	 qbc.normal_start();
         	 break;
          
