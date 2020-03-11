@@ -55,6 +55,7 @@ public class TicketService {
 
 	public void rootticket() { // 관리자가 회원들의 비행기 티켓 정보를 조회할때 출력
 		cds.Clear();
+		if(airList.size()>0) {
 		for (int i = 0; i < airList.size(); i++) {
 			airList = airplaneticketdao.ReservationUserList();
 			AirplaneTicketVO air = airList.get(i);
@@ -84,5 +85,9 @@ public class TicketService {
 			System.out.println("└───────────────────────────────────────────────────────────────────────────────┘");
 		}
 		cds.pause();
+		}else {
+			System.out.println("저장된 티켓 정보가 존재하지 않습니다.");
+			cds.pause();
+		}
 	}	
 }

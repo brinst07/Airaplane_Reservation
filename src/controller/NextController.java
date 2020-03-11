@@ -57,6 +57,7 @@ public class NextController {
 				cho = Integer.parseInt(sc.nextLine());
 			} catch (Exception e) {
 				System.out.println("다시 입력해주세요");
+				cds.pause();
 				continue;
 			}
 
@@ -79,6 +80,7 @@ public class NextController {
 						ts.airticketList();
 					} catch (Exception e) {
 						System.out.println("예약된 티켓이 없습니다.");
+						cds.pause();
 					}
 
 				} else {
@@ -86,6 +88,7 @@ public class NextController {
 						ts.rootticket();
 					} catch (Exception e) {
 						System.out.println("저장된 티켓이 없습니다.");
+						cds.pause();
 					}
 				}
 				break;
@@ -100,7 +103,7 @@ public class NextController {
 						int cho2 = Integer.parseInt(sc.nextLine());
 						city.insertCity(cho2);
 					} catch (Exception e) {
-
+						
 					}
 				}
 				break;
@@ -114,6 +117,7 @@ public class NextController {
 						city.deleteCity(cho1);
 					} catch (Exception e) {
 						System.out.println("잘못입력하셨습니다.");
+						cds.pause();
 					}
 				}
 				else {
@@ -132,6 +136,7 @@ public class NextController {
 
 			default:
 				System.out.println("잘못 입력하셨습니다.");
+				cds.pause();
 			}
 		}
 	}

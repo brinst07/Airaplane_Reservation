@@ -132,7 +132,7 @@ public class Database {
 		AirportVO airport = new AirportVO();
 		airport.setAirpot_num(1);
 		airport.setCity_num(1);
-		airport.setAirport_name("로스 엔젤로레스 공항");
+		airport.setAirport_name("로스 엔젤레스 공항");
 		tb_airport.add(airport);
 
 		airport = new AirportVO();
