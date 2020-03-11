@@ -21,7 +21,7 @@ public class NextController {
 	CountryService country = CountryService.getInstance();
 	CleardelayService cds = new CleardelayService();
 	ReservationTicketService rt = new ReservationTicketService();
-
+	UserController Usercon = new UserController();
 	void mainmenu() { // 로그인 후 들어오는 메인 화면
 		UserVO user = Session.LoginUser;
 		boolean root = false; // true일 경우 관리자로 로그인 한 것.
@@ -92,7 +92,7 @@ public class NextController {
 
 			case 3:
 				if (!root) {
-					userservice.userpwInfo(); // 회원정보수정
+					Usercon.userpwInfo(); // 회원정보수정
 				} else {
 					country.showcountry();
 					System.out.print("\n나라를 선택해주세요 >> ");
