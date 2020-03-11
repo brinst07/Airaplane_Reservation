@@ -56,6 +56,7 @@ public class NextController {
 			try {
 				cho = Integer.parseInt(sc.nextLine());
 			} catch (Exception e) {
+				System.out.println("다시 입력해주세요");
 				continue;
 			}
 
