@@ -43,6 +43,8 @@ public class ReservationTicketService {
 		int day = Integer.parseInt(stday); // 현재 일
 
 		while (true) {
+			cds.Clear();
+			System.out.println("============비행기 예약============");
 			System.out.print("출발 날짜를 입력해주세요(yyyymmdd) : ");
 			date = sc.nextLine();
 

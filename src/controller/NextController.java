@@ -7,6 +7,7 @@ import service.BoardService;
 import service.CityService;
 import service.CleardelayService;
 import service.CountryService;
+import service.ReservationTicketService;
 import service.TicketService;
 import service.UserService;
 import vo.UserVO;
@@ -19,12 +20,12 @@ public class NextController {
 	CityService city = CityService.getInstance();
 	CountryService country = CountryService.getInstance();
 	CleardelayService cds = new CleardelayService();
+	ReservationTicketService rt = new ReservationTicketService();
 
 	void mainmenu() { // 로그인 후 들어오는 메인 화면
 		UserVO user = Session.LoginUser;
 		boolean root = false; // true일 경우 관리자로 로그인 한 것.
-
-		ReservationTicketController rst = new ReservationTicketController();
+		
 		TicketService ts = new TicketService();
 
 		a: while (true) {	
@@ -64,7 +65,7 @@ public class NextController {
 				break a;
 			case 1:
 				if (!root) {
-					rst.start(); // 비행기 예약화면 이동
+					rt.start(); // 비행기 예약화면 이동
 
 				} else {
 					userservice.userList();
