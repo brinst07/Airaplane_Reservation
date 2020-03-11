@@ -29,78 +29,93 @@ public class UserService {
       return instance;
    }
 
-   // test
-   UserDao userdao = UserDao.getInstance();   
+   //  UserDao 정보 가져옴
+   UserDao userdao = UserDao.getInstance();  
+   
    // 회원가입
    public void join() {
       Scanner sc = new Scanner(System.in);
       UserVO user = new UserVO();
-
+      ArrayList<UserVO> usertable = userdao.selectUserList();
       System.out.print("아이디 : ");
       String id = sc.nextLine();
-      System.out.print("비밀번호 : ");
-      String pw = sc.nextLine();
-      System.out.print("이름 : ");
-      String name = sc.nextLine();
 
-      System.out.print("비밀번호 질문 : ");
-      String pwQ = sc.nextLine();
-      System.out.println("----입력 완료 -----");
-      System.out.print("질문에 대한 답 입력\n>> ");
-      String pwA = sc.nextLine();
-      System.out.println("----입력 완료 -----");
+    for(int i=0; i<usertable.size(); i++) {   	 
+    	  if(id.equals(usertable.get(i).getId())) {
+    		  System.out.println("아이디 중복되었습니다.");
+    		  break;
+    	  }else if(i == usertable.size()-1) {
+    		  System.out.print("비밀번호 : ");
+    	      String pw = sc.nextLine();
+    	      System.out.print("이름 : ");
+    	      String name = sc.nextLine();
 
-      System.out.print("핸드폰 번호 입력해주세요 : ");
-      String hp = sc.nextLine();
+    	      System.out.print("비밀번호 질문 : ");
+    	      String pwQ = sc.nextLine();
+    	      System.out.println("----입력 완료 -----");
+    	      System.out.print("질문에 대한 답 입력\n>> ");
+    	      String pwA = sc.nextLine();
+    	      System.out.println("----입력 완료 -----");
 
-      String hpcheck = "(?i)[0-9]{3}[-]{0,1}[0-9]{3,4}[-]{0,1}[0-9]{4}";
-      Pattern p = Pattern.compile(hpcheck);
-      Matcher m = p.matcher(hp);
-      while (true) {
-         if (m.matches() == true) {
-            System.out.println("----입력 완료 -----"); // 핸드폰 번호 입력
+    	      System.out.print("핸드폰 번호 입력해주세요 : ");
+    	      String hp = sc.nextLine();
 
-            break;
-         } else if (m.matches() == false) {
-            System.out.println("잘못 입력하셨습니다");
-            System.out.print("다시 입력해주세요.\n>> ");
-            hp = sc.nextLine();
-            p = Pattern.compile(hpcheck);
-            m = p.matcher(hp);
-         }
+    	      String hpcheck = "(?i)[0-9]{3}[-]{0,1}[0-9]{3,4}[-]{0,1}[0-9]{4}";
+    	      Pattern p = Pattern.compile(hpcheck);
+    	      Matcher m = p.matcher(hp);
+    	      while (true) {
+    	         if (m.matches() == true) {
+    	            System.out.println("----입력 완료 -----"); // 핸드폰 번호 입력
+
+    	            break;
+    	         } else if (m.matches() == false) {
+    	            System.out.println("잘못 입력하셨습니다");
+    	            System.out.print("다시 입력해주세요.\n>> ");
+    	            hp = sc.nextLine();
+    	            p = Pattern.compile(hpcheck);
+    	            m = p.matcher(hp);
+    	         }
+    	      }
+
+    	      System.out.println("결제 할 계좌번호를 입력 해주세요");
+    	      System.out.println("-는 없이 입력해 주세요");
+    	      System.out.print("EX) 국민53820204170480\n>> ");
+    	      String ab = sc.nextLine();
+
+    	      String abcheck = "^[가-힣]+[0-9]{13,15}$";
+    	      Pattern a = Pattern.compile(abcheck);
+    	      Matcher b = a.matcher(ab);
+
+    	      while (true) {
+    	         if (b.matches() == false) {
+    	            System.out.print("계좌번호를 다시 입력해주세요 >> ");
+    	            ab = sc.nextLine();
+    	            a = Pattern.compile(abcheck);
+    	            b = a.matcher(ab);
+    	         } else {
+    	            System.out.println("----입력 완료 -----");
+    	            break;
+    	         }
+    	        
+    	      }
+
+    	      user.setId(id);
+    	      user.setPw(pw);
+    	      user.setName(name);
+    	      user.setPwq(pwQ);
+    	      user.setPwa(pwA);
+    	      user.setHp(hp);
+    	      user.setAb(ab);
+
+    	      userdao.insertUser(user);
+    	      System.out.println("가입해주셔서 감사합니다.");
+    	     break;
+    	  }
       }
-
-      System.out.println("결제 할 계좌번호를 입력 해주세요");
-      System.out.println("-는 없이 입력해 주세요");
-      System.out.print("EX) 국민53820204170480\n>> ");
-      String ab = sc.nextLine();
-
-      String abcheck = "[0-9]{1,10}[0-9]{4}";
-      Pattern a = Pattern.compile(abcheck);
-      Matcher b = a.matcher(ab);
-
-      while (true) {
-         if (b.matches() == false) {
-            System.out.print("계좌번호를 다시 입력해주세요 >> ");
-            ab = sc.nextLine();
-            a = Pattern.compile(abcheck);
-            b = a.matcher(ab);
-         } else {
-            System.out.println("----입력 완료 -----");
-            break;
-         }
-      }
-
-      user.setId(id);
-      user.setPw(pw);
-      user.setName(name);
-      user.setPwq(pwQ);
-      user.setPwa(pwA);
-      user.setHp(hp);
-      user.setAb(ab);
-
-      userdao.insertUser(user);
-      System.out.println("가입해주셔서 감사합니다.");
+    
+  
+      
+      
    }
 
    // 로그인
@@ -157,14 +172,14 @@ public class UserService {
       System.out.print("연락처를 입력해주세요 : ");
       String hp = sc.nextLine();
 
-      Database database = Database.getInstance();
+     
 
       String result_id = null;
 
       while (true) {
 
-         for (int i = 0; i < database.tb_user.size(); i++) {
-            UserVO tb_user = database.tb_user.get(i);
+         for (int i = 0; i < userdao.selectUserList().size(); i++) {
+            UserVO tb_user = userdao.selectUserList().get(i);
             String tb_name = tb_user.getName();
             String tb_hp = tb_user.getHp();
             if (tb_name.equals(name) && tb_hp.equals(hp)) {
@@ -198,7 +213,7 @@ public class UserService {
    }
 
    public void findpw() { // 로그인 실패시 비밀번호 질문 답하기
-      Database database = Database.getInstance();
+  
 
       Scanner sc = new Scanner(System.in);
       System.out.print("아이디를 입력해주세요 : ");
@@ -207,8 +222,8 @@ public class UserService {
       UserVO tb_user = new UserVO();
       String pw_result = null;
       while (true) {
-         for (int i = 0; i < database.tb_user.size(); i++) {
-            tb_user = database.tb_user.get(i);
+         for (int i = 0; i < userdao.selectUserList().size(); i++) {
+            tb_user = userdao.selectUserList().get(i);
             String id_result = tb_user.getId();
 
             if (id_result.equals(id)) {
