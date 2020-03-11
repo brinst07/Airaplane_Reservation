@@ -115,7 +115,11 @@ public class Sitservice {
 
 							temp += (business[i][j] + "  ");
 							sitvo.setSit_number(temp);
-							business[i][j] = " X ";
+							if(i<9) {
+								business[i][j] = "X ";
+							}else {
+								business[i][j] = " X ";
+							}
 
 							break a;
 						}
@@ -157,7 +161,11 @@ public class Sitservice {
 						if (answer.equals(eco[i][j])) {
 							temp += (eco[i][j] + "  ");
 							sitvo.setSit_number(temp);
-							eco[i][j] = " X ";
+							if(i<9) {
+								eco[i][j] = "X ";
+							}else {
+								eco[i][j] = " X ";
+							}
 
 							break a;
 						}
