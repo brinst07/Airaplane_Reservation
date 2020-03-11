@@ -12,22 +12,23 @@ import vo.BoardVO;
 import vo.QboardVO;
 
 public class BoardService {
-	
+
 	Scanner sc = new Scanner(System.in);
 	BoardDao boarddao = BoardDao.getInstance();
 	QboardDao qboarddao = QboardDao.getInstance();
-	
-	//게시판 삽입메소드
+	CleardelayService cds = new CleardelayService();
+
+	// 게시판 삽입메소드
 	public void insert() {
-		System.out.println("제목을 입력해주세요");
+		System.out.print("제목을 입력해주세요\n>> ");
 		String title = sc.nextLine();
-		System.out.println("본문을 입력해주세요");
+		System.out.print("본문을 입력해주세요\n>> ");
 		String text = sc.nextLine();
 		Date d = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String date = sdf.format(d);
 		String userid = Session.LoginUser.getId();
-		
+
 		BoardVO board = new BoardVO();
 		board.setTitle(title);
 		board.setText(text);
@@ -36,58 +37,68 @@ public class BoardService {
 		board.setIndex(Database.index++);
 		boarddao.insertboard(board);
 	}
-	
-	//게시판 조회반복메소드
+
+	// 게시판 조회반복메소드
 	public void show() {
-		System.out.println("--------------------게시판--------------------");
-		for(int i = boarddao.board().size()-1; i>=0; i--) {
+		cds.Clear();
+		System.out.println("---------------------게시판--------------------");
+		System.out.println("  번호\t     제목          \t작성자\t     작성일");
+		System.out.println("----------------------------------------------");
+		for (int i = boarddao.board().size() - 1; i >= 0; i--) {
 			BoardVO board = boarddao.board().get(i);
-			System.out.printf("[%d]\t%s\t%s\t%s\n",board.getIndex(),board.getTitle(),board.getUserid(),board.getDate());
-			System.out.println("-------------------------------------------------");
+			System.out.printf(" [%d]\t%s\t\t%s\t%s\n", board.getIndex(), board.getTitle(), board.getUserid(),
+					board.getDate());
 		}
+
+		System.out.println("\n----------------------------------------------");
 	}
-	
-	//게시판 본문 조회메소드
+
+	// 게시판 본문 조회메소드
 	public void selectshow() {
 		show();
-		System.out.println("조회하고 싶은 게시물의 번호를 입력해주세요");
+		System.out.print("조회하고 싶은 게시물의 번호를 입력해주세요\n>> ");
 		int temp = Integer.parseInt(sc.nextLine());
 		BoardVO board = boarddao.board().get(temp);
+		cds.Clear();
+		System.out.println("---------------------게시판--------------------");
+		System.out.print("제목 : " + board.getTitle() + "\t\t\t작성자 : " + board.getUserid());
+		System.out.println("\n----------------------------------------------");
 		System.out.println(board.getText());
-		System.out.println("---------------------------------------------");
-	
-		}
-	
-	
-	//게시판 수정 메소드
+		System.out.println("----------------------------------------------\n");
+		cds.pause();
+	}
+
+	// 게시판 수정 메소드
 	public void modify() {
 		show();
 		System.out.println("수정하고 싶은 게시물의 번호를 입력해주세요");
 		BoardVO board = boarddao.board().get(Integer.parseInt(sc.nextLine()));
-		System.out.println("수정하고 싶은 부분의 번호를 입력해주세요");
-		System.out.println("[1] 제목");
-		System.out.println("[2] 본문");
+		System.out.print("수정하고 싶은 부분의 번호를 입력해주세요");
+		System.out.print("[1] 제목\t");
+		System.out.print("[2] 본문ln>> ");
 		int temp = Integer.parseInt(sc.nextLine());
-		switch(temp) {
+		switch (temp) {
 		case 1:
-			System.out.println("제목을 입력해주세요");
+			System.out.print("제목을 입력해주세요 >> ");
 			String title = sc.nextLine();
 			board.setTitle(title);
-		
+
 		case 2:
-			System.out.println("본문을 입력해주세요");
+			System.out.print("본문을 입력해주세요 >> ");
 			String text = sc.nextLine();
 			board.setText(text);
 		}
-	
+		System.out.println("수정이 완료되었습니다\n");
+		cds.pause();
 	}
-	
-	//게시판 삭제 메소드
+
+	// 게시판 삭제 메소드
 	public void drop() {
 		show();
-		System.out.println("삭제하고 싶은 게시물의 번호를 입력해주세요");
+		System.out.print("삭제하고 싶은 게시물의 번호를 입력해주세요\n>> ");
 		boarddao.board().remove(Integer.parseInt(sc.nextLine()));
-		System.out.println("삭제되었습니다.");
-		}
-	
+		System.out.println("삭제되었습니다.\n");
+		cds.pause();
+	}
+
 }

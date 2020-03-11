@@ -10,13 +10,13 @@ public class BoardController {
 	public void start() {
 		a: while(true) {
 			board.show();
-			System.out.println("┌───────┐");
-			System.out.println("│① 삽입\t│");
-			System.out.println("│② 조회\t│");
-			System.out.println("│③ 수정\t│");
-			System.out.println("│④ 삭제\t│");
-			System.out.println("│⑤ 나가기\t│");
-			System.out.println("└───────┘");
+			System.out.println("┌───────────────────────────────────────────┐");
+			System.out.print("│ ① 작성\t│");
+			System.out.print(" ② 조회\t│");
+			System.out.print(" ③ 수정\t│");
+			System.out.print(" ④ 삭제\t│");
+			System.out.print(" ⑤ 나가기       │\n");
+			System.out.print("└───────────────────────────────────────────┘\n>> ");
 			
 			int temp = Integer.parseInt(sc.nextLine());
 			
