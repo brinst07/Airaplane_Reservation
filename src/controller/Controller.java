@@ -46,12 +46,12 @@ public class Controller {
 		
 		
 		do {
-			System.out.println("-------------메 뉴-------------");
-			System.out.println("1. 회원가입");
-			System.out.println("2. 로그인");
-			System.out.println("0. 프로그램 종료");
-			System.out.println("--------------------------------");
-			System.out.print("메뉴에 해당하는 번호 입력 >> ");
+			System.out.println("┌───────MENU──────┐");
+			System.out.println("│① 회원가입\t\t\t│");
+			System.out.println("│② 로그인\t\t\t│");
+			System.out.println("│③ 프로그램 종료\t\t│");
+			System.out.println("└───────────────┘");
+			System.out.print("메뉴에 해당하는 번호 입력 ☞ ");
 			
 			try {
 				menu = Integer.parseInt(sc.nextLine());
