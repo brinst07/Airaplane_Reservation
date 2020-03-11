@@ -1,5 +1,7 @@
 package service;
 
+import java.util.Scanner;
+
 public class CleardelayService {
 	
 	public void Clear(){
@@ -14,6 +16,12 @@ public class CleardelayService {
 		} catch (InterruptedException e) {			
 			e.printStackTrace();
 		}
+	}
+	
+	public void pause() {
+		System.out.println("계속하시려면 엔터키를 눌러주세요..");
+		Scanner sc =  new Scanner(System.in);
+		String a = sc.nextLine();
 	}
 
 }

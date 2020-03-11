@@ -22,7 +22,7 @@ private static TimeTableService instance;
 	TimeTableVO timevo = new TimeTableVO();
 	AirportDao airportdao = AirportDao.getInstance();
 	
-	public void showTimeTable(int cho) {	
+	public int showTimeTable(int cho) {	
 		int count = 1;
 		for(int i=0; i<time.TimeTableList().size(); i++) {
 			TimeTableVO extime = time.TimeTableList().get(i);
@@ -31,6 +31,7 @@ private static TimeTableService instance;
 				count++;
 			}
 		}
+		return count;
 	}
 	
 	public String returnstartTime(int num, int cho) {	

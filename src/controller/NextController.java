@@ -41,7 +41,6 @@ public class NextController {
 				System.out.print("[4] 게시판  | ");
 				System.out.println("[5] 문의게시판\t│");
 				System.out.println("│ [0] 로그아웃\t\t\t\t\t\t\t\t\t│");
-
 			} else {				
 				System.out.print("│ [1] 회원목록   │  ");
 				System.out.print("[2] 티켓관리   │  ");

@@ -10,6 +10,7 @@ import data.Database;
 import data.Session;
 import service.AirportService;
 import service.CityService;
+import service.CleardelayService;
 import service.CountryService;
 import service.Sitservice;
 import service.TimeTableService;
@@ -25,8 +26,9 @@ public class ReservationTicketController {
 	TimeTableService time = TimeTableService.getInstance();
 	AirportService airportservice = AirportService.getInstance();
 	AirplaneTicketVO airplaneticketvo = new AirplaneTicketVO();
-	AirplaneTicketDao airplaneticketdao = new AirplaneTicketDao();	
+	AirplaneTicketDao airplaneticketdao = new AirplaneTicketDao();
 	Sitservice sitservice = new Sitservice();
+	CleardelayService cds = new CleardelayService();
 
 	Database database = Database.getInstance();
 
@@ -197,26 +199,42 @@ public class ReservationTicketController {
 			arriveCt = "LONDON";
 		} else if (citychoice + num == 15) {
 			arriveCt = "JEJU";
+		}		
+		
+		int cho = 0;
+		boolean check = false;
+
+		while (true) {
+			System.out.println("[" + date + "]");
+			System.out.print("인천 국제 공항 ---> ");
+			airportservice.showAirport(citychoice + num);
+			int timesum = time.showTimeTable(citychoice + num); // 시간표 출력
+			System.out.println("----------------------------");
+			if(check) System.out.println("[System] 존재하지 않는 시간표 입니다.");
+			check = false;
+			System.out.print("원하는 시간의 번호를 선택해주세요 >> ");			
+			cho = Integer.parseInt(sc.nextLine());
+			
+			if (timesum <= cho || cho<1) {
+				cds.Clear();
+				check = true;
+				continue;
+			}
+			else {
+				break;
+			}
+			
 		}
-
-		System.out.println("[" + date + "]");
-		System.out.print("인천 국제 공항 ---> ");
-		airportservice.showAirport(citychoice + num);
-
-		time.showTimeTable(citychoice + num); // 시간표 출력
-		System.out.println("----------------------------");
-		System.out.print("원하는 시간의 번호를 선택해주세요 >> ");
-		int cho = Integer.parseInt(sc.nextLine());
 
 		String startdate = time.returnstartTime(citychoice + num, cho); // 사용자가 선택한 출발 시간을 저장
 
-		String [] sit = new String[10];
+		String[] sit = new String[10];
 		String classsit = null;
 
 		int people = sitservice.Human(); // 인원수 입력
 		int sitclass = sitservice.classcho(); // 클래스 저장
-		
-		for (int i = 0; i < people; i++) { // 인원수 입력만큼 반복			
+
+		for (int i = 0; i < people; i++) { // 인원수 입력만큼 반복
 			sit[i] = sitservice.start(sitclass);
 
 			if (sitclass == 1) {
@@ -227,11 +245,11 @@ public class ReservationTicketController {
 				classsit = "Economy";
 			}
 		}
-		
+
 		System.out.println("예약이 완료되었습니다.\n이용해주셔서 감사합니다.\n");
 
 		for (int i = 0; i < people; i++) {
-			airplaneticketvo = new AirplaneTicketVO();			
+			airplaneticketvo = new AirplaneTicketVO();
 			airplaneticketvo.setUserid(user.getId()); // 유저 아이디 저장
 			airplaneticketvo.setUsername(user.getName()); // 유저 이름 저장
 			airplaneticketvo.setStartAp("SEOUL/INCHEON"); // 서울 인천 고정
@@ -241,10 +259,11 @@ public class ReservationTicketController {
 			airplaneticketvo.setArriveAp(arriveCt); // 도착할 도시 이름 티켓에 저장
 			airplaneticketvo.setStarttime(startdate); // 받아온 시간을 티켓에 저장
 			airplaneticketvo.setSitNum(sit[i]); // 시트번호 저장
-			airplaneticketvo.setSitclass(classsit); // 클래스 저장			
+			airplaneticketvo.setSitclass(classsit); // 클래스 저장
 
 			airplaneticketdao.insertReservation(airplaneticketvo);
 			database.tb_airplane.add(airplaneticketvo); // 티켓에 add
 		}
+		cds.pause();
 	}
 }

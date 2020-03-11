@@ -12,8 +12,10 @@ public class TicketService {
 	AirplaneTicketDao airplaneticketdao = AirplaneTicketDao.getInstance();
 	UserVO user = Session.LoginUser;
 	ArrayList<AirplaneTicketVO> airList = airplaneticketdao.ReservationUserList();
+	CleardelayService cds = new CleardelayService();
 
 	public void airticketList() { // 비행기 티켓 정보를 조회할때 출력
+		cds.Clear();
 		for (int i = 0; i < airList.size(); i++) {
 			airList = airplaneticketdao.ReservationUserList();
 			AirplaneTicketVO air = airList.get(i);
@@ -43,9 +45,11 @@ public class TicketService {
 				System.out.println("└───────────────────────────────────────────────────────────────────────────────┘");
 			}
 		}
+		cds.pause();
 	}
 
 	public void rootticket() { // 관리자가 회원들의 비행기 티켓 정보를 조회할때 출력
+		cds.Clear();
 		for (int i = 0; i < airList.size(); i++) {
 			airList = airplaneticketdao.ReservationUserList();
 			AirplaneTicketVO air = airList.get(i);
@@ -74,5 +78,6 @@ public class TicketService {
 			System.out.println();
 			System.out.println("└───────────────────────────────────────────────────────────────────────────────┘");
 		}
-	}
+		cds.pause();
+	}	
 }

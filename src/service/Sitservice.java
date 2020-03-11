@@ -20,22 +20,30 @@ public class Sitservice {
 			System.out.println("좌석 클래스를 선택해주세요");
 			System.out.print(">> ");
 			sit = Integer.parseInt(sc.nextLine());
-			
-			if(sit>3 || sit<1) {
+
+			if (sit > 3 || sit < 1) {
 				continue;
-			}
-			else {
+			} else {
 				break;
 			}
 		}
 
 		return sit;
 	}
-	
+
 	public int Human() {
-		System.out.print("인원수를 입력해주세요\n>> ");
-		int people = Integer.parseInt(sc.nextLine());
-		
+		int people;
+		while (true) {
+			System.out.print("인원수를 입력해주세요\n>> ");
+			people = Integer.parseInt(sc.nextLine());
+
+			if (people >= 10) {
+				System.out.println("최대 10명까지 가능합니다.");
+				continue;
+			} else {
+				break;
+			}
+		}
 		return people;
 	}
 
@@ -51,7 +59,7 @@ public class Sitservice {
 
 		// 좌석을 입력받는 메소드이다.
 
-		SitVO sitvo = new SitVO();		
+		SitVO sitvo = new SitVO();
 
 		int people = 1;
 
@@ -68,8 +76,8 @@ public class Sitservice {
 			// 좌석표를 보여주는 반복문
 			for (int q = 0; q < people; q++) {
 				for (int i = 0; i < first.length; i++) {
-					for (int j = 0; j < first[i].length; j++) {						
-						System.out.printf("%s\t", first[i][j]);						
+					for (int j = 0; j < first[i].length; j++) {
+						System.out.printf("%s\t", first[i][j]);
 					}
 					System.out.println();
 				}
@@ -88,7 +96,7 @@ public class Sitservice {
 						}
 					}
 				}
-			}			
+			}
 			break;
 
 		case 2:
@@ -97,9 +105,9 @@ public class Sitservice {
 			for (int q = 0; q < people; q++) {
 				for (int i = 0; i < business.length; i++) {
 					for (int j = 0; j < business[i].length; j++) {
-						if(i < 9) {
+						if (i < 9) {
 							System.out.printf(" %s\t", business[i][j]);
-						}else {
+						} else {
 							System.out.printf("%s\t", business[i][j]);
 						}
 					}
@@ -115,9 +123,9 @@ public class Sitservice {
 
 							temp += (business[i][j] + "  ");
 							sitvo.setSit_number(temp);
-							if(i<9) {
+							if (i < 9) {
 								business[i][j] = "X ";
-							}else {
+							} else {
 								business[i][j] = " X ";
 							}
 
@@ -127,7 +135,7 @@ public class Sitservice {
 
 				}
 
-			}			
+			}
 			break;
 		case 3:
 			temp = "";
@@ -136,17 +144,17 @@ public class Sitservice {
 				for (int i = 0; i < eco.length; i++) {
 					for (int j = 0; j < eco[i].length; j++) {
 						if (j % 3 == 2) {
-							if(i < 9) {
+							if (i < 9) {
 								System.out.printf(" %s\t", eco[i][j]);
-							}else {
+							} else {
 								System.out.printf("%s\t", eco[i][j]);
 							}
 						} else {
-							if(i < 9) {
+							if (i < 9) {
 								System.out.printf(" %s ", eco[i][j]);
-							}else {
+							} else {
 								System.out.printf("%s ", eco[i][j]);
-							}							
+							}
 						}
 
 					}
@@ -161,9 +169,9 @@ public class Sitservice {
 						if (answer.equals(eco[i][j])) {
 							temp += (eco[i][j] + "  ");
 							sitvo.setSit_number(temp);
-							if(i<9) {
+							if (i < 9) {
 								eco[i][j] = "X ";
-							}else {
+							} else {
 								eco[i][j] = " X ";
 							}
 
@@ -171,9 +179,9 @@ public class Sitservice {
 						}
 					}
 				}
-			}			
+			}
 			break;
-		}		
+		}
 		return sitvo.getSit_number();
 	}
 
