@@ -15,6 +15,7 @@ import service.Sitservice;
 import service.TimeTableService;
 import service.UserService;
 import vo.AirplaneTicketVO;
+import vo.AirplaneVO;
 import vo.UserVO;
 
 public class ReservationTicketController {
@@ -22,9 +23,9 @@ public class ReservationTicketController {
 	CityService city = CityService.getInstance();
 	CountryService country = CountryService.getInstance();
 	TimeTableService time = TimeTableService.getInstance();
-	AirportService airport = AirportService.getInstance();
-	AirplaneTicketVO ap = new AirplaneTicketVO();
-	AirplaneTicketDao airplaneticketdao = new AirplaneTicketDao();
+	AirportService airportservice = AirportService.getInstance();
+	AirplaneTicketVO airplaneticketvo = new AirplaneTicketVO();
+	AirplaneTicketDao airplaneticketdao = new AirplaneTicketDao();	
 	Sitservice sitservice = new Sitservice();
 
 	Database database = Database.getInstance();
@@ -200,7 +201,7 @@ public class ReservationTicketController {
 
 		System.out.println("[" + date + "]");
 		System.out.print("인천 국제 공항 ---> ");
-		airport.showAirport(citychoice + num);
+		airportservice.showAirport(citychoice + num);
 
 		time.showTimeTable(citychoice + num); // 시간표 출력
 		System.out.println("----------------------------");
@@ -228,19 +229,20 @@ public class ReservationTicketController {
 		}	
 
 		for (int i = 0; i < people; i++) {
-			ap.setUserid(user.getId()); // 유저 아이디 저장
-			ap.setUsername(user.getName()); // 유저 이름 저장
-			ap.setStartAp("SEOUL/INCHEON"); // 서울 인천 고정
-			ap.setAirCompany("KOREA AIR"); // 코리아 항공 고정
-			ap.setGate(gate); // 티켓에 게이트 번호 저장
-			ap.setStartdate(date); // 티켓에 출발날짜 저장
-			ap.setArriveAp(arriveCt); // 도착할 도시 이름 티켓에 저장
-			ap.setStarttime(startdate); // 받아온 시간을 티켓에 저장
-			ap.setSitNum(sit[i]); // 시트번호 저장
-			ap.setSitclass(classsit); // 클래스 저장
+			airplaneticketvo = new AirplaneTicketVO();			
+			airplaneticketvo.setUserid(user.getId()); // 유저 아이디 저장
+			airplaneticketvo.setUsername(user.getName()); // 유저 이름 저장
+			airplaneticketvo.setStartAp("SEOUL/INCHEON"); // 서울 인천 고정
+			airplaneticketvo.setAirCompany("KOREA AIR"); // 코리아 항공 고정
+			airplaneticketvo.setGate(gate); // 티켓에 게이트 번호 저장
+			airplaneticketvo.setStartdate(date); // 티켓에 출발날짜 저장
+			airplaneticketvo.setArriveAp(arriveCt); // 도착할 도시 이름 티켓에 저장
+			airplaneticketvo.setStarttime(startdate); // 받아온 시간을 티켓에 저장
+			airplaneticketvo.setSitNum(sit[i]); // 시트번호 저장
+			airplaneticketvo.setSitclass(classsit); // 클래스 저장			
 
-			airplaneticketdao.insertReservation(ap);
-			database.tb_airplane.add(ap); // 티켓에 add
+			airplaneticketdao.insertReservation(airplaneticketvo);
+			database.tb_airplane.add(airplaneticketvo); // 티켓에 add
 		}
 	}
 }
