@@ -16,10 +16,12 @@ public class TicketService {
 
 	public void airticketList() { // 비행기 티켓 정보를 조회할때 출력
 		cds.Clear();
+		int count = 0;
 		for (int i = 0; i < airList.size(); i++) {
 			airList = airplaneticketdao.ReservationUserList();
 			AirplaneTicketVO air = airList.get(i);
 			if (user.getId().equals(air.getUserid())) {
+				count++;
 				System.out.println();
 				System.out.println("┌───────────────────────────────────────────────────────────────────────────────┐");
 				System.out.println("│   " + air.getAirCompany() + "\t▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶▶ \t\t\t\t\t\t│");
@@ -44,6 +46,9 @@ public class TicketService {
 				System.out.println();
 				System.out.println("└───────────────────────────────────────────────────────────────────────────────┘");
 			}
+		}
+		if(count==0) {
+			System.out.println("조회된 티켓이 없습니다.\n");
 		}
 		cds.pause();
 	}

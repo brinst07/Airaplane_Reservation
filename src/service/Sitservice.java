@@ -36,8 +36,12 @@ public class Sitservice {
 		while (true) {
 			System.out.print("인원수를 입력해주세요\n>> ");
 			people = Integer.parseInt(sc.nextLine());
+			if(people < 1) {
+				System.out.println("최소 1명 이상은 예약하셔야합니다.");
+				continue;
+			}
 
-			if (people >= 10) {
+			if (people > 10) {
 				System.out.println("최대 10명까지 가능합니다.");
 				continue;
 			} else {

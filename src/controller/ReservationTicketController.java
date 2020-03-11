@@ -157,7 +157,7 @@ public class ReservationTicketController {
 		} else {
 			while (true) {
 				city.showCity(countrychoice);
-				System.out.print("\n도시를 선택해주세요 >> ");
+				System.out.print("\n\n도시를 선택해주세요 >> ");
 				citychoice = Integer.parseInt(sc.nextLine());
 				if (citychoice > count) {
 					continue;
@@ -199,8 +199,8 @@ public class ReservationTicketController {
 			arriveCt = "LONDON";
 		} else if (citychoice + num == 15) {
 			arriveCt = "JEJU";
-		}		
-		
+		}
+
 		int cho = 0;
 		boolean check = false;
 
@@ -210,31 +210,37 @@ public class ReservationTicketController {
 			airportservice.showAirport(citychoice + num);
 			int timesum = time.showTimeTable(citychoice + num); // 시간표 출력
 			System.out.println("----------------------------");
-			if(check) System.out.println("[System] 존재하지 않는 시간표 입니다.");
+			if (check)
+				System.out.println("[System] 존재하지 않는 시간표 입니다.");
 			check = false;
-			System.out.print("원하는 시간의 번호를 선택해주세요 >> ");			
+			System.out.print("원하는 시간의 번호를 선택해주세요 >> ");
 			cho = Integer.parseInt(sc.nextLine());
-			
-			if (timesum <= cho || cho<1) {
+
+			if (timesum <= cho || cho < 1) {
 				cds.Clear();
 				check = true;
 				continue;
-			}
-			else {
+			} else {
 				break;
 			}
-			
 		}
 
 		String startdate = time.returnstartTime(citychoice + num, cho); // 사용자가 선택한 출발 시간을 저장
+
+		cds.Clear();
+		System.out.println("[좌석 및 인원 선택]");
+		System.out.println("-------------------------------");
 
 		String[] sit = new String[10];
 		String classsit = null;
 
 		int people = sitservice.Human(); // 인원수 입력
+		cds.Clear();
 		int sitclass = sitservice.classcho(); // 클래스 저장
+		cds.Clear();
 
 		for (int i = 0; i < people; i++) { // 인원수 입력만큼 반복
+			cds.Clear();
 			sit[i] = sitservice.start(sitclass);
 
 			if (sitclass == 1) {
@@ -245,8 +251,37 @@ public class ReservationTicketController {
 				classsit = "Economy";
 			}
 		}
+		boolean check2 = false;
+		while (true) {			
+			cds.Clear();
+			System.out.println("[선택 내역]");
+			System.out.println("날짜 및 시간 : [" + date + " " + startdate + "]");
+			System.out.print("행선지 : 인천 국제 공항 ---> ");
+			airportservice.showAirport(citychoice + num);
+			System.out.println("선택 인원 : " + people + "명");
+			System.out.print("예약 좌석 : " + "[" + classsit + "] ");
+			for (int i = 0; i < people; i++) {
+				System.out.print(sit[i]);
+			}
+			System.out.println("\n-------------------------------");
+			if(check2) {
+				System.out.println("[System]잘못 입력하셨습니다.");
+			}
+			System.out.print("이대로 예약 하시겠습니까? (y/n)\n>> ");
+			String reser = sc.nextLine();
 
-		System.out.println("예약이 완료되었습니다.\n이용해주셔서 감사합니다.\n");
+			if (reser.equals("y")) {
+				System.out.println("예약이 완료되었습니다.\n이용해주셔서 감사합니다.\n");				
+				break;
+			} else if (reser.equals("n")) {
+				System.out.println("예약이 취소되었습니다.");	
+				cds.pause();
+				return;
+			} else {
+				check2 = true;
+				continue;
+			}
+		}
 
 		for (int i = 0; i < people; i++) {
 			airplaneticketvo = new AirplaneTicketVO();
