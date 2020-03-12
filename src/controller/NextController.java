@@ -2,6 +2,7 @@ package controller;
 
 import java.util.Scanner;
 
+import dao.CountryDao;
 import data.Session;
 import service.BoardService;
 import service.CityService;
@@ -22,6 +23,7 @@ public class NextController {
 	CleardelayService cds = new CleardelayService();
 	ReservationTicketService rt = new ReservationTicketService();
 	UserController Usercon = new UserController();
+	CountryDao country1 = CountryDao.getInstance(); 
 
 	void mainmenu() { // 로그인 후 들어오는 메인 화면
 		UserVO user = Session.LoginUser;
@@ -103,7 +105,12 @@ public class NextController {
 					System.out.print("\n나라를 선택해주세요 >> ");
 					try {
 						int cho2 = Integer.parseInt(sc.nextLine());
-						city.insertCity(cho2);
+						if(cho2>country1.showcountryList().size()-1) {
+							System.out.println("잘못입력하셨습니다.");
+							cds.pause();
+						}else {
+							city.insertCity(cho2);
+						}
 					} catch (Exception e) {
 
 					}
@@ -116,7 +123,12 @@ public class NextController {
 					System.out.print("\n나라를 선택해주세요 >> ");
 					try {
 						int cho1 = Integer.parseInt(sc.nextLine());
-						city.deleteCity(cho1);
+						if(cho1>country1.showcountryList().size()-1) {
+							System.out.println("잘못입력하셨습니다.");
+							cds.pause();
+						}else {
+							city.deleteCity(cho1);
+						}
 					} catch (Exception e) {
 						System.out.println("잘못입력하셨습니다.");
 						cds.pause();
