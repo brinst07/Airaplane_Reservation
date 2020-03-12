@@ -22,8 +22,17 @@ public class QboardController {
 			System.out.println("│④ 삭제\t│");
 			System.out.println("│⑤ 나가기\t│");
 			System.out.println("└───────┘");
-
-			int temp = Integer.parseInt(sc.nextLine());
+			System.out.print("메뉴에 해당하는 번호 입력 ☞ ");
+			
+			int temp;
+			try {
+				temp = Integer.parseInt(sc.nextLine());
+			} catch (Exception e) {
+				System.out.println("※[SYSTEM] : 잘못입력하셨습니다.");
+				cds.pause();
+				return;
+			}
+			
 
 			switch (temp) {
 			case 1:

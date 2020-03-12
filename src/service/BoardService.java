@@ -64,7 +64,15 @@ public class BoardService {
 			show();
 			System.out.print("조회하고 싶은 게시물의 번호를 입력해주세요\n>> ");
 			int temp = Integer.parseInt(sc.nextLine());
-			BoardVO board = boarddao.board().get(temp);
+			BoardVO board;
+			try {
+				board = boarddao.board().get(temp);
+			} catch (Exception e) {
+				System.out.println("선택하신 게시물이 존재하지 않습니다.");
+				cds.pause();
+				return;
+			}
+			
 			cds.Clear();
 			System.out.println("---------------------게시판--------------------");
 			System.out.print("제목 : " + board.getTitle() + "\t\t\t작성자 : " + board.getUserid());

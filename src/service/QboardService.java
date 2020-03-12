@@ -62,12 +62,16 @@ public class QboardService {
 		show();
 		System.out.print("조회하고 싶은 게시물의 번호를 입력해주세요\n>> ");
 		int temp = Integer.parseInt(sc.nextLine());
-		if (temp > qboarddao.qboard().size() - 1) {
-			System.out.println("※[SYSTEM] : 선택하신 게시물이 존재하지 않습니다.");
-			cds.pause();
-		} else {
-			QboardVO board = qboarddao.qboard().get(temp);
-			cds.Clear();
+			QboardVO board;
+			try {
+				board= qboarddao.qboard().get(temp);
+			} catch (Exception e) {
+				System.out.println("선택하신 게시물이 존재하지 않습니다.");
+				cds.Clear();
+				return;
+			}
+		
+			
 			System.out.println("---------------------본문---------------------");
 			System.out.println("제목 : " + board.getTitle() + "\t\t\t작성자 : admin");
 			System.out.println("---------------------------------------------");
@@ -124,7 +128,7 @@ public class QboardService {
 				}
 			}
 		}
-	}
+	
 
 	// 게시판 조회, 답글 메소드
 	public void admin_selectshow() {
@@ -153,8 +157,16 @@ public class QboardService {
 			if (board.getUseridQ() != null) {
 				System.out.println("답변을 작성하시겠습니까?");
 				System.out.print("[1] YES\t[2] NO\n>> ");
-
-				int temp1 = Integer.parseInt(sc.nextLine());
+				
+				int temp1;
+				try {
+					temp1 = Integer.parseInt(sc.nextLine());
+				} catch (Exception e) {
+					System.out.println("※[SYSTEM] : 잘못 입력하셨습니다.");
+					cds.pause();
+					return;
+				}
+				 
 
 				switch (temp1) {
 				case 1:
@@ -176,7 +188,16 @@ public class QboardService {
 	public void modify() {
 		show();
 		System.out.print("수정하고 싶은 게시물의 번호를 입력해주세요\n>> ");
-		QboardVO board = qboarddao.qboard().get(Integer.parseInt(sc.nextLine()));
+		
+		QboardVO board;
+		try {
+			board = qboarddao.qboard().get(Integer.parseInt(sc.nextLine()));
+		} catch (Exception e) {
+			System.out.println("※[SYSTEM] : 잘못 입력하셨습니다.");
+			cds.pause();
+			return;
+		}
+		
 		cds.Clear();
 		System.out.println("수정하고 싶은 부분의 번호를 입력해주세요");
 		System.out.print("[1] 제목 [2] 본문\n>> ");
