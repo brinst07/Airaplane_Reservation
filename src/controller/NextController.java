@@ -43,7 +43,7 @@ public class NextController {
 				System.out.print("[2] 예약티켓관리  | ");
 				System.out.print("[3] 회원정보수정  | ");
 				System.out.print("[4] 게시판  | ");
-				System.out.println("[5] 문의게시판\t\t│");
+				System.out.println("[5] 문의게시판\t│");
 				System.out.println("│ [0] 로그아웃\t\t\t\t\t\t\t\t\t│");
 			} else {
 				System.out.print("│ [1] 회원목록   │  ");
