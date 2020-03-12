@@ -164,7 +164,7 @@ public class Sitservice {
 		}
 	}
 
-	public String start1(int sitnum) {
+	public String start1(int sitnum, boolean error) {
 		String temp = "";
 		SitVO sitvo = new SitVO();
 		int sit = sitnum;
@@ -182,6 +182,9 @@ public class Sitservice {
 				}
 				System.out.println("\n\n\n");
 			}
+			System.out.println("-------------------------------------------");
+			if(error)
+				System.out.println("[System] 선택할 수 없는 좌석입니다.");
 
 			System.out.print("원하시는 좌석을 입력해주세요\n>> ");
 			String answer = sc.nextLine();
@@ -201,12 +204,9 @@ public class Sitservice {
 							
 							break a;
 						}
-					}
-					
-					
+					}					
 				}
 			}
-
 			break;
 
 		case 2:
@@ -222,6 +222,9 @@ public class Sitservice {
 				}
 				System.out.println("\n\n");
 			}
+			System.out.println("-------------------------------------------");
+			if(error)
+				System.out.println("[System] 선택할 수 없는 좌석입니다.");
 
 			System.out.print("원하시는 좌석을 입력해주세요\n>> ");
 			String answer2 = sc.nextLine();
@@ -262,10 +265,12 @@ public class Sitservice {
 							System.out.printf("%s ", eco[i][j]);
 						}
 					}
-
 				}
 				System.out.println();
 			}
+			System.out.println("-------------------------------------------");
+			if(error)
+				System.out.println("[System] 선택할 수 없는 좌석입니다.");
 
 			System.out.print("원하시는 좌석을 입력해주세요\n>> ");
 			String answer3 = sc.nextLine();
@@ -285,13 +290,8 @@ public class Sitservice {
 					}
 				}
 			}
-
 			break;
 		}
 		return temp;
 	}
-	
-
-
-
 }

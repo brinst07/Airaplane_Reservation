@@ -306,13 +306,17 @@ public class ReservationTicketService {
       sitservice.pomat();
       sitservice.getticket();
       sitservice.userchoi(date, starttime, classsit);
+      boolean error = false;
       
       for (int i = 0; i < people; i++) { // 인원수 입력만큼 반복         
          cds.Clear();     
          
-         sit[i] = sitservice.start1(sitclass);
+         sit[i] = sitservice.start1(sitclass,error);
          if(sit[i].equals("")) {
         	 i -= 1;
+        	 error = true;
+         }else {
+        	 error = false;
          }
       }   
 
