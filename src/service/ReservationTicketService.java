@@ -53,6 +53,11 @@ public class ReservationTicketService {
 			System.out.print("조회하실 月을 입력해주세요 >> ");
 			try {
 				m = Integer.parseInt(sc.nextLine());
+				if(mon>m) {
+					System.out.println("현재 날짜보다 이전 날짜는 입력하실 수 없습니다.");
+					cds.pause();
+					continue;
+				}
 			} catch (Exception e) {
 				continue;
 			}
@@ -177,10 +182,12 @@ public class ReservationTicketService {
 			break;
 		}
 
+	
 		int count = city.countCity(countrychoice); // 나라에 속한 도시의 갯수 세기. 1개일 경우 도시 선택 화면을 건너뜀
 
 		int citychoice = 0;// 카운트가 1일 경우 실행
-
+		
+		
 		String countr = country.getcountry(countrychoice);
 
 		if (count == 1) { // 나라에 속한 도시의 갯수가 1개일 경우 실행
@@ -212,7 +219,7 @@ public class ReservationTicketService {
 				}
 			}
 		}
-
+		
 		String arriveCt = "";// 도착할 도시 저장할 String
 		if (citychoice + num == 1) {
 			arriveCt = "L.A.";
