@@ -15,13 +15,14 @@ public class UserController {
 
 		while (true) {
 			Scanner s = new Scanner(System.in);
-
-			System.out.println("1. 비밀번호 수정");
-			System.out.println("2. 비밀번호 찾기 질문 수정");
-			System.out.println("3. 연락처 수정");
-			System.out.println("4. 계좌번호 수정");
-			System.out.println("5. 현재 회원 목록 ");
-			System.out.print("0. 이전화면 가기");
+			System.out.println("┌───────────────────────────────────────────────────────────────────────────────┐");
+			System.out.print("│ ①비밀번호 수정 ");
+			System.out.print("②비밀번호 찾기 질문 수정 ");
+			System.out.print("③연락처 수정 ");
+			System.out.print("④계좌번호 수정 ");
+			System.out.print("⑤현재 회원 목록 ");
+			System.out.println("[0]이전화면 가기\t│");
+			System.out.print("└───────────────────────────────────────────────────────────────────────────────┘");
 			String voice = s.nextLine();
 
 			if (voice.equals("1")) {
