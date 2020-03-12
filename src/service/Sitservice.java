@@ -198,8 +198,7 @@ public class Sitservice {
 					}else {
 						if(i==first.length-1&&j==first[0].length-1) {
 							System.out.println("잘못입력하셨습니다.");
-							boolean check = false;
-							check(check);
+							
 							break a;
 						}
 					}
@@ -292,11 +291,7 @@ public class Sitservice {
 		return temp;
 	}
 	
-	public static boolean check(boolean check) {
-		
-		
-		return check;
-	}
+
 
 
 }

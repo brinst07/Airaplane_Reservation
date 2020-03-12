@@ -309,8 +309,11 @@ public class ReservationTicketService {
       
       for (int i = 0; i < people; i++) { // 인원수 입력만큼 반복         
          cds.Clear();     
-
+         
          sit[i] = sitservice.start1(sitclass);
+         if(sit[i].equals("")) {
+        	 i -= 1;
+         }
       }   
 
       boolean check2 = false;
