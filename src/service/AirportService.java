@@ -1,12 +1,16 @@
 package service;
 
+import dao.AirplaneDao;
 import dao.AirportDao;
+import vo.AirplaneVO;
 import vo.AirportVO;
-import vo.TimeTableVO;
 
 public class AirportService {
 
 	private static AirportService instance;
+	
+	AirplaneDao airplanedao = new AirplaneDao();
+	AirplaneVO airplanevo = new AirplaneVO();
 
 	private AirportService() {
 	}
@@ -28,6 +32,32 @@ public class AirportService {
 				System.out.println(exairport.getAirport_name());
 			}
 		}
+	}
+	
+	String [] date = new String[100];
+	String [] time = new String[100];	
+	int [] gate = new int[100];
+	
+	public void getticket() {
+		for (int i = 0; i < airplanedao.infoList().size(); i++) {
+			AirplaneVO exairplane = airplanedao.infoList().get(i);
+			date[i] = exairplane.getDate();
+			time[i] = exairplane.getTime();	
+			gate[i] = exairplane.getGate();
+		}
+	}
+	
+	public int gate(String userdate, String usertime) {
+		for(int i = 0 ; i < airplanedao.infoList().size(); i++) {
+			AirplaneVO exairplane = airplanedao.infoList().get(i);
+			if(date[i].equals(userdate)) {				
+				if(time[i].equals(usertime)) {					
+					return gate[i];
+				}				
+			}
+		}
+		return 0;
+					
 	}
 
 }

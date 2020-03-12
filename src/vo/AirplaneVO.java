@@ -6,6 +6,15 @@ public class AirplaneVO {
 	String time;
 	String sitclass;
 	String sitnum;
+	int Gate;
+	
+	public int getGate() {
+		return Gate;
+	}
+
+	public void setGate(int gate) {
+		this.Gate = gate;
+	}
 
 	public String getDate() {
 		return date;

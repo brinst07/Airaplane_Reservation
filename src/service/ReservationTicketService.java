@@ -32,8 +32,7 @@ public class ReservationTicketService {
    public void start() {
       UserVO user = Session.LoginUser; // 로그인 된 유저정보 확인
       Scanner sc = new Scanner(System.in);
-
-      int gate = (int) (Math.random() * 20) + 1; // 게이트 저장
+      
       String date = ""; // 출발날짜 지정
 
       Date today = new Date();
@@ -280,6 +279,16 @@ public class ReservationTicketService {
       }
 
       String starttime = time.returnstartTime(citychoice + num, cho); // 사용자가 선택한 출발 시간을 저장
+      
+      airportservice.getticket();
+      int gatecheck = airportservice.gate(date, starttime);
+      int gate = 0;
+      
+      if(gatecheck == 0) {
+    	  gate = (int) (Math.random() * 20) + 1; // 게이트 저장
+      }else {
+    	  gate = gatecheck;
+      }
 
       cds.Clear();
       System.out.println("선택 날짜 : " + date);
@@ -371,6 +380,7 @@ public class ReservationTicketService {
          airplanevo.setTime(starttime);
          airplanevo.setSitnum(sit[i]);
          airplanevo.setSitclass(classsit);
+         airplanevo.setGate(gate);
          
          airplanedao.insertinfor(airplanevo);         
          airplaneticketdao.insertReservation(airplaneticketvo); // 티켓에 add
