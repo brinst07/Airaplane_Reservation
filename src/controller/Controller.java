@@ -8,9 +8,7 @@ import service.LogoService;
 import service.MenuService;
 import service.UserService;
 
-public class Controller {
-
-	
+public class Controller {	
 	public static void main(String[] args) {
 		/*
 		 * 조 소개 > 주제 소개 > 주제 선정 배경 > 프로그램 구조 > 시연 발표자 1명, ppt 및 시연 1명
@@ -24,17 +22,16 @@ public class Controller {
 		 * DB저장 DB조회 ->다오
 		 */
 		
-		LogoService ls = new LogoService();
-		ls.logo();
+		LogoService ls1 = new LogoService();
+		ls1.logo();
 		new Controller().start();
 	}
-
+	LogoService ls = new LogoService();
 	UserService userservice = UserService.getInstance();
 	BoardController board = new BoardController();
 	QboardController qboard = new QboardController();
 	NextController nc = new NextController();
-	CleardelayService cds = new CleardelayService();
-	MenuService ms = new MenuService();
+	CleardelayService cds = new CleardelayService();	
 
 	public void start() {
 		Scanner sc = new Scanner(System.in);
@@ -42,7 +39,7 @@ public class Controller {
 
 		do {
 			cds.Clear();
-			ms.logo();
+			ls.menulogo();
 			System.out.print(">> ");
 
 			try {
