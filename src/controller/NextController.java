@@ -27,7 +27,7 @@ public class NextController {
 
 	void mainmenu() { // 로그인 후 들어오는 메인 화면
 		UserVO user = Session.LoginUser;
-		boolean root = false; // true일 경우 관리자로 로그인 한 것.
+		boolean root = false; // true일 경우 관리자로 로그인 한 것
 
 		TicketService ts = new TicketService();
 
