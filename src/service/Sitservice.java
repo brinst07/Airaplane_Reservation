@@ -97,7 +97,12 @@ public class Sitservice {
 			System.out.println("[3] Economy Class");
 			System.out.println("좌석 클래스를 선택해주세요");
 			System.out.print(">> ");
-			sit = Integer.parseInt(sc.nextLine());
+			try {
+				sit = Integer.parseInt(sc.nextLine());
+			}catch(Exception e) {
+				cds.Clear();
+				continue;				
+			}
 
 			if (sit > 3 || sit < 1) {
 				continue;
@@ -112,7 +117,12 @@ public class Sitservice {
 		int people;
 		while (true) {
 			System.out.print("인원수를 입력해주세요\n>> ");
-			people = Integer.parseInt(sc.nextLine());
+			try {
+				people = Integer.parseInt(sc.nextLine());
+			}catch(Exception e) {
+				cds.Clear();
+				continue;
+			}
 			if (people < 1) {
 				System.out.println("최소 1명 이상은 예약하셔야합니다.");
 				continue;
