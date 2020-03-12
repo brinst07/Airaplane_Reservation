@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import vo.AirplaneTicketVO;
+import vo.AirplaneVO;
 import vo.AirportVO;
 import vo.BoardVO;
 import vo.CityVO;
@@ -117,10 +118,7 @@ public class Database {
 	}
 
 	// date 테이블
-	public ArrayList<DateVO> tb_date = new ArrayList<>();
-
-	// 비행기 테이블
-	public ArrayList<AirplaneTicketVO> tb_airplane = new ArrayList<>();
+	public ArrayList<DateVO> tb_date = new ArrayList<>();	
 
 	// 공항 테이블
 	public ArrayList<AirportVO> tb_airport = new ArrayList<>();
@@ -374,11 +372,12 @@ public class Database {
 		country.setCount_time("0");
 		tb_country.add(country);
 	}
-
+	
+	// 티켓 정보 저장
 	public ArrayList<AirplaneTicketVO> tb_airplaneticket = new ArrayList<>();
-	{ // 티켓 정보 저장
-
-	}
+	
+	// 비행기 테이블
+	public ArrayList<AirplaneVO> tb_airplane = new ArrayList<>();
 
 	public ArrayList<TimeTableVO> tb_timetable = new ArrayList<>();
 	{ // 시간표 정보 저장

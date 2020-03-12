@@ -21,6 +21,10 @@ public class CalendarService {
 
 		int month[] = { 31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 		int nalsu, i, week;
+		
+		if(m>month.length) {
+			return;
+		}
 
 		// 윤년확인
 		if (y % 4 == 0 && y % 100 != 0 || y % 400 == 0)

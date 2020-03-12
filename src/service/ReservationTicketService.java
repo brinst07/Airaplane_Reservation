@@ -5,10 +5,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
+import dao.AirplaneDao;
 import dao.AirplaneTicketDao;
 import data.Database;
 import data.Session;
 import vo.AirplaneTicketVO;
+import vo.AirplaneVO;
 import vo.UserVO;
 
 public class ReservationTicketService {
@@ -22,6 +24,8 @@ public class ReservationTicketService {
 	Sitservice sitservice = new Sitservice();
 	CleardelayService cds = new CleardelayService();
 	CalendarService calendarservice = new CalendarService();
+	AirplaneDao airplanedao = new AirplaneDao();
+	AirplaneVO airplanevo = new AirplaneVO();
 
 	Database database = Database.getInstance();
 
@@ -273,12 +277,12 @@ public class ReservationTicketService {
 			}
 		}
 
-		String startdate = time.returnstartTime(citychoice + num, cho); // 사용자가 선택한 출발 시간을 저장
+		String starttime = time.returnstartTime(citychoice + num, cho); // 사용자가 선택한 출발 시간을 저장
 
 		cds.Clear();
 		System.out.println("선택 날짜 : " + date);
 		System.out.println("나라 및 도시 : " + countr + " / " + arriveCt);
-		System.out.println("선택 시간 : " + startdate);
+		System.out.println("선택 시간 : " + starttime);
 		System.out.println("==================================[인원선택]==================================");
 
 		String[] sit = new String[10];
@@ -291,7 +295,8 @@ public class ReservationTicketService {
 
 		for (int i = 0; i < people; i++) { // 인원수 입력만큼 반복
 			cds.Clear();
-			sit[i] = sitservice.start(sitclass);
+			sitservice.start();
+			sit[i] = sitservice.start1(sitclass);
 
 			if (sitclass == 1) {
 				classsit = "First";
@@ -306,7 +311,7 @@ public class ReservationTicketService {
 		while (true) {
 			cds.Clear();
 			System.out.println("[선택 내역]");
-			System.out.println("날짜 및 시간 : [" + date + " " + startdate + "]");
+			System.out.println("날짜 및 시간 : [" + date + " " + starttime + "]");
 			System.out.print("행선지 : 인천 국제 공항 ---> ");
 			airportservice.showAirport(citychoice + num);
 			System.out.println("선택 인원 : " + people + "명");
@@ -343,12 +348,17 @@ public class ReservationTicketService {
 			airplaneticketvo.setGate(gate); // 티켓에 게이트 번호 저장
 			airplaneticketvo.setStartdate(date); // 티켓에 출발날짜 저장
 			airplaneticketvo.setArriveAp(arriveCt); // 도착할 도시 이름 티켓에 저장
-			airplaneticketvo.setStarttime(startdate); // 받아온 시간을 티켓에 저장
+			airplaneticketvo.setStarttime(starttime); // 받아온 시간을 티켓에 저장
 			airplaneticketvo.setSitNum(sit[i]); // 시트번호 저장
 			airplaneticketvo.setSitclass(classsit); // 클래스 저장
-
-			airplaneticketdao.insertReservation(airplaneticketvo);
-			database.tb_airplane.add(airplaneticketvo); // 티켓에 add
+			
+			airplanevo.setDate(date);
+			airplanevo.setTime(starttime);
+			airplanevo.setSitnum(sit[i]);
+			airplanevo.setSitclass(classsit);
+			
+			airplanedao.insertinfor(airplanevo);			
+			airplaneticketdao.insertReservation(airplaneticketvo); // 티켓에 add
 		}
 		cds.pause();
 	}

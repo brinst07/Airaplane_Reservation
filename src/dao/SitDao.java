@@ -24,12 +24,7 @@ public class SitDao {
 	// 데이터베이스에 접근하는 것
 	public ArrayList<SitVO> sit() {
 		return databse.tb_sit;
-	}
-
-	// 데이터베이스에 입력하는 것
-	public void insertsit(SitVO sitvo) {
-		databse.tb_sit.add(sitvo);
-	}
+	}	
 
 	// 퍼스트 클래스를 반환해준다.
 	public String[][] first() {

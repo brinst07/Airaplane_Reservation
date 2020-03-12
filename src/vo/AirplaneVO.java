@@ -2,32 +2,41 @@ package vo;
 
 public class AirplaneVO {
 
-	private int airplane;
-	private String airplane_name;
-	private int airpor_num;
+	String date;
+	String time;
+	String sitclass;
+	String sitnum;
 
-	public int getAirplane() {
-		return airplane;
+	public String getDate() {
+		return date;
 	}
 
-	public void setAirplane(int airplane) {
-		this.airplane = airplane;
+	public void setDate(String date) {
+		this.date = date;
 	}
 
-	public String getAirplane_name() {
-		return airplane_name;
+	public String getTime() {
+		return time;
 	}
 
-	public void setAirplane_name(String airplane_name) {
-		this.airplane_name = airplane_name;
+	public void setTime(String time) {
+		this.time = time;
 	}
 
-	public int getAirpor_num() {
-		return airpor_num;
+	public String getSitclass() {
+		return sitclass;
 	}
 
-	public void setAirpor_num(int airpor_num) {
-		this.airpor_num = airpor_num;
+	public void setSitclass(String sitclass) {
+		this.sitclass = sitclass;
+	}
+
+	public String getSitnum() {
+		return sitnum;
+	}
+
+	public void setSitnum(String sitnum) {
+		this.sitnum = sitnum;
 	}
 
 }

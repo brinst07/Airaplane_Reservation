@@ -9,12 +9,11 @@ import vo.SitVO;
 public class Sitservice {
 	Database database = Database.getInstance();
 
-	SitDao sitdao = SitDao.getInstance();
-	String[][] first = sitdao.first();
-	String[][] business = sitdao.business();
-	String[][] eco = sitdao.eco();
-
 	Scanner sc = new Scanner(System.in);
+	
+	String[][] first = new String[4][3];
+	String[][] business = new String[15][3];
+	String[][] eco = new String[25][9];
 
 	public int classcho() {
 		int sit = 0;
@@ -56,35 +55,55 @@ public class Sitservice {
 		}
 		return people;
 	}
+	
+	public void start() { // 배열 초기화
+		
+		char alpha;
 
-	public void start1() { // 임시
 		for (int i = 0; i < first.length; i++) {
+			alpha = 'A';
 			for (int j = 0; j < first[i].length; j++) {
-				System.out.printf("%s\t", first[i][j]);
+				first[i][j] = Integer.toString(i + 1) + alpha;
+				alpha = (char) (alpha + 1);
 			}
-			System.out.println("\n\n\n");
+
+		}
+		
+		//비즈니스
+		
+		for (int i = 0; i < business.length; i++) {
+			alpha = 'A';
+			for (int j = 0; j < business[i].length; j++) {
+				business[i][j] = Integer.toString(i + 1) + alpha;
+				alpha = (char) (alpha + 1);
+			}
+
+		}
+		
+		//이코노미
+		
+		for (int i = 0; i < eco.length; i++) {
+			alpha = 'A';
+			for (int j = 0; j < eco[i].length; j++) {
+				eco[i][j] = Integer.toString(i + 1) + alpha;
+				alpha = (char) (alpha + 1);
+			}
 		}
 	}
-
-	public String start(int sitnum) {
-		// 좌석표를 담았다
-
-		// 좌석을 입력받는 메소드이다.
+	
+	public String start1(int sitnum) {		
+		
+		String temp = "";
 
 		SitVO sitvo = new SitVO();
-
-		int people = 1;
-
-		sitvo.setSit_num(people);
-
+		
 		int sit = sitnum;
 
 		char alpha;
 
 		switch (sit) {
 		case 1:
-			String temp = "";
-			sitvo.setSit_class("First Class");
+			temp = "";			
 			// 좌석표를 보여주는 반복문
 
 			for (int i = 0; i < first.length; i++) {
@@ -101,7 +120,7 @@ public class Sitservice {
 				for (int j = 0; j < first[i].length; j++) {
 					if (answer.equals(first[i][j])) {
 						temp += (first[i][j] + "  ");
-						sitvo.setSit_number(temp);
+						
 						first[i][j] = " X ";
 
 						break a;
@@ -112,8 +131,7 @@ public class Sitservice {
 			break;
 
 		case 2:
-			temp = "";
-			sitvo.setSit_class("BusinessClass");
+			temp = "";			
 
 			for (int i = 0; i < business.length; i++) {
 				for (int j = 0; j < business[i].length; j++) {
@@ -134,7 +152,7 @@ public class Sitservice {
 					if (answer2.equals(business[i][j])) {
 
 						temp += (business[i][j] + "  ");
-						sitvo.setSit_number(temp);
+						
 						if (i < 9) {
 							business[i][j] = "X ";
 						} else {
@@ -149,8 +167,7 @@ public class Sitservice {
 
 			break;
 		case 3:
-			temp = "";
-			sitvo.setSit_class("Economy Class");
+			temp = "";			
 
 			for (int i = 0; i < eco.length; i++) {
 				for (int j = 0; j < eco[i].length; j++) {
@@ -179,7 +196,7 @@ public class Sitservice {
 				for (int j = 0; j < eco[i].length; j++) {
 					if (answer3.equals(eco[i][j])) {
 						temp += (eco[i][j] + "  ");
-						sitvo.setSit_number(temp);
+						
 						if (i < 9) {
 							eco[i][j] = "X ";
 						} else {
@@ -193,7 +210,7 @@ public class Sitservice {
 
 			break;
 		}
-		return sitvo.getSit_number();
+		return temp;
 	}
 
 }
