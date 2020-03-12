@@ -83,7 +83,7 @@ public class TicketService {
 
 	public void deleteticket() {
 		System.out.println("\n예약된 모든 티켓을 취소하시겠습니까?");
-		System.out.print("| 1. YES | 2. NO |\n>> ");		
+		System.out.print("| 1. YES | 2. NO |\n>> ");
 		String temp = sc.nextLine();
 		switch(temp) {
 		case "1":
