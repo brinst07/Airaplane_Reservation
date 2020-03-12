@@ -1,19 +1,92 @@
 package service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
-import dao.SitDao;
+import dao.AirplaneDao;
 import data.Database;
+import vo.AirplaneVO;
+import vo.AirportVO;
+import vo.CountryVO;
 import vo.SitVO;
 
 public class Sitservice {
 	Database database = Database.getInstance();
 
+	AirplaneDao airplanedao = new AirplaneDao();
+	AirplaneVO airplanevo = new AirplaneVO();
+
+	CleardelayService cds = new CleardelayService();
+
 	Scanner sc = new Scanner(System.in);
-	
+
 	String[][] first = new String[4][3];
 	String[][] business = new String[15][3];
 	String[][] eco = new String[25][9];
+
+	String[] date = new String[100];
+	String[] time = new String[100];
+	String[] sitclass = new String[100];
+	String[] sitnum = new String[100];
+
+	public void getticket() {
+		for (int i = 0; i < airplanedao.infoList().size(); i++) {
+			AirplaneVO exairplane = airplanedao.infoList().get(i);
+			date[i] = exairplane.getDate();
+			time[i] = exairplane.getTime();
+			sitclass[i] = exairplane.getSitclass();
+			sitnum[i] = exairplane.getSitnum();
+		}
+	}
+
+	//컴퓨터가 사용자가 예약한 날짜를 확인해서 X표시를 입력
+	public void userchoi(String userdate, String usertime, String usersitclass) {
+		for(int i = 0 ; i < airplanedao.infoList().size(); i++) {
+			AirplaneVO exairplane = airplanedao.infoList().get(i);
+			if(date[i].equals(userdate)) {				
+				if(time[i].equals(usertime)) {					
+					if(sitclass[i].equals(usersitclass)) {						
+						if(usersitclass.equals("First")) {
+							for(int k = 0 ; k < first.length ; k++) {
+								for(int z = 0 ; z < first[k].length ; z++) {
+									if(sitnum[i].equals(first[k][z])) {
+										first[k][z] = " X ";
+										break;
+									}
+								}
+							}
+						}else if(usersitclass.equals("Business")) {							
+							for(int k = 0 ; k < business.length ; k++) {
+								for(int z = 0 ; z < business[k].length ; z++) {									
+									if(sitnum[i].equals(business[k][z])) {
+										if (k < 9) {
+											business[k][z] = "X ";
+										} else {
+											business[k][z] = " X ";
+										}										
+										break;
+									}
+								}
+							}
+						}else if(usersitclass.equals("Economy")){
+							for(int k = 0 ; k < eco.length ; k++) {
+								for(int z = 0 ; z < eco[k].length ; z++) {
+									if(sitnum[i].equals(eco[k][z])) {
+										if (k < 9) {
+											eco[k][z] = "X ";
+										} else {
+											eco[k][z] = " X ";
+										}
+									}
+								}
+							}														
+						}
+					}				
+				}
+			}			
+		}
+	}
 
 	public int classcho() {
 		int sit = 0;
@@ -32,7 +105,6 @@ public class Sitservice {
 				break;
 			}
 		}
-
 		return sit;
 	}
 
@@ -55,33 +127,34 @@ public class Sitservice {
 		}
 		return people;
 	}
-	
-	public void start() { // 배열 초기화
-		
-		char alpha;
 
+	public void pomat() { // 배열 초기화
+		for (int i = 0; i < date.length; i++) {
+			date[i] = " ";
+			time[i] = " ";
+			sitclass[i] = " ";
+			sitnum[i] = " ";
+		}
+
+		char alpha;
 		for (int i = 0; i < first.length; i++) {
 			alpha = 'A';
 			for (int j = 0; j < first[i].length; j++) {
 				first[i][j] = Integer.toString(i + 1) + alpha;
 				alpha = (char) (alpha + 1);
 			}
-
 		}
-		
-		//비즈니스
-		
+
+		// 비즈니스
 		for (int i = 0; i < business.length; i++) {
 			alpha = 'A';
 			for (int j = 0; j < business[i].length; j++) {
 				business[i][j] = Integer.toString(i + 1) + alpha;
 				alpha = (char) (alpha + 1);
 			}
-
 		}
-		
-		//이코노미
-		
+
+		// 이코노미
 		for (int i = 0; i < eco.length; i++) {
 			alpha = 'A';
 			for (int j = 0; j < eco[i].length; j++) {
@@ -90,20 +163,17 @@ public class Sitservice {
 			}
 		}
 	}
-	
-	public String start1(int sitnum) {		
-		
-		String temp = "";
 
+	public String start1(int sitnum) {
+		String temp = "";
 		SitVO sitvo = new SitVO();
-		
 		int sit = sitnum;
 
 		char alpha;
 
 		switch (sit) {
 		case 1:
-			temp = "";			
+			temp = "";
 			// 좌석표를 보여주는 반복문
 
 			for (int i = 0; i < first.length; i++) {
@@ -119,19 +189,26 @@ public class Sitservice {
 			a: for (int i = 0; i < first.length; i++) {
 				for (int j = 0; j < first[i].length; j++) {
 					if (answer.equals(first[i][j])) {
-						temp += (first[i][j] + "  ");
-						
-						first[i][j] = " X ";
+						temp += (first[i][j]);
 
+						first[i][j] = " X ";
 						break a;
+						
+					}else {
+						if(i==first.length-1&&j==first[0].length-1) {
+							System.out.println("잘못입력하셨습니다.");
+							break a;
+						}
 					}
+					
+					
 				}
 			}
 
 			break;
 
 		case 2:
-			temp = "";			
+			temp = "";
 
 			for (int i = 0; i < business.length; i++) {
 				for (int j = 0; j < business[i].length; j++) {
@@ -151,8 +228,8 @@ public class Sitservice {
 				for (int j = 0; j < business[i].length; j++) {
 					if (answer2.equals(business[i][j])) {
 
-						temp += (business[i][j] + "  ");
-						
+						temp += (business[i][j]);
+
 						if (i < 9) {
 							business[i][j] = "X ";
 						} else {
@@ -162,12 +239,11 @@ public class Sitservice {
 						break a;
 					}
 				}
-
 			}
 
 			break;
 		case 3:
-			temp = "";			
+			temp = "";
 
 			for (int i = 0; i < eco.length; i++) {
 				for (int j = 0; j < eco[i].length; j++) {
@@ -195,8 +271,8 @@ public class Sitservice {
 			a: for (int i = 0; i < eco.length; i++) {
 				for (int j = 0; j < eco[i].length; j++) {
 					if (answer3.equals(eco[i][j])) {
-						temp += (eco[i][j] + "  ");
-						
+						temp += (eco[i][j]);
+
 						if (i < 9) {
 							eco[i][j] = "X ";
 						} else {
@@ -212,5 +288,7 @@ public class Sitservice {
 		}
 		return temp;
 	}
+	
+
 
 }
