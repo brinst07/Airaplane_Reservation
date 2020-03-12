@@ -5,6 +5,7 @@ import java.util.Scanner;
 import data.Session;
 import service.CleardelayService;
 import service.LogoService;
+import service.MenuService;
 import service.UserService;
 
 public class Controller {
@@ -33,6 +34,7 @@ public class Controller {
 	QboardController qboard = new QboardController();
 	NextController nc = new NextController();
 	CleardelayService cds = new CleardelayService();
+	MenuService ms = new MenuService();
 
 	public void start() {
 		Scanner sc = new Scanner(System.in);
@@ -40,12 +42,8 @@ public class Controller {
 
 		do {
 			cds.Clear();
-			System.out.println("┌─────MENU──────┐");
-			System.out.println("│① 회원가입\t│");
-			System.out.println("│② 로그인\t\t│");
-			System.out.println("│③ 프로그램 종료\t│");
-			System.out.println("└───────────────┘");
-			System.out.print("메뉴에 해당하는 번호 입력 ☞ ");
+			ms.logo();
+			System.out.print(">> ");
 
 			try {
 				menu = Integer.parseInt(sc.nextLine());
