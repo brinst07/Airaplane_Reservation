@@ -6,16 +6,16 @@ public class LogoService {
 		CleardelayService cds2 = new CleardelayService();
 
 		System.out.println(
-				"               AAA                 iiii                   PPPPPPPPPPPPPPPPP    lllllll                                                        ");
+				"               AAA                 iiii                    PPPPPPPPPPPPPPPPP    lllllll                                                        ");
 		cds2.delay(300);
 		System.out.println(
-				"              A:::A               i::::i                  P::::::::::::::::P   l:::::l                                                        ");
+				"              A:::A               i::::i                   P::::::::::::::::P   l:::::l                                                        ");
 		cds2.delay(300);
 		System.out.println(
-				"             A:::::A               iiii                   P::::::PPPPPP:::::P  l:::::l                                                        ");
+				"             A:::::A               iiii                    P::::::PPPPPP:::::P  l:::::l                                                        ");
 		cds2.delay(300);
 		System.out.println(
-				"            A:::::::A                                     PP:::::P     P:::::P l:::::l                                                        ");
+				"            A:::::::A                                      PP:::::P     P:::::P l:::::l                                                        ");
 		cds2.delay(300);
 		System.out.println(
 				"           A:::::::::A           iiiiiii rrrrr   rrrrrrrrr   P::::P     P:::::P l::::l   aaaaaaaaaaaaa  nnnn  nnnnnnnn        eeeeeeeeeeee    ");

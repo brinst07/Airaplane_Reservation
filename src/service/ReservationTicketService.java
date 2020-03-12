@@ -340,7 +340,7 @@ public class ReservationTicketService {
          String reser = sc.nextLine();
 
          if (reser.equals("y")) {
-            System.out.println("\n예약이 완료되었습니다.\n이용해주셔서 감사합니다.\n");
+            System.out.println("\n예약이 완료되었습니다.\n이용해주셔서 감사합니다.");
             break;
          } else if (reser.equals("n")) {
             System.out.println("예약이 취소되었습니다.");
