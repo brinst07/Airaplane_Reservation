@@ -185,18 +185,21 @@ public class Sitservice {
 
 			System.out.print("원하시는 좌석을 입력해주세요\n>> ");
 			String answer = sc.nextLine();
-
+			
 			a: for (int i = 0; i < first.length; i++) {
 				for (int j = 0; j < first[i].length; j++) {
 					if (answer.equals(first[i][j])) {
 						temp += (first[i][j]);
 
 						first[i][j] = " X ";
+						boolean check = true;
 						break a;
 						
 					}else {
 						if(i==first.length-1&&j==first[0].length-1) {
 							System.out.println("잘못입력하셨습니다.");
+							boolean check = false;
+							check(check);
 							break a;
 						}
 					}
@@ -289,6 +292,11 @@ public class Sitservice {
 		return temp;
 	}
 	
+	public static boolean check(boolean check) {
+		
+		
+		return check;
+	}
 
 
 }
