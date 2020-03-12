@@ -40,7 +40,7 @@ public class NextController {
 			System.out.println("┌─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─[메뉴]─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┐");
 			if (!root) {
 				System.out.print("│ [1] 비행기 예약  | ");
-				System.out.print("[2] 예약티켓확인  | ");
+				System.out.print("[2] 예약티켓관리  | ");
 				System.out.print("[3] 회원정보수정  | ");
 				System.out.print("[4] 게시판  | ");
 				System.out.println("[5] 문의게시판\t\t│");
@@ -79,13 +79,8 @@ public class NextController {
 
 			case 2:
 				if (!root) {
-					try {
-						ts.airticketList();
-					} catch (Exception e) {
-						System.out.println("예약된 티켓이 없습니다.");
-						cds.pause();
-					}
-
+					
+						ts.firstticket();
 				} else {
 					try {
 						ts.rootticket();
