@@ -22,8 +22,7 @@ public class UserController {
 			System.out.print("②비밀번호 찾기 질문 수정 ");
 			System.out.print("③연락처 수정 ");
 			System.out.print("④계좌번호 수정 ");
-			System.out.print("⑤현재 회원 목록 ");
-			System.out.println("⑥이전화면 가기\t│");
+			System.out.println("⑤이전화면 가기\t│");
 			System.out.printf("└───────────────────────────────────────────────────────────────────────────────┘\n");
 			System.out.printf("원하는 메뉴를 입력해주세요 ☞ ");
 			String voice = s.nextLine();
@@ -42,9 +41,6 @@ public class UserController {
 				service.abChange();
 				break;
 			case "5":
-				service.userList();
-				break;
-			case "6":
 				break a;
 			default :
 				System.out.println("잘못입력하셨습니다.");

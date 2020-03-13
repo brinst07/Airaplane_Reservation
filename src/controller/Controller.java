@@ -34,18 +34,15 @@ public class Controller {
 	public void start() {
 		Scanner sc = new Scanner(System.in);
 		int menu = 0;
-
 		do {
 			cds.Clear();
 			ls.menulogo();
 			System.out.print(">> ");
-
 			try {
 				menu = Integer.parseInt(sc.nextLine());
 			} catch (Exception e) {
 				continue;
 			}
-
 			switch (menu) {
 			case 1:// 회원가입
 				userservice.join();
@@ -57,7 +54,6 @@ public class Controller {
 			case 3:// 프로그램 종료
 				System.out.println("프로그램 종료");
 				break;
-
 			}
 		} while (menu != 3);
 	}

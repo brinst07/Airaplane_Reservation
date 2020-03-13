@@ -30,7 +30,7 @@ public class Sitservice {
 	String[] sitclass = new String[100];
 	String[] sitnum = new String[100];
 
-	public void getticket() {
+	public void getticket() { //infolist 는 예약되어있는 티켓 정보를 저장한 array
 		for (int i = 0; i < airplanedao.infoList().size(); i++) {
 			AirplaneVO exairplane = airplanedao.infoList().get(i);
 			date[i] = exairplane.getDate();
@@ -130,12 +130,12 @@ public class Sitservice {
 
 	public void pomat() { // 배열 초기화
 		for (int i = 0; i < date.length; i++) {
-			date[i] = " ";
+			date[i] = " "; //티켓에 있는 정보를 담는 배열변수
 			time[i] = " ";
 			sitclass[i] = " ";
 			sitnum[i] = " ";
 		}
-
+			//좌석 번호 저장해줌 (보여줄려고)
 		char alpha;
 		for (int i = 0; i < first.length; i++) {
 			alpha = 'A';
